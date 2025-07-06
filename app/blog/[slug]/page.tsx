@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
 interface BlogDetailPageProps {
+  
   params: {
     slug: string;
   };
@@ -13,6 +14,7 @@ interface BlogDetailPageProps {
     lang?: string;
   };
 }
+
 
 // Generate static params for all blog posts
 export async function generateStaticParams() {

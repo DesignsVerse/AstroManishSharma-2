@@ -21,7 +21,7 @@ export async function generateStaticParams() {
   const hindiSlugs = Object.keys(blogDetailedDataHi);
   
   // Combine all unique slugs
-  const allSlugs = [...new Set([...englishSlugs, ...hindiSlugs])];
+  const allSlugs = Array.from(new Set([...englishSlugs, ...hindiSlugs]));
   
   // Generate params for each slug
   return allSlugs.map((slug) => ({

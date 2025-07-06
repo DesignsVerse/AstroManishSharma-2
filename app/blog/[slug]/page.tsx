@@ -5,46 +5,68 @@ import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
+interface BlogPost {
+  title: string;
+  excerpt: string;
+  content: string;
+  image: string;
+  author: string;
+  date: string; // Ensure this is a string, not Date object
+  readTime: string;
+  tags: string[];
+}
+
 interface BlogDetailPageProps {
-  
   params: {
     slug: string;
   };
   searchParams: {
-    lang?: string;
+    lang?: 'en' | 'hi';
   };
 }
 
-
-// Generate static params for all blog posts
-export async function generateStaticParams() {
-  // Get all slugs from both English and Hindi blog data
+// Helper function to safely generate params
+function getSafeSlugs() {
   const englishSlugs = Object.keys(blogDetailedDataEn);
   const hindiSlugs = Object.keys(blogDetailedDataHi);
+  return Array.from(new Set([...englishSlugs, ...hindiSlugs]));
+}
+
+export async function generateStaticParams() {
+  const slugs = getSafeSlugs();
   
-  // Combine all unique slugs
-  const allSlugs = Array.from(new Set([...englishSlugs, ...hindiSlugs]));
-  
-  // Generate params for each slug
-  return allSlugs.map((slug) => ({
-    slug: slug,
-  }));
+  // Validate data serialization
+  slugs.forEach(slug => {
+    try {
+      const enData = blogDetailedDataEn[slug as keyof typeof blogDetailedDataEn];
+      const hiData = blogDetailedDataHi[slug as keyof typeof blogDetailedDataHi];
+      JSON.stringify({ en: enData, hi: hiData });
+    } catch (error) {
+      console.error(`Serialization error for slug: ${slug}`, error);
+      throw new Error(`Failed to serialize data for slug: ${slug}`);
+    }
+  });
+
+  return slugs.map(slug => ({ slug }));
 }
 
 export default function BlogDetailPage({ params, searchParams }: BlogDetailPageProps) {
-  // Determine language from search params, defaulting to English
   const language = searchParams.lang === 'hi' ? 'hi' : 'en';
   const blogData = language === 'en' ? blogDetailedDataEn : blogDetailedDataHi;
-  const post = blogData[params.slug as keyof typeof blogData];
+  const post = blogData[params.slug as keyof typeof blogData] as BlogPost | undefined;
 
   if (!post) {
     notFound();
   }
 
+  // Ensure content is safe for dangerouslySetInnerHTML
+  const createMarkup = () => {
+    return { __html: post.content };
+  };
+
   return (
     <main className="py-20">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Back Button */}
         <Link href={`/blog${language === 'hi' ? '?lang=hi' : ''}`}>
           <Button variant="outline" className="mb-8 border-amber-600 text-amber-600 hover:bg-amber-50">
             <ArrowLeft className="mr-2 h-4 w-4" />
@@ -52,16 +74,15 @@ export default function BlogDetailPage({ params, searchParams }: BlogDetailPageP
           </Button>
         </Link>
 
-        {/* Hero Image */}
         <div className="aspect-video overflow-hidden rounded-2xl mb-8">
           <img
             src={post.image}
             alt={post.title}
             className="w-full h-full object-cover"
+            loading="lazy"
           />
         </div>
 
-        {/* Article Header */}
         <div className="space-y-6 mb-12">
           <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
             {post.title}
@@ -71,7 +92,6 @@ export default function BlogDetailPage({ params, searchParams }: BlogDetailPageP
             {post.excerpt}
           </p>
 
-          {/* Meta Information */}
           <div className="flex flex-wrap items-center gap-6 text-gray-500 border-b border-gray-200 pb-6">
             <div className="flex items-center space-x-2">
               <User className="h-4 w-4" />
@@ -87,7 +107,6 @@ export default function BlogDetailPage({ params, searchParams }: BlogDetailPageP
             </div>
           </div>
 
-          {/* Tags */}
           <div className="flex flex-wrap gap-2">
             {post.tags.map((tag, index) => (
               <span
@@ -101,13 +120,11 @@ export default function BlogDetailPage({ params, searchParams }: BlogDetailPageP
           </div>
         </div>
 
-        {/* Article Content */}
-        <div 
+        <article 
           className="prose prose-lg max-w-none prose-headings:text-gray-900 prose-headings:font-bold prose-p:text-gray-700 prose-p:leading-relaxed prose-a:text-amber-600 prose-a:no-underline hover:prose-a:underline prose-strong:text-gray-900 prose-ul:text-gray-700 prose-ol:text-gray-700"
-          dangerouslySetInnerHTML={{ __html: post.content }}
+          dangerouslySetInnerHTML={createMarkup()}
         />
 
-        {/* Call to Action */}
         <div className="mt-16 p-8 bg-gradient-to-r from-amber-50 to-orange-50 rounded-2xl border border-amber-200">
           <div className="text-center space-y-4">
             <h3 className="text-2xl font-bold text-gray-900">

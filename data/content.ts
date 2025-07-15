@@ -50,30 +50,7 @@ export const content = {
         },
       ],
     },
-    blog: {
-      title: 'Latest Insights',
-      subtitle: 'Astrological Wisdom & Guidance',
-      posts: [
-        {
-          title: 'Understanding Your Moon Sign',
-          excerpt: 'Discover how your moon sign influences your emotions and inner self.',
-          date: 'December 15, 2024',
-          image: 'https://images.pexels.com/photos/3038740/pexels-photo-3038740.jpeg?auto=compress&cs=tinysrgb&w=800',
-        },
-        {
-          title: 'Mercury Retrograde Guide',
-          excerpt: 'Learn how to navigate Mercury retrograde periods with confidence.',
-          date: 'December 10, 2024',
-          image: 'https://images.pexels.com/photos/2034892/pexels-photo-2034892.jpeg?auto=compress&cs=tinysrgb&w=800',
-        },
-        {
-          title: 'Gemstone Benefits for Each Zodiac',
-          excerpt: 'Explore the powerful benefits of gemstones for your zodiac sign.',
-          date: 'December 5, 2024',
-          image: 'https://images.pexels.com/photos/3560044/pexels-photo-3560044.jpeg?auto=compress&cs=tinysrgb&w=800',
-        },
-      ],
-    },
+
     about: {
       title: 'About Me',
       subtitle: 'Your Guide to Cosmic Wisdom',
@@ -167,30 +144,7 @@ export const content = {
         },
       ],
     },
-    blog: {
-      title: 'नवीनतम अंतर्दृष्टि',
-      subtitle: 'ज्योतिषीय ज्ञान और मार्गदर्शन',
-      posts: [
-        {
-          title: 'अपने चंद्र राशि को समझना',
-          excerpt: 'जानें कि आपकी चंद्र राशि आपकी भावनाओं और आंतरिक स्व को कैसे प्रभावित करती है।',
-          date: '15 दिसंबर, 2024',
-          image: 'https://images.pexels.com/photos/3038740/pexels-photo-3038740.jpeg?auto=compress&cs=tinysrgb&w=800',
-        },
-        {
-          title: 'बुध वक्री गाइड',
-          excerpt: 'आत्मविश्वास के साथ बुध वक्री काल को नेविगेट करना सीखें।',
-          date: '10 दिसंबर, 2024',
-          image: 'https://images.pexels.com/photos/2034892/pexels-photo-2034892.jpeg?auto=compress&cs=tinysrgb&w=800',
-        },
-        {
-          title: 'प्रत्येक राशि के लिए रत्न लाभ',
-          excerpt: 'अपनी राशि के लिए रत्न के शक्तिशाली लाभों का अन्वेषण करें।',
-          date: '5 दिसंबर, 2024',
-          image: 'https://images.pexels.com/photos/3560044/pexels-photo-3560044.jpeg?auto=compress&cs=tinysrgb&w=800',
-        },
-      ],
-    },
+
     about: {
       title: 'मेरे बारे में',
       subtitle: 'ब्रह्मांडीय ज्ञान के लिए आपका गाइड',

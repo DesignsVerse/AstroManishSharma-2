@@ -1,11 +1,11 @@
 'use client';
 
 import { useLanguage } from '@/contexts/LanguageContext';
-import { servicesDataEn } from '@/data/services-en';
-import { servicesDataHi } from '@/data/services-hi';
+import { servicesEn } from '@/data/services/services-en';
+import { servicesHi } from '@/data/services/services-hi';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Star, Heart, Briefcase, Gem, Home, Sun, ArrowRight } from 'lucide-react';
+import { Star, Heart, Briefcase, Gem, Home, Sun, ArrowRight, Clock, IndianRupee } from 'lucide-react';
 import Link from 'next/link';
 
 const iconMap = {
@@ -32,55 +32,113 @@ const slugMap = {
   'आध्यात्मिक चिकित्सा': 'spiritual-healing',
 };
 
+type Service = {
+  id: string;
+  title: string;
+  description: string;
+  duration: string;
+  features: string[];
+  benefits?: string[];
+  overview?: string;
+  process?: string;
+  howItWorks?: { title: string; description: string }[];
+  image?: string;
+  price?: string;
+  icon?: string;
+};
+
+type ServicesData = {
+  title: string;
+  subtitle: string;
+  items: Service[];
+};
+
 export const Services = () => {
   const { language } = useLanguage();
-  const servicesData = language === 'en' ? servicesDataEn : servicesDataHi;
+  const servicesData: ServicesData = language === 'en' ? servicesEn : servicesHi;
 
   return (
-    <section className="py-20 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center space-y-4 mb-16">
-          <h2 className="text-3xl lg:text-4xl font-bold text-gray-900">
-            {servicesData.title}
+    <section className="py-20 bg-[#faf5f0] relative overflow-hidden">
+      {/* Decorative elements */}
+      <div className="absolute top-0 left-0 w-full h-full opacity-10">
+        <div className="absolute top-1/4 -left-20 w-80 h-80 bg-[#800000] rounded-full mix-blend-multiply filter blur-3xl"></div>
+        <div className="absolute bottom-1/3 -right-20 w-96 h-96 bg-amber-500 rounded-full mix-blend-multiply filter blur-3xl"></div>
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="text-center space-y-6 mb-16">
+          <div className="inline-flex items-center px-4 py-2 bg-[#800000]/10 rounded-full border border-[#800000]/20">
+            <Star className="h-5 w-5 text-[#800000]" />
+            <span className="ml-2 text-sm font-medium uppercase tracking-wider text-[#800000]">
+              {servicesData.subtitle}
+            </span>
+          </div>
+          <h2 className="text-4xl lg:text-5xl font-bold text-gray-900">
+            <span className="text-[#800000]">{servicesData.title.split(' ')[0]}</span> {servicesData.title.split(' ').slice(1).join(' ')}
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            {servicesData.subtitle}
-          </p>
         </div>
         
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {servicesData.items.map((service, index) => {
-            const Icon = iconMap[service.icon as keyof typeof iconMap];
-            const slug = slugMap[service.title as keyof typeof slugMap];
+          {servicesData.items.map((service: Service, index: number) => {
+            const Icon = service.icon ? iconMap[service.icon as keyof typeof iconMap] : Star;
+            const slug = slugMap[service.title as keyof typeof slugMap] || service.id;
             
             return (
-              <Card key={index} className="group hover:shadow-xl transition-all duration-300 border-amber-100 hover:border-amber-200">
-                <CardHeader className="text-center">
-                  <div className="w-16 h-16 bg-gradient-to-r from-amber-500 to-orange-500 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
-                    <Icon className="h-8 w-8 text-white" />
+              <Card 
+                key={index} 
+                className="group hover:shadow-xl transition-all duration-300 border border-gray-200 hover:border-[#800000]/30 bg-white/80 backdrop-blur-sm overflow-hidden"
+              >
+                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#800000] to-amber-600"></div>
+                
+                <CardHeader className="text-center pt-8">
+                  <div className="w-20 h-20 bg-gradient-to-br from-[#800000] to-[#a00000] rounded-full flex items-center justify-center mx-auto mb-4 group-hover:rotate-6 transition-transform shadow-lg">
+                    <Icon className="h-8 w-8 text-white" strokeWidth={1.5} />
                   </div>
-                  <CardTitle className="text-xl font-semibold text-gray-900">
+                  <CardTitle className="text-2xl font-bold text-gray-900">
                     {service.title}
                   </CardTitle>
                 </CardHeader>
-                <CardContent className="text-center space-y-4">
-                  <p className="text-gray-600 leading-relaxed">
+                
+                <CardContent className="text-center space-y-6 pb-8">
+                  <p className="text-gray-700 leading-relaxed min-h-[80px]">
                     {service.description}
                   </p>
-                  <div className="flex justify-between items-center pt-4 border-t border-gray-100">
-                    <span className="text-lg font-bold text-amber-600">{service.price}</span>
-                    <span className="text-sm text-gray-500">{service.duration}</span>
+                  
+                  <div className="space-y-4">
+                    <div className="flex justify-center items-center gap-4">
+                      <div className="flex items-center text-[#800000]">
+                        <IndianRupee className="h-5 w-5 mr-1" />
+                        <span className="text-lg font-bold">{service.price || ''}</span>
+                      </div>
+                      <div className="flex items-center text-gray-600">
+                        <Clock className="h-5 w-5 mr-1" />
+                        <span>{service.duration}</span>
+                      </div>
+                    </div>
+                    
+                    <Link href={`/services/${slug}`} className="block">
+                      <Button 
+                        variant="outline" 
+                        className="w-full border-[#800000] text-[#800000] hover:bg-[#800000]/10 hover:text-[#800000] group-hover:bg-[#800000] group-hover:text-white transition-colors"
+                      >
+                        {language === 'en' ? 'Explore Service' : 'सेवा देखें'}
+                        <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                      </Button>
+                    </Link>
                   </div>
-                  <Link href={`/services/${slug}`}>
-                    <Button className="w-full bg-amber-600 hover:bg-amber-700 text-white">
-                      {language === 'en' ? 'Learn More' : 'और जानें'}
-                      <ArrowRight className="ml-2 h-4 w-4" />
-                    </Button>
-                  </Link>
                 </CardContent>
               </Card>
             );
           })}
+        </div>
+        
+        <div className="text-center mt-16">
+          <Button 
+            size="lg" 
+            className="bg-[#800000] hover:bg-[#6a0000] text-white px-8 py-6 text-lg shadow-lg hover:shadow-xl transition-all"
+          >
+            {language === 'en' ? 'View All Services' : 'सभी सेवाएं देखें'}
+          </Button>
         </div>
       </div>
     </section>

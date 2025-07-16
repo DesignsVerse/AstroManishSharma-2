@@ -39,7 +39,7 @@ type Service = {
   title: string;
   description: string;
   duration: string;
-  features: string[];
+  features?: string[]; // Made optional
   benefits?: string[];
   overview?: string;
   process?: string;
@@ -51,6 +51,7 @@ type Service = {
 type ServicesData = {
   title: string;
   subtitle: string;
+  hero?: any; // Added optional hero property
   items: Service[];
 };
 

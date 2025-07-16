@@ -1,8 +1,8 @@
     "use client";
 
     import { useLanguage } from '@/contexts/LanguageContext';
-    import { Header } from '@/components/Header';
-    import { Footer } from '@/components/Footer';
+    import { Header } from '@/components/Home/Header';
+    import { Footer } from '@/components/Home/Footer';
     import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
     import { Button } from '@/components/ui/button';
     import { ArrowLeft, CheckCircle, Star, Clock, Shield, Users, Target } from 'lucide-react';
@@ -54,13 +54,6 @@
                       {service.description}
                     </p>
                     
-                    <div className="flex flex-wrap gap-3">
-                      {service.features.map((feature: string, index: number) => (
-                        <div key={index} className="bg-white/10 text-orange-50 px-4 py-2 rounded-full backdrop-blur-sm border border-white/20">
-                          {feature}
-                        </div>
-                      ))}
-                    </div>
                   </div>
                   
                   <div className="relative h-80 md:h-96 rounded-xl overflow-hidden shadow-2xl border-4 border-white/20">
@@ -91,6 +84,17 @@
                     <div className="prose max-w-none text-gray-700 text-lg">
                       {service.overview}
                     </div>
+                    {/* Render content array below overview */}
+                    {Array.isArray((service as any).content) && (service as any).content.length > 0 && (
+                      <div className="space-y-8 mt-8">
+                        {(service as any).content.map((item: any, idx: number) => (
+                          <div key={idx}>
+                            <h3 className="text-xl font-semibold text-gray-900 mb-2">{item.heading}</h3>
+                            <p className="text-gray-600">{item.description}</p>
+                          </div>
+                        ))}
+                      </div>
+                    )}
                   </div>
 
                   {/* Benefits Section */}
@@ -103,31 +107,6 @@
                         <div key={index} className="flex items-start gap-4 p-6 bg-[#800000]/5 rounded-xl">
                           <CheckCircle className="w-6 h-6 text-[#800000] mt-1 flex-shrink-0" />
                           <span className="text-gray-700">{benefit}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Process Flow */}
-                  <div className="space-y-6">
-                    <h2 className="text-3xl font-bold text-[#800000] border-b pb-4 border-[#800000]/20">
-                      {language === 'en' ? 'How We Help' : 'हम कैसे मदद करते हैं'}
-                    </h2>
-                    <div className="space-y-8">
-                      {service.howItWorks.map((step: any, index: number) => (
-                        <div key={index} className="flex gap-6">
-                          <div className="flex flex-col items-center">
-                            <div className="w-12 h-12 bg-[#800000] rounded-full flex items-center justify-center text-white font-bold text-xl">
-                              {index + 1}
-                            </div>
-                            {index < service.howItWorks.length - 1 && (
-                              <div className="w-1 h-full bg-[#800000]/20 my-2"></div>
-                            )}
-                          </div>
-                          <div className="flex-1 pb-8">
-                            <h3 className="text-xl font-semibold text-gray-900 mb-2">{step.title}</h3>
-                            <p className="text-gray-600">{step.description}</p>
-                          </div>
                         </div>
                       ))}
                     </div>

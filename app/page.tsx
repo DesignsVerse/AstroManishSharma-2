@@ -1,11 +1,11 @@
-import { Hero } from '@/components/Hero';
-import { Services } from '@/components/Services';
-import { Blog } from '@/components/Blog';
-import { About } from '@/components/About';
-import { Testimonials } from '@/components/Testimonials';
-import { AboutServices } from '@/components/aboutServices';
-import StatsCircle from '@/components/Achivement';
-import StatisticsCard from '@/components/Achivement';
+import Hero  from '@/components/Home/Hero';
+import { Services } from '@/components/Home/Services';
+import { Blog } from '@/components/Home/Blog';
+import About  from '@/components/Home/About';
+import { Testimonials } from '@/components/Home/Testimonials';
+import AboutServices  from '@/components/Home/aboutServices';
+import StatsCircle from '@/components/Home/Achivement';
+import StatisticsCard from '@/components/Home/Achivement';
 
 export default function Home() {
   return (

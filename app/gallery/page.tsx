@@ -17,90 +17,33 @@ interface GalleryImage {
 }
 
 const galleryImages: GalleryImage[] = [
-  {
-    id: 1,
-    src: 'https://images.pexels.com/photos/5473955/pexels-photo-5473955.jpeg?auto=compress&cs=tinysrgb&w=800',
-    title: 'Vedic Astrology Session',
-    description: 'Traditional astrology consultation with ancient texts',
-    category: 'consultation'
-  },
-  {
-    id: 2,
-    src: 'https://images.pexels.com/photos/3038740/pexels-photo-3038740.jpeg?auto=compress&cs=tinysrgb&w=800',
-    title: 'Moon Phase Reading',
-    description: 'Understanding lunar influences on life',
-    category: 'readings'
-  },
-  {
-    id: 3,
-    src: 'https://images.pexels.com/photos/3560044/pexels-photo-3560044.jpeg?auto=compress&cs=tinysrgb&w=800',
-    title: 'Sacred Gemstones',
-    description: 'Collection of powerful healing crystals',
-    category: 'gemstones'
-  },
-  {
-    id: 4,
-    src: 'https://images.pexels.com/photos/8828688/pexels-photo-8828688.jpeg?auto=compress&cs=tinysrgb&w=800',
-    title: 'Ancient Manuscripts',
-    description: 'Traditional Vedic astrology texts and scrolls',
-    category: 'manuscripts'
-  },
-  {
-    id: 5,
-    src: 'https://images.pexels.com/photos/2034892/pexels-photo-2034892.jpeg?auto=compress&cs=tinysrgb&w=800',
-    title: 'Planetary Alignment',
-    description: 'Cosmic arrangements and their meanings',
-    category: 'astronomy'
-  },
-  {
-    id: 6,
-    src: 'https://images.pexels.com/photos/4207892/pexels-photo-4207892.jpeg?auto=compress&cs=tinysrgb&w=800',
-    title: 'Meditation Space',
-    description: 'Sacred space for spiritual practices',
-    category: 'spiritual'
-  },
-  {
-    id: 7,
-    src: 'https://images.pexels.com/photos/6980869/pexels-photo-6980869.jpeg?auto=compress&cs=tinysrgb&w=800',
-    title: 'Birth Chart Creation',
-    description: 'Process of creating detailed horoscopes',
-    category: 'consultation'
-  },
-  {
-    id: 8,
-    src: 'https://images.pexels.com/photos/7319070/pexels-photo-7319070.jpeg?auto=compress&cs=tinysrgb&w=800',
-    title: 'Crystal Healing',
-    description: 'Therapeutic use of gemstones and crystals',
-    category: 'gemstones'
-  },
-  {
-    id: 9,
-    src: 'https://images.pexels.com/photos/6980870/pexels-photo-6980870.jpeg?auto=compress&cs=tinysrgb&w=800',
-    title: 'Yantra Designs',
-    description: 'Sacred geometric patterns for meditation',
-    category: 'spiritual'
-  },
-  {
-    id: 10,
-    src: 'https://images.pexels.com/photos/4207891/pexels-photo-4207891.jpeg?auto=compress&cs=tinysrgb&w=800',
-    title: 'Astrological Tools',
-    description: 'Traditional instruments used in readings',
-    category: 'consultation'
-  },
-  {
-    id: 11,
-    src: 'https://images.pexels.com/photos/7319069/pexels-photo-7319069.jpeg?auto=compress&cs=tinysrgb&w=800',
-    title: 'Cosmic Energy',
-    description: 'Visualization of universal energies',
-    category: 'astronomy'
-  },
-  {
-    id: 12,
-    src: 'https://images.pexels.com/photos/6980868/pexels-photo-6980868.jpeg?auto=compress&cs=tinysrgb&w=800',
-    title: 'Spiritual Guidance',
-    description: 'Personal consultation and guidance session',
-    category: 'readings'
-  }
+  { id: 1, src: '/gallery/1.jpg', title: 'Gallery Image 1', description: 'Description for image 1', category: 'all' },
+  { id: 2, src: '/gallery/2.jpg', title: 'Gallery Image 2', description: 'Description for image 2', category: 'all' },
+  { id: 3, src: '/gallery/3.jpg', title: 'Gallery Image 3', description: 'Description for image 3', category: 'all' },
+  { id: 5, src: '/gallery/5.jpg', title: 'Gallery Image 5', description: 'Description for image 5', category: 'all' },
+  { id: 6, src: '/gallery/6.jpg', title: 'Gallery Image 6', description: 'Description for image 6', category: 'all' },
+  { id: 7, src: '/gallery/7.jpg', title: 'Gallery Image 7', description: 'Description for image 7', category: 'all' },
+  { id: 8, src: '/gallery/8.jpg', title: 'Gallery Image 8', description: 'Description for image 8', category: 'all' },
+  { id: 10, src: '/gallery/10.jpg', title: 'Gallery Image 10', description: 'Description for image 10', category: 'all' },
+  { id: 11, src: '/gallery/11.jpg', title: 'Gallery Image 11', description: 'Description for image 11', category: 'all' },
+  { id: 12, src: '/gallery/12.jpg', title: 'Gallery Image 12', description: 'Description for image 12', category: 'all' },
+  { id: 13, src: '/gallery/13.jpg', title: 'Gallery Image 13', description: 'Description for image 13', category: 'all' },
+  { id: 14, src: '/gallery/14.jpg', title: 'Gallery Image 14', description: 'Description for image 14', category: 'all' },
+  { id: 15, src: '/gallery/15.jpg', title: 'Gallery Image 15', description: 'Description for image 15', category: 'all' },
+  { id: 16, src: '/gallery/16.jpg', title: 'Gallery Image 16', description: 'Description for image 16', category: 'all' },
+  { id: 17, src: '/gallery/17.jpg', title: 'Gallery Image 17', description: 'Description for image 17', category: 'all' },
+  { id: 18, src: '/gallery/18.jpg', title: 'Gallery Image 18', description: 'Description for image 18', category: 'all' },
+  { id: 19, src: '/gallery/19.jpg', title: 'Gallery Image 19', description: 'Description for image 19', category: 'all' },
+  { id: 20, src: '/gallery/20.jpg', title: 'Gallery Image 20', description: 'Description for image 20', category: 'all' },
+  { id: 21, src: '/gallery/21.jpg', title: 'Gallery Image 21', description: 'Description for image 21', category: 'all' },
+  { id: 22, src: '/gallery/22.jpg', title: 'Gallery Image 22', description: 'Description for image 22', category: 'all' },
+  { id: 23, src: '/gallery/23.jpg', title: 'Gallery Image 23', description: 'Description for image 23', category: 'all' },
+  { id: 24, src: '/gallery/24.jpg', title: 'Gallery Image 24', description: 'Description for image 24', category: 'all' },
+  { id: 25, src: '/gallery/25.jpg', title: 'Gallery Image 25', description: 'Description for image 25', category: 'all' },
+  { id: 26, src: '/gallery/26.jpg', title: 'Gallery Image 26', description: 'Description for image 26', category: 'all' },
+  { id: 27, src: '/gallery/27.jpg', title: 'Gallery Image 27', description: 'Description for image 27', category: 'all' },
+  { id: 28, src: '/gallery/28.jpg', title: 'Gallery Image 28', description: 'Description for image 28', category: 'all' },
+  { id: 29, src: '/gallery/29.jpg', title: 'Gallery Image 29', description: 'Description for image 29', category: 'all' },
 ];
 
 const categories = [

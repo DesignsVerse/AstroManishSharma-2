@@ -132,20 +132,20 @@ function BlogContent() {
 
               {/* Right Image */}
               <motion.div
-                className="relative h-80 md:h-96"
+                className="relative h-[28rem] md:h-[28rem]"
                 initial={{ opacity: 0, x: 50 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8 }}
               >
                 <div className="absolute -inset-4 bg-gradient-to-br from-amber-400/20 to-[#800000]/20 rounded-full blur-xl"></div>
-                <div className="relative h-full w-full">
+                <div className="relative h-full w-full rounded-3xl overflow-hidden">
                   <Image
-                    src="/assets/images/astrology-blog-hero.png"
+                    src="/blog.png"
                     alt={
                       language === "en" ? "Astrology wisdom" : "ज्योतिष ज्ञान"
                     }
                     fill
-                    className="object-contain"
+                    className="object-contain rounded-2xl"
                     priority
                   />
                 </div>

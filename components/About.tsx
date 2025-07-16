@@ -46,9 +46,9 @@ export const About = () => {
             <div className="absolute -inset-1 bg-gradient-to-r from-[#800000]/20 to-amber-500/20 rounded-2xl blur-lg opacity-75 group-hover:opacity-100 transition-opacity"></div>
             <div className="relative rounded-2xl overflow-hidden shadow-lg border-2 border-white transform group-hover:scale-105 transition-transform duration-500">
               <img
-                src="https://images.unsplash.com/photo-1581793746483-042aacb83ce3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                src="/panditji.jpg"
                 alt="Vedic Astrologer"
-                className="w-full h-[350px] object-cover"
+                className="w-full h-[480px] object-cover"
               />
               <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4 transform translate-y-1 group-hover:translate-y-0 transition-transform">
                 <div className="text-white">

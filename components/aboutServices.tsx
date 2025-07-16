@@ -36,7 +36,7 @@ export const AboutServices = () => {
         {/* Right Side - Image */}
         <div className="md:w-1/2 relative min-h-[400px]">
           <Image 
-            src="/astrologer-consultation.jpg" // Replace with your actual image path
+            src="/book.png" // Replace with your actual image path
             alt="Astrologer Consultation"
             fill
             className="object-cover"

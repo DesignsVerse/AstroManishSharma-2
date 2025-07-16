@@ -61,8 +61,8 @@ export const Header = () => {
                 href={item.href}
                 className="relative px-4 py-2 text-gray-800 hover:text-[#800000] transition-all duration-200 font-medium group"
               >
+                <span className="absolute top-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-[#800000] group-hover:w-3/4 transition-all duration-300"></span>
                 {item.label}
-                <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-[#800000] group-hover:w-3/4 transition-all duration-300"></span>
               </Link>
             ))}
           </nav>
@@ -78,12 +78,12 @@ export const Header = () => {
             <LanguageSwitcher />
             
             {/* CTA Button - Desktop */}
-            <div className="hidden md:block">
+            {/* <div className="hidden md:block">
               <Button className="bg-[#800000] hover:bg-[#6a0000] text-white px-5 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 flex items-center space-x-2">
                 <Calendar className="h-4 w-4" />
                 <span>{language === 'en' ? 'Consult Now' : 'पूछताछ करें'}</span>
               </Button>
-            </div>
+            </div> */}
 
             {/* Mobile Menu Button */}
             <button
@@ -117,10 +117,10 @@ export const Header = () => {
                   <span className="text-gray-800">+91 98765 43210</span>
                 </div>
                 
-                <Button className="w-full bg-[#800000] hover:bg-[#6a0000] text-white rounded-lg shadow-md flex items-center justify-center space-x-2">
+                {/* <Button className="w-full bg-[#800000] hover:bg-[#6a0000] text-white rounded-lg shadow-md flex items-center justify-center space-x-2">
                   <Calendar className="h-4 w-4" />
                   <span>{language === 'en' ? 'Consult Now' : 'पूछताछ करें'}</span>
-                </Button>
+                </Button> */}
               </div>
             </nav>
           </div>

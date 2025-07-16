@@ -97,7 +97,7 @@ export default function AboutPage() {
                   transition={{ duration: 0.5 }}
                 >
                   <Image
-                    src="https://images.pexels.com/photos/8828688/pexels-photo-8828688.jpeg?auto=compress&cs=tinysrgb&w=800"
+                    src="/manish.jpg"
                     alt="About"
                     width={600}
                     height={400}

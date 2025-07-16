@@ -2,12 +2,56 @@
 
 import { useLanguage } from '@/contexts/LanguageContext';
 import { content } from '@/data/content';
+import { testimonials } from '@/data/testimonials/testimonials';
 import { Card, CardContent } from '@/components/ui/card';
 import { Star, Quote, Sparkles } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
 
 export const Testimonials = () => {
   const { language } = useLanguage();
   const t = content[language];
+  const testimonialData = testimonials[language];
+
+  // Only use first 5 testimonials
+  const testimonialItems = testimonialData.items;
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const testimonialsPerPage = 3;
+  const autoScrollInterval = 5000; // 5 seconds
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prevIndex) => {
+        // Calculate next index, loop back to 0 if at end
+        const nextIndex = prevIndex + testimonialsPerPage;
+        return nextIndex >= testimonialItems.length ? 0 : nextIndex;
+      });
+    }, autoScrollInterval);
+    
+    return () => clearInterval(interval);
+  }, [testimonialItems.length]);
+
+  // Get the current testimonials to display
+  const getCurrentTestimonials = () => {
+    const endIndex = currentIndex + testimonialsPerPage;
+    
+    if (endIndex <= testimonialItems.length) {
+      return testimonialItems.slice(currentIndex, endIndex);
+    } else {
+      // If we need to wrap around, get items from current index to end
+      // and then from beginning to fill the remaining spots
+      const remaining = endIndex - testimonialItems.length;
+      return [
+        ...testimonialItems.slice(currentIndex),
+        ...testimonialItems.slice(0, remaining)
+      ];
+    }
+  };
+
+  const visibleTestimonials = getCurrentTestimonials();
+
+  // Optional: Add manual navigation dots
+  const totalSlides = Math.ceil(testimonialItems.length / testimonialsPerPage);
+  const currentSlide = Math.floor(currentIndex / testimonialsPerPage);
 
   return (
     <section className="py-20 bg-[#faf5f0] relative overflow-hidden">
@@ -22,18 +66,18 @@ export const Testimonials = () => {
           <div className="inline-flex items-center px-4 py-2 bg-[#800000]/10 rounded-full border border-[#800000]/20">
             <Sparkles className="h-5 w-5 text-[#800000]" />
             <span className="ml-2 text-sm font-medium uppercase tracking-wider text-[#800000]">
-              {t.testimonials.subtitle}
+              {testimonialData.subtitle}
             </span>
           </div>
           <h2 className="text-4xl lg:text-5xl font-bold text-gray-900">
-            <span className="text-[#800000]">{t.testimonials.title.split(' ')[0]}</span> {t.testimonials.title.split(' ').slice(1).join(' ')}
+            <span className="text-[#800000]">{testimonialData.title.split(' ')[0]}</span> {testimonialData.title.split(' ').slice(1).join(' ')}
           </h2>
         </div>
         
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {t.testimonials.items.map((testimonial, index) => (
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 transition-all duration-500">
+          {visibleTestimonials.map((testimonial: { name: string; text: string; rating: number }, index: number) => (
             <Card 
-              key={index} 
+              key={`${currentIndex}-${index}`} 
               className="bg-white/90 backdrop-blur-sm border border-gray-200 hover:border-[#800000]/30 group hover:shadow-lg transition-all duration-300"
             >
               <CardContent className="p-8">
@@ -52,9 +96,6 @@ export const Testimonials = () => {
                         <h4 className="font-bold text-gray-900">
                           {testimonial.name}
                         </h4>
-                        <p className="text-sm text-gray-600 mt-1">
-                          {testimonial.location}
-                        </p>
                       </div>
                       <div className="flex space-x-1">
                         {[...Array(5)].map((_, i) => (
@@ -69,6 +110,18 @@ export const Testimonials = () => {
                 </div>
               </CardContent>
             </Card>
+          ))}
+        </div>
+
+        {/* Navigation dots */}
+        <div className="flex justify-center mt-8 space-x-2">
+          {Array.from({ length: totalSlides }).map((_, index) => (
+            <button
+              key={index}
+              onClick={() => setCurrentIndex(index * testimonialsPerPage)}
+              className={`w-3 h-3 rounded-full ${currentSlide === index ? 'bg-[#800000]' : 'bg-gray-300'}`}
+              aria-label={`Go to slide ${index + 1}`}
+            />
           ))}
         </div>
 

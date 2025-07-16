@@ -17,40 +17,7 @@ export const content = {
     services: {
       title: 'Our Services',
       subtitle: 'Comprehensive Astrological Guidance',
-      items: [
-        {
-          title: 'Birth Chart Analysis',
-          description: 'Complete analysis of your birth chart to understand your personality, strengths, and life path.',
-          icon: 'star',
-        },
-        {
-          title: 'Marriage Compatibility',
-          description: 'Detailed compatibility analysis for couples to ensure a harmonious relationship.',
-          icon: 'heart',
-        },
-        {
-          title: 'Career Guidance',
-          description: 'Professional guidance to help you choose the right career path and achieve success.',
-          icon: 'briefcase',
-        },
-        {
-          title: 'Gemstone Consultation',
-          description: 'Personalized gemstone recommendations to enhance positive planetary influences.',
-          icon: 'gem',
-        },
-        {
-          title: 'Vastu Shastra',
-          description: 'Home and office Vastu consultation to create positive energy flow.',
-          icon: 'home',
-        },
-        {
-          title: 'Spiritual Healing',
-          description: 'Spiritual healing sessions to remove negative energies and restore balance.',
-          icon: 'sun',
-        },
-      ],
     },
-
     about: {
       title: 'About Me',
       subtitle: 'Your Guide to Cosmic Wisdom',
@@ -60,27 +27,6 @@ export const content = {
         'Traditional Vedic Astrology',
         'Thousands of Satisfied Clients',
         'Personalized Approach',
-      ],
-    },
-    testimonials: {
-      title: 'What Clients Say',
-      subtitle: 'Real Stories, Real Results',
-      items: [
-        {
-          name: 'Priya Sharma',
-          text: 'The birth chart analysis was incredibly accurate. It helped me understand myself better and make important life decisions.',
-          rating: 5,
-        },
-        {
-          name: 'Rajesh Kumar',
-          text: 'The marriage compatibility reading was spot on. We\'re now happily married and grateful for the guidance.',
-          rating: 5,
-        },
-        {
-          name: 'Anita Patel',
-          text: 'Career guidance helped me choose the right path. I\'m now successful in my chosen field.',
-          rating: 5,
-        },
       ],
     },
     footer: {
@@ -111,40 +57,7 @@ export const content = {
     services: {
       title: 'हमारी सेवाएं',
       subtitle: 'व्यापक ज्योतिषीय मार्गदर्शन',
-      items: [
-        {
-          title: 'जन्म कुंडली विश्लेषण',
-          description: 'आपके व्यक्तित्व, शक्तियों और जीवन पथ को समझने के लिए आपकी जन्म कुंडली का पूरा विश्लेषण।',
-          icon: 'star',
-        },
-        {
-          title: 'विवाह अनुकूलता',
-          description: 'सामंजस्यपूर्ण रिश्ते के लिए जोड़ों के लिए विस्तृत अनुकूलता विश्लेषण।',
-          icon: 'heart',
-        },
-        {
-          title: 'करियर मार्गदर्शन',
-          description: 'सही करियर पथ चुनने और सफलता प्राप्त करने के लिए व्यावसायिक मार्गदर्शन।',
-          icon: 'briefcase',
-        },
-        {
-          title: 'रत्न परामर्श',
-          description: 'सकारात्मक ग्रहों के प्रभाव को बढ़ाने के लिए व्यक्तिगत रत्न सुझाव।',
-          icon: 'gem',
-        },
-        {
-          title: 'वास्तु शास्त्र',
-          description: 'सकारात्मक ऊर्जा प्रवाह बनाने के लिए घर और कार्यालय वास्तु परामर्श।',
-          icon: 'home',
-        },
-        {
-          title: 'आध्यात्मिक चिकित्सा',
-          description: 'नकारात्मक ऊर्जा को हटाने और संतुलन बहाली के लिए आध्यात्मिक चिकित्सा सत्र।',
-          icon: 'sun',
-        },
-      ],
     },
-
     about: {
       title: 'मेरे बारे में',
       subtitle: 'ब्रह्मांडीय ज्ञान के लिए आपका गाइड',
@@ -154,27 +67,6 @@ export const content = {
         'पारंपरिक वैदिक ज्योतिष',
         'हजारों संतुष्ट ग्राहक',
         'व्यक्तिगत दृष्टिकोण',
-      ],
-    },
-    testimonials: {
-      title: 'ग्राहक क्या कहते हैं',
-      subtitle: 'वास्तविक कहानियां, वास्तविक परिणाम',
-      items: [
-        {
-          name: 'प्रिया शर्मा',
-          text: 'जन्म कुंडली विश्लेषण अविश्वसनीय रूप से सटीक था। इसने मुझे खुद को बेहतर समझने और महत्वपूर्ण जीवन निर्णय लेने में मदद की।',
-          rating: 5,
-        },
-        {
-          name: 'राजेश कुमार',
-          text: 'विवाह अनुकूलता रीडिंग बिल्कुल सही थी। हम अब खुशी से विवाहित हैं और मार्गदर्शन के लिए आभारी हैं।',
-          rating: 5,
-        },
-        {
-          name: 'अनीता पटेल',
-          text: 'करियर मार्गदर्शन ने मुझे सही रास्ता चुनने में मदद की। मैं अब अपने चुने हुए क्षेत्र में सफल हूं।',
-          rating: 5,
-        },
       ],
     },
     footer: {

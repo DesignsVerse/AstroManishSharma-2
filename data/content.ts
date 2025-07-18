@@ -46,7 +46,7 @@ export const content: Content = {
       home: 'Home',
       services: 'Puja Services',
       blog: 'Blog',
-      about: 'About Pandit Manish Sharma',
+      about: 'About ',
       contact: 'Contact',
     },
     hero: {

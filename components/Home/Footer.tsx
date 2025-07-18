@@ -3,11 +3,17 @@
 import Link from 'next/link';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { content } from '@/data/content';
+import { servicesEn } from '@/data/services/services-en';
+import { servicesHi } from '@/data/services/services-hi';
+import { blogEn } from '@/data/blog/blog-en';
+import { blogHi } from '@/data/blog/blog-hi';
 import { Mail, Phone, MapPin, Facebook, Twitter, Instagram, CalendarDays } from 'lucide-react';
 
 export const Footer = () => {
   const { language } = useLanguage();
   const t = content[language];
+  const servicesData = language === 'en' ? servicesEn : servicesHi;
+  const blogData = language === 'en' ? blogEn : blogHi;
 
   const navItems = [
     { href: '/', label: t.header.home },
@@ -18,13 +24,25 @@ export const Footer = () => {
     { href: '/contact', label: t.header.contact },
   ];
 
+  // Limit to 4 series items for footer
+  const seriesItems = servicesData.items.slice(0, 4).map((service) => ({
+    href: `/services/${service.id}`,
+    label: service.title,
+  }));
+
+  // Limit to 4 blog posts for footer
+  const blogItems = blogData.posts.slice(0, 4).map((post) => ({
+    href: `/blog/${post.slug ?? post.id}`,
+    label: post.title,
+  }));
+
   return (
     <footer className="bg-[#800000] text-white pt-16 pb-8 relative overflow-hidden">
       {/* Decorative elements */}
       <div className="absolute bottom-0 right-0 w-64 h-64 bg-[#a00000] rounded-full filter blur-3xl opacity-20"></div>
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
+        <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-12">
           {/* Brand Info */}
           <div className="space-y-6">
             <Link href="/" className="flex items-center space-x-3 group">
@@ -61,7 +79,47 @@ export const Footer = () => {
             </ul>
           </div>
           
-          {/* Contact Info */}
+          {/* Series */}
+          <div className="space-y-6">
+            <h3 className="text-xl font-bold">
+              {language === 'en' ? 'Our Series' : 'हमारी सीरीज़'}
+            </h3>
+            <ul className="space-y-3">
+              {seriesItems.map((item) => (
+                <li key={item.href}>
+                  <Link 
+                    href={item.href} 
+                    className="text-white/80 hover:text-white transition-colors flex items-center group"
+                  >
+                    <span className="w-2 h-2 bg-white rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity"></span>
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+          
+          {/* Blog Topics */}
+          <div className="space-y-6">
+            <h3 className="text-xl font-bold">
+              {language === 'en' ? 'Blog Topics' : 'ब्लॉग विषय'}
+            </h3>
+            <ul className="space-y-3">
+              {blogItems.map((item: { href: string; label: string }) => (
+                <li key={item.href}>
+                  <Link 
+                    href={item.href} 
+                    className="text-white/80 hover:text-white transition-colors flex items-center group"
+                  >
+                    <span className="w-2 h-2 bg-white rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity"></span>
+                    {item.label.length > 30 ? `${item.label.substring(0, 27)}...` : item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+          
+          {/* Contact Info & Social */}
           <div className="space-y-6">
             <h3 className="text-xl font-bold">{t.footer.contact}</h3>
             <ul className="space-y-4">
@@ -84,32 +142,21 @@ export const Footer = () => {
                 </span>
               </li>
             </ul>
-          </div>
-          
-          {/* Social & Hours */}
-          <div className="space-y-6">
-            <h3 className="text-xl font-bold">
-              {language === 'en' ? 'Connect With Us' : 'हमसे जुड़ें'}
-            </h3>
-            <div className="flex space-x-4">
-              <a href="#" className="w-10 h-10 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center transition-colors">
-                <Facebook className="h-5 w-5 text-white" />
-              </a>
-              <a href="#" className="w-10 h-10 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center transition-colors">
-                <Twitter className="h-5 w-5 text-white" />
-              </a>
-              <a href="#" className="w-10 h-10 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center transition-colors">
-                <Instagram className="h-5 w-5 text-white" />
-              </a>
-            </div>
-            
             <div className="pt-4">
               <h4 className="font-medium mb-2">
-                {language === 'en' ? 'Working Hours' : 'कार्य समय'}
+                {language === 'en' ? 'Connect With Us' : 'हमसे जुड़ें'}
               </h4>
-              <p className="text-white/80">
-                {language === 'en' ? 'Mon-Sun: 7AM - 9PM' : 'सोम-रवि: सुबह 7 - रात 9'}
-              </p>
+              <div className="flex space-x-4">
+                <a href="#" className="w-10 h-10 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center transition-colors">
+                  <Facebook className="h-5 w-5 text-white" />
+                </a>
+                <a href="#" className="w-10 h-10 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center transition-colors">
+                  <Twitter className="h-5 w-5 text-white" />
+                </a>
+                <a href="#" className="w-10 h-10 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center transition-colors">
+                  <Instagram className="h-5 w-5 text-white" />
+                </a>
+              </div>
             </div>
           </div>
         </div>

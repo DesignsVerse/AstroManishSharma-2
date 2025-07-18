@@ -163,24 +163,24 @@ const StatisticsCard: React.FC = () => {
 
   // English and Hindi text for stats and headings
   const stats: Stat[] = language === 'en' ? [
-    { number: '200k', description: 'Devotees\nServed' },
-    { number: '25+', description: "Years of\nLegacy" },
-    { number: '50k+', description: 'Pujas\nConducted' },
-    { number: '100k+', description: 'Blessings\nGiven' },
-    { number: '5+', description: 'Languages\nfor\nGuidance' },
-    { number: '20+', description: 'Awards in\nSpiritual\nService' },
+    { number: '200k+', description: 'Devotees\nBlessed' },
+    { number: '25+', description: 'Years of\nSpiritual Service' },
+    { number: '50k+', description: 'Havan\nRituals' },
+    { number: '100k+', description: 'Wishes\nFulfilled' },
+    { number: '10+', description: 'Tantra-Mantra\nExpertise' },
+    { number: '15+', description: 'Awards for\nDevotion' },
   ] : [
-    { number: '200k', description: 'भक्तों की\nसेवा' },
-    { number: '25+', description: 'वर्षों की\nविरासत' },
-    { number: '50k+', description: 'पूजा\nआयोजित' },
-    { number: '100k+', description: 'आशीर्वाद\nप्रदान किए' },
-    { number: '5+', description: 'मार्गदर्शन के लिए\nभाषाएँ' },
-    { number: '20+', description: 'आध्यात्मिक सेवा\nमें पुरस्कार' },
+    { number: '200k+', description: 'भक्तों को\nआशीर्वाद' },
+    { number: '25+', description: 'आध्यात्मिक सेवा\nके वर्ष' },
+    { number: '50k+', description: 'हवन\nअनुष्ठान' },
+    { number: '100k+', description: 'मनोकामनाएँ\nपूरी' },
+    { number: '10+', description: 'तंत्र-मंत्र\nविशेषज्ञता' },
+    { number: '15+', description: 'भक्ति के लिए\nपुरस्कार' },
   ];
-  const heading = language === 'en' ? 'Our Achievements' : 'हमारी उपलब्धियां';
+  const heading = language === 'en' ? 'Legacy of Pandit Manish Sharma' : 'पंडित मनीष शर्मा की विरासत';
   const subheading = language === 'en'
-    ? 'Decades of excellence in Maa Baglamukhi Puja by Pandit Manish Sharma'
-    : 'पंडित मनीष शर्मा द्वारा माँ बगलामुखी पूजा में दशकों की उत्कृष्टता';
+    ? 'A Lifetime of Devotion to Maa Baglamukhi at Sarva Siddha Peeth, Nalkheda'
+    : 'नालखेड़ा के सरवा सिद्ध पीठ में माँ बगलामुखी के प्रति जीवनभर की भक्ति';
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -258,7 +258,6 @@ const StatisticsCard: React.FC = () => {
                 className="stat-circle bg-gradient-to-br from-[#FEEFEF] to-[#F8E0E0] rounded-full w-32 h-32 md:w-40 md:h-40 flex flex-col justify-center items-center p-2 text-center text-[#7A1C14] font-semibold cursor-default select-none relative overflow-hidden"
                 style={{
                   boxShadow: 'inset 0 0 12px rgba(255, 255, 255, 0.7), 0 8px 20px rgba(0, 0, 0, 0.15)',
-                
                 }}
               >
                 <div className="absolute top-0 right-0 w-8 h-8 rounded-bl-full bg-[#B63628] opacity-10"></div>
@@ -296,7 +295,7 @@ const StatisticsCard: React.FC = () => {
           .stat-grid {
             display: grid !important;
             grid-template-columns: repeat(2, 1fr);
-            gapnv: 1.5rem;
+            gap: 1.5rem;
             justify-items: center;
             min-width: 0 !important;
           }

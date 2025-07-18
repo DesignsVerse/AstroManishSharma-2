@@ -1,8 +1,8 @@
 'use client';
 
 import { useLanguage } from '@/contexts/LanguageContext';
-import { blogDataEn } from '@/data/blog/blog-en';
-import { blogDataHi } from '@/data/blog/blog-hi';
+import { blogEn } from '@/data/blog/blog-en';
+import { blogHi } from '@/data/blog/blog-hi';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { CalendarDays, ArrowRight, Clock } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -10,7 +10,7 @@ import Link from 'next/link';
 
 export const Blog = () => {
   const { language } = useLanguage();
-  const blogData = language === 'en' ? blogDataEn : blogDataHi;
+  const blogData = language === 'en' ? blogEn : blogHi;
 
   return (
     <section className="py-20 bg-[#faf5f0] relative overflow-hidden">

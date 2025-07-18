@@ -1,8 +1,8 @@
 "use client";
 
 import { useLanguage } from "@/contexts/LanguageContext";
-import { blogDataEn } from "@/data/blog/blog-en";
-import { blogDataHi } from "@/data/blog/blog-hi";
+import { blogEn } from "@/data/blog/blog-en";
+import { blogHi } from "@/data/blog/blog-hi";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -22,13 +22,19 @@ import Head from "next/head";
 
 // Define TypeScript interfaces
 interface BlogPost {
+  id: string;
   title: string;
   excerpt: string;
   date: string;
-  image: string;
-  slug: string;
+  readTime: string;
   category: string;
-  content: Array<{ heading: string; description: string }>;
+  author: string;
+  content: Array<{
+    heading: string;
+    description: string | string[];
+  }>;
+  slug: string;
+  image: string;
 }
 
 interface BlogData {
@@ -81,8 +87,22 @@ export const metadata = {
 
 const BlogPage: React.FC = () => {
   const { language } = useLanguage() as LanguageContext;
-  const blogData: BlogData = language === "en" ? blogDataEn : blogDataHi;
-  const posts = blogData.posts;
+  const rawBlogData = language === "en" ? blogEn : blogHi;
+  const blogData: BlogData = {
+    ...rawBlogData,
+    posts: rawBlogData.posts.map((post) => ({
+      ...post,
+      slug: post.id,
+      image: post.image || "/maa-baglamukhi-blog.jpg",
+      content: post.content.map((section) => ({
+        ...section,
+        description: Array.isArray(section.description)
+          ? section.description.join("\n")
+          : section.description,
+      })),
+    })),
+  };
+  const posts = blogData.posts as Array<BlogPost & { image: string; slug: string }>;
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [currentFeaturedIndex, setCurrentFeaturedIndex] = useState<number>(0);
 
@@ -97,7 +117,7 @@ const BlogPage: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
 
   const filteredPosts = posts.filter(
-    (post: BlogPost) =>
+    (post) =>
       (post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
         post.excerpt.toLowerCase().includes(searchQuery.toLowerCase())) &&
       (selectedCategory === "all" || post.category === selectedCategory)
@@ -259,7 +279,7 @@ const BlogPage: React.FC = () => {
                   <div className="grid md:grid-cols-2 gap-8">
                     <div className="relative h-96">
                       <Image
-                        src={featuredPosts[currentFeaturedIndex].image}
+                        src={featuredPosts[currentFeaturedIndex].image || "/maa-baglamukhi-blog.jpg"}
                         alt={featuredPosts[currentFeaturedIndex].title}
                         fill
                         className="object-cover"
@@ -326,7 +346,7 @@ const BlogPage: React.FC = () => {
                   {language === "en" ? "Recent Articles" : "हाल के लेख"}
                 </h2>
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                  {filteredPosts.map((post: BlogPost, index: number) => (
+                  {filteredPosts.map((post, index: number) => (
                     <motion.div
                       key={index}
                       initial={{ opacity: 0, y: 20 }}
@@ -338,7 +358,7 @@ const BlogPage: React.FC = () => {
                         <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#800000] to-amber-600" />
                         <div className="relative h-48 overflow-hidden">
                           <Image
-                            src={post.image}
+                            src={post.image || "/maa-baglamukhi-blog.jpg"}
                             alt={post.title}
                             fill
                             className="object-cover group-hover:scale-105 transition-transform duration-300"

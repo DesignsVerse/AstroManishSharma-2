@@ -185,17 +185,17 @@ const About: React.FC = () => {
 
               <p className="text-base text-gray-700 leading-relaxed max-w-2xl">
                 {language === 'en'
-                  ? 'Pandit Manish Sharma, the best Maa Baglamukhi Pandit, offers authentic Maa Baglamukhi Puja and Pujan at the sacred Maa Baglamukhi Mandir. With over 25 years of experience, he provides spiritual guidance and transformative puja services.'
-                  : 'पंडित मनीष शर्मा, सर्वश्रेष्ठ माँ बगलामुखी पंडित, माँ बगलामुखी मंदिर में प्रामाणिक माँ बगलामुखी पूजा और पूजन प्रदान करते हैं। 25+ वर्षों के अनुभव के साथ, वे आध्यात्मिक मार्गदर्शन और परिवर्तनकारी पूजा सेवाएँ प्रदान करते हैं।'}
+                  ? 'I am Pandit Manish Sharma, trained in Vedic Havan and Tantra-Mantra Puja at Sarva Siddha Peeth Maa Baglamukhi Mandir, Nalkheda, since childhood. Raised in the sacred courtyard of Mata Rani, I have deeply studied these practices with unwavering faith in her divine grace. Born into a Brahmin family, I inherited this sacred work and perform Maa Baglamukhi Puja and Havan rituals to fulfill the wishes of devotees, blessed by Mata Rani.'
+                  : 'मैं पंडित मनीष शर्मा हूँ, जिन्होंने बचपन से सरवा सिद्ध पीठ माँ बगलामुखी मंदिर, नालखेड़ा में वैदिक हवन और तंत्र-मंत्र पूजा का अध्ययन किया है। माता रानी के पवित्र आंगन में पले-बढ़े, मैंने इन प्रथाओं का गहन अध्ययन किया और माता रानी में अटूट विश्वास रखा। ब्राह्मण कुल में जन्मे होने के नाते, मुझे यह पवित्र कार्य विरासत में मिला है और मैं माता रानी के आशीर्वाद से भक्तों की मनोकामनाएँ पूरी करने के लिए माँ बगलामुखी पूजा और हवन अनुष्ठान करता हूँ।'}
               </p>
             </div>
 
             <div className="space-y-3">
               {[
-                language === 'en' ? 'Expert in Maa Baglamukhi Puja and Pujan' : 'माँ बगलामुखी पूजा और पूजन में विशेषज्ञ',
-                language === 'en' ? '25+ years of spiritual expertise' : '25+ वर्षों का आध्यात्मिक अनुभव',
-                language === 'en' ? 'Conducted at Maa Baglamukhi Mandir' : 'माँ बगलामुखी मंदिर में आयोजित',
-                language === 'en' ? 'Trusted by thousands of devotees' : 'हزारों भक्तों द्वारा विश्वसनीय',
+                language === 'en' ? 'Trained in Vedic Havan and Tantra-Mantra Puja at Sarva Siddha Peeth' : 'सरवा सिद्ध पीठ में वैदिक हवन और तंत्र-मंत्र पूजा में प्रशिक्षित',
+                language === 'en' ? 'Raised with unwavering faith in Mata Rani' : 'माता रानी में अटूट विश्वास के साथ पले-बढ़े',
+                language === 'en' ? 'Performing rituals at Maa Baglamukhi Mandir with Mata Rani’s blessings' : 'माता रानी के आशीर्वाद से माँ बगलामुखी मंदिर में अनुष्ठान करना',
+                language === 'en' ? 'Fulfilling devotees’ wishes with divine grace' : 'दिव्य कृपा से भक्तों की मनोकामनाएँ पूरी करना',
               ].map((point, index) => (
                 <motion.div
                   key={index}

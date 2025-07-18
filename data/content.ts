@@ -75,9 +75,9 @@ export const content: Content = {
       about: 'Providing authentic Maa Baglamukhi Puja and spiritual guidance for over 25 years at Maa Baglamukhi Mandir.',
       quickLinks: 'Quick Links',
       contact: 'Contact Info',
-      email: 'info@bestmaabaglamukhipandit.com',
-      phone: '+91 9876543210', // Update with actual phone number
-      address: 'Maa Baglamukhi Mandir, Your City, Your State, India', // Update with actual address
+      email: 'manishhsharma786@gmail.com',
+      phone: '+917733994827',
+      address: 'Maa Baglamukhi Mataji, Nalkheda, Madhya Pradesh, India',
       rights: 'All rights reserved.',
     },
   },
@@ -115,9 +115,9 @@ export const content: Content = {
       about: 'माँ बगलामुखी मंदिर में 25 वर्षों से अधिक समय से प्रामाणिक माँ बगलामुखी पूजा और आध्यात्मिक मार्गदर्शन प्रदान कर रहे हैं।',
       quickLinks: 'त्वरित लिंक',
       contact: 'संपर्क जानकारी',
-      email: 'info@bestmaabaglamukhipandit.com',
-      phone: '+91 9876543210', // Update with actual phone number
-      address: 'माँ बगलामुखी मंदिर, आपका शहर, आपका राज्य, भारत', // Update with actual address
+      email: 'manishhsharma786@gmail.com',
+      phone: '+917733994827',
+      address: 'माँ बगलामुखी माताजी, नालखेड़ा, मध्य प्रदेश, भारत',
       rights: 'सभी अधिकार सुरक्षित।',
     },
   },

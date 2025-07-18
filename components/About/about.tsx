@@ -77,20 +77,20 @@ const AboutPage: React.FC = () => {
       name: 'Maa Baglamukhi Mandir',
       address: {
         '@type': 'PostalAddress',
-        streetAddress: 'Your Temple Address',
-        addressLocality: 'City',
-        addressRegion: 'State',
-        postalCode: 'ZIP',
+        streetAddress: 'Maa Baglamukhi Mataji, Nalkheda',
+        addressLocality: 'Nalkheda',
+        addressRegion: 'Madhya Pradesh',
+        postalCode: '465445',
         addressCountry: 'IN',
       },
     },
   };
 
   const stats: Stat[] = [
-    { icon: Calendar, value: '25+', label: language === 'en' ? 'Years Experience' : 'वर्षों का अनुभव' },
-    { icon: Users, value: '5000+', label: language === 'en' ? 'Happy Devotees' : 'संतुष्ट भक्त' },
-    { icon: Star, value: '4.9', label: language === 'en' ? 'Average Rating' : 'औसत रेटिंग' },
-    { icon: Award, value: '50+', label: language === 'en' ? 'Awards Won' : 'पुरस्कार जीते' },
+    { icon: Calendar, value: '25+', label: language === 'en' ? 'Years of Devotion' : 'भक्ति के वर्ष' },
+    { icon: Users, value: '5000+', label: language === 'en' ? 'Blessed Devotees' : 'आशीर्वाद प्राप्त भक्त' },
+    { icon: Star, value: '4.9', label: language === 'en' ? 'Devotee Rating' : 'भक्त रेटिंग' },
+    { icon: Award, value: '15+', label: language === 'en' ? 'Spiritual Awards' : 'आध्यात्मिक पुरस्कार' },
   ];
 
   return (

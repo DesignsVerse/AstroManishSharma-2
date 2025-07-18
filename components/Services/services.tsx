@@ -57,11 +57,11 @@ export const metadata = {
     title: "Maa Baglamukhi Puja Services | Maa Baglamukhi Mandir",
     description:
       "Experience authentic Maa Baglamukhi Puja and Pujan by Pandit Manish Sharma, the Best Maa Baglamukhi Pandit, at Maa Baglamukhi Mandir.",
-    url: "http://bestmaabaglamukhipandit.com/services",
+    url: "http://bestmaabaglamukhipandit.com/services/maa-baglamukhi-services.avif",
     type: "website",
     images: [
       {
-        url: "http://bestmaabaglamukhipandit.com/services/maa-baglamukhi-services.jpg",
+        url: "http://bestmaabaglamukhipandit.com/services/maa-baglamukhi-services.avif",
         width: 1200,
         height: 630,
         alt: "Maa Baglamukhi Puja Services by Pandit Manish Sharma",
@@ -120,7 +120,7 @@ const ServicesPage: React.FC = () => {
         />
       </Head>
       {/* Hero Section */}
-      <section className="relative pt-20 pb-16 md:pt-28 md:pb-24 bg-gradient-to-b from-[#800000] to-[#600000]">
+      <section className="relative pt-10 pb-16 md:pt-18 md:pb-24 bg-gradient-to-b from-[#800000] to-[#600000]">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-0 left-0 w-full h-full bg-[url('/assets/patterns/mandala-light.svg')] bg-cover bg-center"></div>
         </div>
@@ -180,7 +180,7 @@ const ServicesPage: React.FC = () => {
             >
               <div className="relative aspect-square w-full max-w-lg mx-auto">
                 <Image
-                  src="/services/maa-baglamukhi-services.jpg"
+                  src="/maa-baglamukhi-services.avif"
                   alt={
                     language === "en"
                       ? "Maa Baglamukhi Puja Services"
@@ -267,14 +267,14 @@ const ServicesPage: React.FC = () => {
               <div className="w-12 h-1 bg-[#800000] rounded-full ml-2"></div>
               <div className="w-3 h-3 bg-[#800000] rounded-full ml-2"></div>
             </div>
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-2xl md:text-4xl font-bold text-gray-900 mb-4">
               {servicesData.title}
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
               {servicesData.subtitle}
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-2 sm:gap-3 md:gap-4">
             {filteredServices.map((service: Service, index: number) => (
               <motion.div
                 key={index}
@@ -284,41 +284,38 @@ const ServicesPage: React.FC = () => {
                 transition={{ duration: 0.3, delay: index * 0.1 }}
               >
                 <div className="absolute -inset-1 bg-gradient-to-r from-[#800000]/20 to-amber-600/20 rounded-xl blur opacity-0 group-hover:opacity-100 transition duration-300"></div>
-                <Card className="relative h-full bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-300 border border-gray-200 overflow-hidden">
+                <Card className="relative h-full bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-300 border border-gray-200 overflow-hidden flex flex-col">
                   <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#800000] to-amber-600"></div>
-                  <CardHeader className="pb-4 text-center pt-8">
-                    <div className="w-20 h-20 mx-auto mb-4 relative">
+                  <CardHeader className="pb-2 text-center pt-4">
+                    <div className="w-12 h-12 sm:w-14 sm:h-14 mx-auto mb-2 relative">
                       <div className="absolute inset-0 bg-gradient-to-br from-[#800000] to-[#a00000] rounded-full blur-sm opacity-30"></div>
                       <div className="relative w-full h-full bg-white rounded-full flex items-center justify-center shadow-md border-4 border-white">
                         <Image
                           src={service.image}
                           alt={service.title}
-                          width={80}
-                          height={80}
-                          className="rounded-full object-cover w-16 h-16"
+                          width={56}
+                          height={56}
+                          className="rounded-full object-cover w-10 h-10 sm:w-14 sm:h-14"
                         />
                       </div>
                     </div>
-                    <CardTitle className="text-xl md:text-2xl font-bold text-gray-900 group-hover:text-[#800000] transition-colors">
+                    <CardTitle className="text-base sm:text-lg md:text-xl font-bold text-gray-900 group-hover:text-[#800000] transition-colors">
                       {service.title}
                     </CardTitle>
-                    <CardDescription className="text-gray-600">
-                      {service.shortDesc || service.description.substring(0, 60) + "..."}
-                    </CardDescription>
                   </CardHeader>
-                  <CardContent className="pt-0 pb-6 text-center">
-                    <div className="mb-6 px-4">
-                      <p className="text-gray-700 min-h-[60px] text-sm md:text-base">
-                        {service.description.length > 120
-                          ? service.description.substring(0, 120) + "..."
+                  <CardContent className="pt-0 pb-3 text-center flex-1 flex flex-col">
+                    <div className="mb-2 sm:mb-3 px-1 sm:px-2">
+                      <p className="text-gray-700 min-h-[40px] text-xs sm:text-sm md:text-base">
+                        {service.description.length > 100
+                          ? service.description.substring(0, 100) + "..."
                           : service.description}
                       </p>
                     </div>
-                    <div className="space-y-3 px-4">
+                    <div className="mt-auto space-y-1 sm:space-y-2 px-1 sm:px-2 flex flex-col">
                       <Button
                         asChild
                         variant="outline"
-                        className="w-full border-[#800000] text-[#800000] hover:bg-[#800000]/10 hover:border-[#800000]/80 transition-colors h-11 text-sm md:text-base"
+                        className="w-full border-[#800000] text-[#800000] hover:bg-[#800000]/10 hover:border-[#800000]/80 transition-colors h-8 sm:h-10 text-xs sm:text-sm md:text-base"
                       >
                         <Link href={`/services/${service.id}`}>
                           {language === "en" ? "View Details" : "विवरण देखें"}
@@ -326,10 +323,10 @@ const ServicesPage: React.FC = () => {
                       </Button>
                       <Button
                         asChild
-                        className="w-full bg-gradient-to-r from-[#800000] to-[#a00000] hover:from-[#700000] hover:to-[#900000] text-white h-11 text-sm md:text-base shadow-md hover:shadow-lg transition-all"
+                        className="w-full bg-gradient-to-r from-[#800000] to-[#a00000] hover:from-[#700000] hover:to-[#900000] text-white h-8 sm:h-10 text-xs sm:text-sm md:text-base shadow-md hover:shadow-lg transition-all"
                       >
                         <Link href="/contact">
-                          {language === "en" ? "Book Consultation" : "परामर्श बुक करें"}
+                          {language === "en" ? "Book Now" : "अभी बुक करें"}
                         </Link>
                       </Button>
                     </div>
@@ -350,11 +347,11 @@ const ServicesPage: React.FC = () => {
             </h2>
             <p className="text-lg text-gray-700 max-w-2xl mx-auto">
               {language === "en"
-                ? "Authentic Vedic rituals combined with Pandit Manish Sharma’s expertise"
+                ? "Authentic Vedic rituals combined with Pandit Manish Sharma's expertise"
                 : "प्रामाणिक वैदिक अनुष्ठानों का पंडित मनीष शर्मा की विशेषज्ञता के साथ संयोजन"}
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 md:gap-8">
             {[
               {
                 icon: Globe,
@@ -387,18 +384,18 @@ const ServicesPage: React.FC = () => {
             ].map((item, index) => (
               <motion.div
                 key={index}
-                className="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition-all border border-[#800000]/10"
+                className="bg-white p-6 sm:p-8 rounded-xl shadow-sm hover:shadow-md transition-all border border-[#800000]/10"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.3, delay: index * 0.1 }}
               >
-                <div className="bg-[#800000]/10 p-4 rounded-full w-16 h-16 mx-auto mb-6 flex items-center justify-center">
-                  <item.icon className="w-8 h-8 text-[#800000]" />
+                <div className="bg-[#800000]/10 p-3 sm:p-4 rounded-full w-12 h-12 sm:w-16 sm:h-16 mx-auto mb-4 sm:mb-6 flex items-center justify-center">
+                  <item.icon className="w-5 h-5 sm:w-8 sm:h-8 text-[#800000]" />
                 </div>
-                <h3 className="text-xl font-semibold text-center text-gray-900 mb-3">
+                <h3 className="text-lg sm:text-xl font-semibold text-center text-gray-900 mb-2 sm:mb-3">
                   {item.title}
                 </h3>
-                <p className="text-gray-600 text-center">{item.desc}</p>
+                <p className="text-sm sm:text-base text-gray-600 text-center">{item.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -418,7 +415,7 @@ const ServicesPage: React.FC = () => {
                 : "हमारी सेवाएँ भक्तों के लिए दिव्य परिवर्तन प्रदान करती हैं"}
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 md:gap-8 max-w-4xl mx-auto">
             {[
               {
                 icon: Users,
@@ -451,19 +448,19 @@ const ServicesPage: React.FC = () => {
             ].map((benefit, index) => (
               <motion.div
                 key={index}
-                className="flex items-start gap-6"
+                className="flex items-start gap-4 sm:gap-6"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.3, delay: index * 0.1 }}
               >
-                <div className="flex-shrink-0 bg-[#800000]/10 p-3 rounded-full">
-                  <benefit.icon className="w-6 h-6 text-[#800000]" />
+                <div className="flex-shrink-0 bg-[#800000]/10 p-2 sm:p-3 rounded-full">
+                  <benefit.icon className="w-4 h-4 sm:w-6 sm:h-6 text-[#800000]" />
                 </div>
                 <div>
-                  <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                  <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-1 sm:mb-2">
                     {benefit.title}
                   </h3>
-                  <p className="text-gray-600">{benefit.desc}</p>
+                  <p className="text-sm sm:text-base text-gray-600">{benefit.desc}</p>
                 </div>
               </motion.div>
             ))}
@@ -472,7 +469,7 @@ const ServicesPage: React.FC = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="relative py-20 bg-[#800000] overflow-hidden">
+      <section className="relative py-16 sm:py-20 bg-[#800000] overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-0 left-0 w-full h-full bg-[url('/assets/patterns/mandala-light.svg')] bg-cover bg-center"></div>
         </div>
@@ -483,24 +480,24 @@ const ServicesPage: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
             >
-              <div className="inline-block bg-white/20 backdrop-blur-sm text-white px-6 py-2 rounded-full mb-6 border border-white/30">
+              <div className="inline-block bg-white/20 backdrop-blur-sm text-white px-4 py-1 sm:px-6 sm:py-2 rounded-full mb-4 sm:mb-6 border border-white/30 text-sm sm:text-base">
                 {language === "en" ? "Limited Availability" : "सीमित उपलब्धता"}
               </div>
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4 sm:mb-6">
                 {language === "en"
-                  ? "Transform Your Life with Maa Baglamukhi’s Blessings"
+                  ? "Transform Your Life with Maa Baglamukhi's Blessings"
                   : "माँ बगलामुखी के आशीर्वाद से अपना जीवन बदलें"}
               </h2>
-              <p className="text-xl text-orange-100 mb-8 max-w-2xl mx-auto">
+              <p className="text-lg sm:text-xl text-orange-100 mb-6 sm:mb-8 max-w-2xl mx-auto">
                 {language === "en"
                   ? "Book your Maa Baglamukhi Puja with Pandit Manish Sharma today and receive divine guidance"
                   : "आज ही पंडित मनीष शर्मा के साथ अपनी माँ बगलामुखी पूजा बुक करें और दिव्य मार्गदर्शन प्राप्त करें"}
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
                 <Button
                   asChild
                   size="lg"
-                  className="bg-white text-[#800000] hover:bg-gray-100 px-8 py-6 text-lg font-bold shadow-lg hover:shadow-xl transition-all"
+                  className="bg-white text-[#800000] hover:bg-gray-100 px-6 py-5 sm:px-8 sm:py-6 text-base sm:text-lg font-bold shadow-lg hover:shadow-xl transition-all"
                 >
                   <Link href="/contact">
                     {language === "en" ? "Book Now" : "अभी बुक करें"}
@@ -510,15 +507,15 @@ const ServicesPage: React.FC = () => {
                   asChild
                   variant="ghost"
                   size="lg"
-                  className="text-white hover:bg-white/10 border-white border-2 px-8 py-6 text-lg font-bold shadow-lg hover:shadow-xl transition-all"
+                  className="text-white hover:bg-white/10 border-white border-2 px-6 py-5 sm:px-8 sm:py-6 text-base sm:text-lg font-bold shadow-lg hover:shadow-xl transition-all"
                 >
                   <Link href="/services">
                     {language === "en" ? "View All Services" : "सभी सेवाएं देखें"}
                   </Link>
                 </Button>
               </div>
-              <div className="mt-8 flex items-center justify-center gap-2 text-orange-200">
-                <Star className="w-5 h-5 fill-current" />
+              <div className="mt-6 sm:mt-8 flex items-center justify-center gap-2 text-orange-200 text-sm sm:text-base">
+                <Star className="w-4 h-4 sm:w-5 sm:h-5 fill-current" />
                 <span>
                   {language === "en"
                     ? "4.9/5 based on 1,200+ reviews"

@@ -188,37 +188,11 @@ const GalleryPage: React.FC = () => {
         </div>
 
         {/* Main Content with Sidebar */}
-        <div className="flex flex-col lg:flex-row gap-8">
-          {/* Sidebar */}
-          <div className="lg:w-1/4">
-            <Card className="sticky top-24 border-[#800000]/10 shadow-lg bg-white rounded-xl">
-              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#800000] to-amber-600" />
-              <CardContent className="p-6">
-                <h2 className="text-xl font-bold text-gray-900 mb-6">
-                  {language === 'en' ? 'Categories' : 'श्रेणियाँ'}
-                </h2>
-                <div className="space-y-3">
-                  {categories.map((category) => (
-                    <Button
-                      key={category.id}
-                      variant={selectedCategory === category.id ? 'default' : 'outline'}
-                      onClick={() => setSelectedCategory(category.id)}
-                      className={`w-full justify-start text-left ${
-                        selectedCategory === category.id
-                          ? 'bg-gradient-to-r from-[#800000] to-[#a00000] hover:from-[#700000] hover:to-[#900000] text-white'
-                          : 'border-[#800000] text-[#800000] hover:bg-[#800000]/10'
-                      } transition-all duration-300 rounded-lg h-12`}
-                    >
-                      {category.label[language]}
-                    </Button>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-          </div>
+        <div className="flex flex-col lg:flex-row gap-8 items-center justify-center">
+        
 
           {/* Gallery Grid */}
-          <div className="lg:w-3/4">
+          <div className="lg:w-3/4 w-full mx-auto">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
               {filteredImages.map((image) => (
                 <motion.div

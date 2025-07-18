@@ -93,22 +93,36 @@ const Hero: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <motion.div
-            className="space-y-8 text-center lg:text-left"
+            className="relative order-1 lg:order-2"
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.7 }}
+          >
+            <div className="absolute -right-10 -top-10 w-60 h-60 bg-amber-200/10 rounded-full filter blur-3xl"></div>
+            <div className="relative rounded-2xl overflow-hidden shadow-2xl border-8 border-amber-200/20">
+              <Image
+                src="/hero.jpg"
+                alt="Pandit Manish Sharma, Best Maa Baglamukhi Pandit"
+                width={600}
+                height={400}
+                className="w-full h-auto object-cover"
+                priority
+              />
+              {/* <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-6">
+                <div className="text-white">
+                  <h3 className="text-xl font-bold mt-1">Maa Baglamukhi</h3>
+                </div>
+              </div> */}
+            </div>
+          </motion.div>
+
+          <motion.div
+            className="space-y-8 text-center lg:text-left order-2 lg:order-1"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7 }}
           >
-            <motion.div
-              className="inline-flex items-center px-5 py-2 bg-white/10 rounded-full border border-amber-200/30 backdrop-blur-sm"
-              initial={{ scale: 0.8, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ delay: 0.2, duration: 0.5 }}
-            >
-              <Sparkles className="h-5 w-5 text-amber-200" />
-              <span className="ml-2 text-sm font-medium uppercase tracking-widest text-amber-100">
-                {language === 'en' ? 'Divine Blessings' : 'दिव्य आशीर्वाद'}
-              </span>
-            </motion.div>
+            
 
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
               <span className="text-amber-200">Maa Baglamukhi</span> Puja by Pandit Manish Sharma
@@ -120,34 +134,32 @@ const Hero: React.FC = () => {
                 : 'माँ बगलामुखी मंदिर में सर्वश्रेष्ठ माँ बगलामुखी पंडित, पंडित मनीष शर्मा के साथ माँ बगलामुखी पूजा के दिव्य आशीर्वाद का अनुभव करें।'}
             </p>
 
-            <motion.div
-              className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4, duration: 0.5 }}
-            >
-              <Link href="/book-puja">
+            <div className="flex flex-col lg:flex-row gap-4 justify-center lg:justify-start items-center lg:items-start w-full">
+              {/* Call Now Button */}
+              <a href="tel:+911234567890" target="_blank" rel="noopener noreferrer" className="w-full lg:w-auto">
                 <Button
                   size="lg"
-                  className="bg-gradient-to-r from-amber-200 to-amber-400 hover:from-amber-300 hover:to-amber-500 text-[#800000] shadow-lg hover:shadow-xl transition-all duration-300 rounded-full"
+                  className="w-full lg:w-auto bg-gradient-to-r from-amber-400 to-amber-600 hover:from-amber-500 hover:to-yellow-500 text-white rounded-full flex items-center gap-2 shadow-lg transition-all duration-300"
                 >
-                  <CalendarDays className="mr-2 h-5 w-5" />
-                  {language === 'en' ? 'Book Puja Now' : 'अभी पूजा बुक करें'}
-                  <ArrowRight className="ml-2 h-4 w-4" />
+                  <PhoneCall className="h-5 w-5 text-white" />
+                  {language === 'en' ? 'Call Now' : 'अभी कॉल करें'}
                 </Button>
-              </Link>
+              </a>
 
-              <Link href="/contact">
+              {/* WhatsApp Button */}
+              <a href="https://wa.me/911234567890" target="_blank" rel="noopener noreferrer" className="w-full lg:w-auto">
                 <Button
-                  variant="outline"
                   size="lg"
-                  className="border-amber-200 bg-amber-200/20 text-white rounded-full flex items-center gap-2"
+                  className="w-full lg:w-auto bg-[#25D366] hover:bg-[#1ebe5d] text-white rounded-full flex items-center gap-2 shadow-lg transition-all duration-300"
                 >
-                  <PhoneCall className="h-5 w-5" />
-                  {language === 'en' ? 'Contact Us' : 'हमसे संपर्क करें'}
+                  {/* WhatsApp SVG icon */}
+                  <svg className="h-5 w-5 text-white" viewBox="0 0 32 32" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M16 3C9.373 3 4 8.373 4 15c0 2.637.86 5.08 2.36 7.13L4 29l7.13-2.36A11.93 11.93 0 0 0 16 27c6.627 0 12-5.373 12-12S22.627 3 16 3zm0 22c-1.98 0-3.89-.58-5.51-1.67l-.39-.25-4.23 1.4 1.4-4.23-.25-.39A9.94 9.94 0 0 1 6 15c0-5.514 4.486-10 10-10s10 4.486 10 10-4.486 10-10 10zm5.13-7.47c-.28-.14-1.65-.81-1.9-.9-.25-.09-.43-.14-.61.14-.18.28-.7.9-.86 1.08-.16.18-.32.2-.6.07-.28-.14-1.18-.44-2.25-1.4-.83-.74-1.39-1.65-1.55-1.93-.16-.28-.02-.43.12-.57.13-.13.28-.32.42-.48.14-.16.18-.28.28-.46.09-.18.05-.34-.02-.48-.07-.14-.61-1.47-.84-2.01-.22-.53-.45-.46-.61-.47-.16-.01-.34-.01-.52-.01-.18 0-.48.07-.73.34-.25.27-.96.94-.96 2.3s.98 2.67 1.12 2.85c.14.18 1.93 2.95 4.68 4.02.66.28 1.18.45 1.58.58.66.21 1.26.18 1.73.11.53-.08 1.65-.67 1.88-1.32.23-.65.23-1.2.16-1.32-.07-.12-.25-.18-.53-.32z" />
+                  </svg>
+                  WhatsApp
                 </Button>
-              </Link>
-            </motion.div>
+              </a>
+            </div>
 
             {/* Trust Indicators */}
             <motion.div
@@ -179,30 +191,6 @@ const Hero: React.FC = () => {
                 </div>
               </div>
             </motion.div>
-          </motion.div>
-
-          <motion.div
-            className="relative"
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.7 }}
-          >
-            <div className="absolute -right-10 -top-10 w-60 h-60 bg-amber-200/10 rounded-full filter blur-3xl"></div>
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl border-8 border-amber-200/20">
-              <Image
-                src="/hero.jpg"
-                alt="Pandit Manish Sharma, Best Maa Baglamukhi Pandit"
-                width={600}
-                height={400}
-                className="w-full h-auto object-cover"
-                priority
-              />
-              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-6">
-                <div className="text-white">
-                  <h3 className="text-xl font-bold mt-1">Maa Baglamukhi</h3>
-                </div>
-              </div>
-            </div>
           </motion.div>
         </div>
       </div>

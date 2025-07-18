@@ -246,14 +246,6 @@ const StatisticsCard: React.FC = () => {
               {subheading}
             </motion.p>
           </div>
-
-          <Image
-            src="/images/maa-baglamukhi-achievement.png"
-            alt="Maa Baglamukhi Achievements by Pandit Manish Sharma"
-            width={120}
-            height={120}
-            className="mobile-achievement-img mx-auto mb-4"
-          />
           <div className="stat-grid flex flex-nowrap md:flex-wrap justify-center gap-6 md:gap-8 min-w-max md:min-w-0 px-4">
             {stats.map((stat, index) => (
               <motion.div

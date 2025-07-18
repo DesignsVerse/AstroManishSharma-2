@@ -29,7 +29,7 @@
         
 
           {/* Hero Section */}
-          <section className="relative pt-32 pb-24 bg-gradient-to-br from-[#800000] to-[#600000]">
+          <section className="relative pt-16 pb-24 bg-gradient-to-br from-[#800000] to-[#600000]">
             <div className="container mx-auto px-4">
               <div className="max-w-6xl mx-auto">
                 <div className="mb-8">
@@ -56,7 +56,7 @@
                     
                   </div>
                   
-                  <div className="relative h-80 md:h-96 rounded-xl overflow-hidden shadow-2xl border-4 border-white/20">
+                  <div className="relative h-80 md:h-[500px] rounded-xl overflow-hidden shadow-2xl border-4 border-white/20">
                     <Image
                       src={service.image}
                       alt={service.title}

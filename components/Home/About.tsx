@@ -92,53 +92,52 @@ const About: React.FC = () => {
     },
   };
 
-  // Animation variants
+  // Animation variants with reduced translation for mobile
   const containerVariants = {
-    hidden: { opacity: 0, y: 50 },
+    hidden: { opacity: 0, y: 20 },
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.8, staggerChildren: 0.2 },
+      transition: { duration: 0.6, staggerChildren: 0.2 },
     },
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0 },
+    hidden: { opacity: 0, y: 10 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
   };
 
   return (
-    <section id="about" className="py-16 bg-gradient-to-br from-amber-50 to-orange-50">
+    <section id="about" className="py-12 bg-gradient-to-br from-amber-50 to-orange-50 overflow-hidden">
       <Head>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
         />
       </Head>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6">
         <motion.div
-          className="text-center mb-16"
-          initial={{ opacity: 0, y: 30 }}
+          className="text-center mb-12"
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.6 }}
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-[#800000] mb-4">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#800000] mb-3">
             {t.about.title}
           </h2>
-         
         </motion.div>
         {/* Content Grid */}
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
           {/* Image Section */}
           <motion.div
             className="relative"
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
             viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
           >
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+            <div className="relative rounded-2xl overflow-hidden shadow-xl">
               <Image
                 src="/about/1.jpg"
                 alt="Maa Baglamukhi Temple, Nalkheda"
@@ -147,74 +146,73 @@ const About: React.FC = () => {
                 className="w-full h-auto object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-              <div className="absolute bottom-6 left-6 right-6">
-                <h3 className="text-2xl font-bold text-white mb-2">
+              <div className="absolute bottom-4 left-4 right-4">
+                <h3 className="text-lg sm:text-xl font-bold text-white mb-1">
                   {language === 'en' ? 'Sacred Temple' : 'पवित्र मंदिर'}
                 </h3>
-                <p className="text-amber-200">
+                <p className="text-amber-200 text-sm">
                   {language === 'en' ? 'Ancient Siddhapeeth' : 'प्राचीन सिद्धपीठ'}
                 </p>
               </div>
             </div>
-            
             {/* Floating Elements */}
-            <div className="absolute -top-4 -right-4 w-20 h-20 bg-amber-200 rounded-full opacity-20 animate-pulse"></div>
-            <div className="absolute -bottom-4 -left-4 w-16 h-16 bg-[#800000] rounded-full opacity-20 animate-pulse delay-1000"></div>
+            <div className="hidden sm:block absolute -top-3 -right-3 w-16 h-16 bg-amber-200 rounded-full opacity-20 animate-pulse"></div>
+            <div className="hidden sm:block absolute -bottom-3 -left-3 w-12 h-12 bg-[#800000] rounded-full opacity-20 animate-pulse delay-1000"></div>
           </motion.div>
 
           {/* Text Content */}
           <motion.div
             className="space-y-6"
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
             viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
           >
-            <div className="prose prose-lg max-w-none">
-              <div className="whitespace-pre-line text-gray-700 leading-relaxed">
+            <div className="prose prose-sm sm:prose-base max-w-none">
+              <div className="whitespace-pre-line text-gray-700 leading-relaxed text-sm sm:text-base">
                 {t.about.story}
               </div>
             </div>
 
             {/* Key Features */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8">
-              <div className="flex items-center space-x-3 p-4 bg-white rounded-lg shadow-md border border-amber-100">
-                <CheckCircle className="h-6 w-6 text-amber-600 flex-shrink-0" />
-                <span className="text-gray-700 font-medium">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <motion.div variants={itemVariants} className="flex items-center space-x-2 p-3 bg-white rounded-lg shadow-sm border border-amber-100">
+                <CheckCircle className="h-5 w-5 text-amber-600 flex-shrink-0" />
+                <span className="text-gray-700 text-sm font-medium">
                   {language === 'en' ? 'Ancient Heritage' : 'प्राचीन विरासत'}
                 </span>
-              </div>
-              <div className="flex items-center space-x-3 p-4 bg-white rounded-lg shadow-md border border-amber-100">
-                <Star className="h-6 w-6 text-amber-600 flex-shrink-0" />
-                <span className="text-gray-700 font-medium">
+              </motion.div>
+              <motion.div variants={itemVariants} className="flex items-center space-x-2 p-3 bg-white rounded-lg shadow-sm border border-amber-100">
+                <Star className="h-5 w-5 text-amber-600 flex-shrink-0" />
+                <span className="text-gray-700 text-sm font-medium">
                   {language === 'en' ? 'Divine Energy' : 'दिव्य ऊर्जा'}
                 </span>
-              </div>
-              <div className="flex items-center space-x-3 p-4 bg-white rounded-lg shadow-md border border-amber-100">
-                <BookOpen className="h-6 w-6 text-amber-600 flex-shrink-0" />
-                <span className="text-gray-700 font-medium">
+              </motion.div>
+              <motion.div variants={itemVariants} className="flex items-center space-x-2 p-3 bg-white rounded-lg shadow-sm border border-amber-100">
+                <BookOpen className="h-5 w-5 text-amber-600 flex-shrink-0" />
+                <span className="text-gray-700 text-sm font-medium">
                   {language === 'en' ? 'Sacred Texts' : 'पवित्र ग्रंथ'}
                 </span>
-              </div>
-              <div className="flex items-center space-x-3 p-4 bg-white rounded-lg shadow-md border border-amber-100">
-                <Award className="h-6 w-6 text-amber-600 flex-shrink-0" />
-                <span className="text-gray-700 font-medium">
+              </motion.div>
+              <motion.div variants={itemVariants} className="flex items-center space-x-2 p-3 bg-white rounded-lg shadow-sm border border-amber-100">
+                <Award className="h-5 w-5 text-amber-600 flex-shrink-0" />
+                <span className="text-gray-700 text-sm font-medium">
                   {language === 'en' ? 'Siddhapeeth Status' : 'सिद्धपीठ स्थिति'}
                 </span>
-              </div>
+              </motion.div>
             </div>
 
             {/* CTA Button */}
-            <div className="pt-6">
+            <motion.div variants={itemVariants} className="pt-4">
               <Link href="/contact">
-                <Button className="bg-[#800000] hover:bg-[#6a0000] text-white px-8 py-3 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 flex items-center space-x-2">
-                  <CalendarDays className="h-5 w-5" />
+                <Button className="bg-[#800000] hover:bg-[#6a0000] text-white px-6 py-2 text-sm sm:text-base rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 flex items-center space-x-1.5">
+                  <CalendarDays className="h-4 w-4 sm:h-5 sm:w-5" />
                   <span>
                     {language === 'en' ? 'Book Your Visit' : 'अपनी यात्रा बुक करें'}
                   </span>
                 </Button>
               </Link>
-            </div>
+            </motion.div>
           </motion.div>
         </div>
       </div>

@@ -141,7 +141,7 @@ export default function ServiceDetailContent({ params }: { params: { slug: strin
                         asChild 
                         className="w-full bg-gradient-to-r from-[#800000] to-[#a00000] hover:from-[#700000] hover:to-[#900000] text-white h-14 text-lg shadow-lg"
                       >
-                        <a href="tel:+911234567890">
+                        <a href="tel:+917733994827">
                           {language === 'en' ? 'Call Now' : 'अभी कॉल करें'}
                         </a>
                       </Button>
@@ -150,7 +150,7 @@ export default function ServiceDetailContent({ params }: { params: { slug: strin
                         variant="outline" 
                         className="w-full border-[#800000] text-[#800000] hover:bg-[#800000]/10 h-14 text-lg"
                       >
-                        <a href="https://wa.me/911234567890" target="_blank" rel="noopener noreferrer">
+                        <a href="https://wa.me/+917733994827" target="_blank" rel="noopener noreferrer">
                           {language === 'en' ? 'WhatsApp Now' : 'व्हाट्सएप करें'}
                         </a>
                       </Button>

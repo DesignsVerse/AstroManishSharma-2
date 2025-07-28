@@ -277,8 +277,6 @@ function ProductPage({ params }: { params: { slug: string } }) {
                 whatsappText={t.whatsappInquiry}
                 callText={t.callForGuidance}
                 message={`I'm interested in ${product.name} (${typeof window !== 'undefined' ? window.location.href : ''})`}
-                whatsappClass="bg-green-600 hover:bg-green-700 text-white w-full py-6 text-lg"
-                callClass="border-[#800000] text-[#800000] hover:bg-[#800000]/10 w-full py-6 text-lg"
               />
             </div>
             

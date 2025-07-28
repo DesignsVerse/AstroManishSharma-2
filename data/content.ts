@@ -64,7 +64,7 @@ export const content = {
         links: ["Home","Products", "Services", "Blog", "About", "Contact", "Gallery"]
       },
       services: {
-        title: "Our Services",
+        title: "Our Services",  
         links: [
           "Lakshmi Prapti Pooja by Best Maa Baglamukhi Pandit",
           "Court Case Vijay Prapti Pooja with Maa Baglamukhi Pujan",

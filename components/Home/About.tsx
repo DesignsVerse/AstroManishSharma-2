@@ -126,40 +126,8 @@ const About: React.FC = () => {
           <h2 className="text-4xl md:text-5xl font-bold text-[#800000] mb-4">
             {t.about.title}
           </h2>
-          <p className="text-xl text-amber-600 font-semibold mb-6">
-            {t.about.subtitle}
-          </p>
-          <p className="text-lg text-gray-700 max-w-4xl mx-auto leading-relaxed">
-            {t.about.description}
-          </p>
+         
         </motion.div>
-
-        {/* Stats Section */}
-        <motion.div
-          className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-16"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-        >
-          {t.about.stats.map((stat, index) => (
-            <motion.div
-              key={index}
-              className="text-center"
-              variants={itemVariants}
-            >
-              <div className="bg-white rounded-xl p-6 shadow-lg border border-amber-100 hover:shadow-xl transition-all duration-300">
-                <div className="text-3xl md:text-4xl font-bold text-[#800000] mb-2">
-                  {stat.number}
-                </div>
-                <div className="text-sm md:text-base text-gray-600 font-medium">
-                  {stat.label}
-                </div>
-              </div>
-            </motion.div>
-          ))}
-        </motion.div>
-
         {/* Content Grid */}
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Image Section */}
@@ -172,7 +140,7 @@ const About: React.FC = () => {
           >
             <div className="relative rounded-2xl overflow-hidden shadow-2xl">
               <Image
-                src="/temple.jpg"
+                src="/about/1.jpg"
                 alt="Maa Baglamukhi Temple, Nalkheda"
                 width={600}
                 height={400}

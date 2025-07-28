@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import { useLanguage } from "@/contexts/LanguageContext";
 import { blogEn } from "@/data/blog/blog-en";
@@ -34,7 +34,6 @@ interface BlogPost {
     description: string | string[];
   }>;
   slug: string;
-  image: string;
 }
 
 interface BlogData {
@@ -76,7 +75,7 @@ export const metadata = {
     type: "website",
     images: [
       {
-        url: "http://bestmaabaglamukhipandit.com/maa-baglamukhi-blog.jpg",
+        url: "http://bestmaabaglamukhipandit.com/maa-baglamukhi-blog.png",
         width: 1200,
         height: 630,
         alt: "Maa Baglamukhi Blog by Pandit Manish Sharma",
@@ -93,7 +92,6 @@ const BlogPage: React.FC = () => {
     posts: rawBlogData.posts.map((post) => ({
       ...post,
       slug: post.id,
-      image: post.image || "/maa-baglamukhi-blog.jpg",
       content: post.content.map((section) => ({
         ...section,
         description: Array.isArray(section.description)
@@ -102,7 +100,7 @@ const BlogPage: React.FC = () => {
       })),
     })),
   };
-  const posts = blogData.posts as Array<BlogPost & { image: string; slug: string }>;
+  const posts = blogData.posts as Array<BlogPost & { slug: string }>;
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [currentFeaturedIndex, setCurrentFeaturedIndex] = useState<number>(0);
 
@@ -124,6 +122,11 @@ const BlogPage: React.FC = () => {
   );
 
   const featuredPosts = posts.slice(0, 3); // Top 3 posts as featured
+
+  // Function to get image path based on index
+  const getImagePath = (index: number) => {
+    return `/blog/${index + 1}.png`; // Assumes images are named 1.png, 2.png, etc.
+  };
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -155,12 +158,12 @@ const BlogPage: React.FC = () => {
       name: "Pandit Manish Sharma",
       jobTitle: "Best Maa Baglamukhi Pandit",
     },
-    hasPart: posts.map((post) => ({
+    hasPart: posts.map((post, index) => ({
       "@type": "BlogPosting",
       headline: post.title,
       description: post.excerpt,
       datePublished: post.date,
-      image: post.image,
+      image: getImagePath(index),
       url: `http://bestmaabaglamukhipandit.com/blog/${post.slug}`,
       author: {
         "@type": "Person",
@@ -279,10 +282,13 @@ const BlogPage: React.FC = () => {
                   <div className="grid md:grid-cols-2 gap-8">
                     <div className="relative h-96">
                       <Image
-                        src={featuredPosts[currentFeaturedIndex].image || "/maa-baglamukhi-blog.jpg"}
+                        src={getImagePath(currentFeaturedIndex)}
                         alt={featuredPosts[currentFeaturedIndex].title}
                         fill
                         className="object-cover"
+                        onError={(e) => {
+                          e.currentTarget.src = '/blog/placeholder.png';
+                        }}
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent pointer-events-none" />
                     </div>
@@ -358,10 +364,13 @@ const BlogPage: React.FC = () => {
                         <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#800000] to-amber-600" />
                         <div className="relative h-48 overflow-hidden">
                           <Image
-                            src={post.image || "/maa-baglamukhi-blog.jpg"}
+                            src={getImagePath(index)}
                             alt={post.title}
                             fill
                             className="object-cover group-hover:scale-105 transition-transform duration-300"
+                            onError={(e) => {
+                              e.currentTarget.src = '/blog/placeholder.png';
+                            }}
                           />
                           <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none" />
                         </div>

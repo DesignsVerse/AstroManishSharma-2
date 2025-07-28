@@ -3,7 +3,7 @@
 import { useLanguage } from '@/contexts/LanguageContext';
 import { content } from '@/data/content';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, Sparkles, CalendarDays, PhoneCall } from 'lucide-react';
+import { ArrowRight, Sparkles, CalendarDays, PhoneCall, MessageCircle } from 'lucide-react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -117,12 +117,12 @@ const Hero: React.FC = () => {
           </motion.div>
 
           <motion.div
-            className="space-y-8 text-center lg:text-left order-2 lg:order-1"
+            className="space-y-3 text-center lg:text-left order-2 lg:order-1"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7 }}
           >
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
+            <h1 className="text-2xl md:text-2xl lg:text-5xl font-bold text-white leading-tight">
               {t.hero.title}
             </h1>
 
@@ -133,41 +133,32 @@ const Hero: React.FC = () => {
             <p className="text-base md:text-lg text-orange-50 leading-relaxed max-w-2xl mx-auto lg:mx-0">
               {t.hero.description}
             </p>
-
-            {/* Features List */}
-            {/* <div className="space-y-3">
-              {t.hero.features.map((feature, index) => (
-                <motion.div
-                  key={index}
-                  className="flex items-start space-x-3"
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.2 + index * 0.1, duration: 0.5 }}
-                >
-                  <CheckCircle className="h-5 w-5 text-amber-300 mt-0.5 flex-shrink-0" />
-                  <span className="text-amber-100 text-sm md:text-base">{feature}</span>
-                </motion.div>
-              ))}
-            </div> */}
-
             <div className="flex flex-col lg:flex-row gap-4 justify-center lg:justify-start items-center lg:items-start w-full">
               {/* Primary CTA Button */}
-              <Link href="/contact" className="w-full lg:w-auto">
-                <Button
-                  size="lg"
-                  className="w-full lg:w-auto bg-gradient-to-r from-amber-400 to-amber-600 hover:from-amber-500 hover:to-yellow-500 text-white rounded-full flex items-center gap-2 shadow-lg transition-all duration-300"
-                >
-                  <CalendarDays className="h-5 w-5 text-white" />
-                  {t.hero.cta}
-                </Button>
-              </Link>
+              <Link 
+  href={`https://wa.me/917733994827?text=${encodeURIComponent(
+    language === 'hi' 
+      ? 'नमस्ते पंडित जी, मुझे पूजा की जानकारी चाहिए' 
+      : 'Namaste Pandit ji, I need information about puja'
+  )}`} 
+  target="_blank"
+  className="w-full lg:w-auto"
+>
+  <Button
+    size="lg"
+    className="w-full lg:w-auto bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white rounded-full flex items-center gap-2 shadow-lg transition-all duration-300"
+  >
+    <MessageCircle className="h-5 w-5 text-white" />
+    {language === 'hi' ? 'व्हाट्सएप पर संपर्क करें' : 'Contact on WhatsApp'}
+  </Button>
+</Link>
 
               {/* Secondary CTA Button */}
               <a href={`tel:${content[language].footer.contact.phone}`} className="w-full lg:w-auto">
                 <Button
                   size="lg"
                   variant="outline"
-                  className="w-full lg:w-auto border-amber-300 text-amber-300 hover:bg-amber-300 hover:text-[#800000] rounded-full flex items-center gap-2 shadow-lg transition-all duration-300"
+                  className="w-full lg:w-auto bg-amber-300 hover:text-[#800000] rounded-full flex items-center gap-2 shadow-lg transition-all duration-300"
                 >
                   <PhoneCall className="h-5 w-5" />
                   {t.hero.secondary}

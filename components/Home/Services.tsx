@@ -70,7 +70,7 @@ export const Services = () => {
   // Tablet shows all
 
   return (
-    <section className="py-20 bg-[#F9F5F5] relative overflow-hidden">
+    <section className="py-20 bg-[#faf5f0] relative overflow-hidden">
       {/* Decorative elements */}
       <div className="absolute top-0 left-0 w-full h-full opacity-10">
         <div className="absolute top-1/4 -left-20 w-80 h-80 bg-[#800000] rounded-full mix-blend-multiply filter blur-3xl"></div>

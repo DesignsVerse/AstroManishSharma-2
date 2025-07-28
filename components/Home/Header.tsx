@@ -24,12 +24,12 @@ export const Header = () => {
 
   const navItems = [
     { href: '/', label: t.header.nav.home },
-    { href: '/products', label: t.header.nav.products },
     { href: '/services', label: t.header.nav.services },
+    { href: '/products', label: t.header.nav.products },
     { href: '/blog', label: t.header.nav.blog },
+    { href: '/gallery', label: t.header.nav.gallery },
     { href: '/about', label: t.header.nav.about },
     { href: '/contact', label: t.header.nav.contact },
-    { href: '/gallery', label: t.header.nav.gallery },
   ];
 
   return (
@@ -70,10 +70,10 @@ export const Header = () => {
 
           {/* Right Side Actions */}
           <div className="flex items-center space-x-4">
-            
-            
+
+
             <LanguageSwitcher />
-            
+
             {/* CTA Button - Desktop */}
             <div className="hidden md:block">
               <Button className="bg-[#800000] hover:bg-[#6a0000] text-white px-5 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 flex items-center space-x-2">
@@ -106,14 +106,14 @@ export const Header = () => {
                   {item.label}
                 </Link>
               ))}
-              
+
               {/* Mobile Contact Info */}
               <div className="pt-2 mt-2 border-t border-amber-100 space-y-3">
                 <div className="flex items-center space-x-2 text-sm px-4 py-2 rounded-lg bg-amber-50 border border-amber-100">
                   <Phone className="h-4 w-4 text-[#800000]" />
                   <span className="text-gray-800">{t.footer.contact.phone}</span>
                 </div>
-                
+
                 <Button className="w-full bg-[#800000] hover:bg-[#6a0000] text-white rounded-lg shadow-md flex items-center justify-center space-x-2">
                   <Calendar className="h-4 w-4" />
                   <span>{t.header.cta}</span>

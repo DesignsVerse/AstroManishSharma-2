@@ -12,6 +12,11 @@ export const Blog = () => {
   const { language } = useLanguage();
   const blogData = language === 'en' ? blogEn : blogHi;
 
+  // Function to get image path based on index
+  const getImagePath = (index: number) => {
+    return `/blog/${index + 1}.png`; // Assumes images are named 1.jpg, 2.jpg, etc.
+  };
+
   return (
     <section className="py-20 bg-[#faf5f0] relative overflow-hidden">
       {/* Decorative elements */}
@@ -42,9 +47,12 @@ export const Blog = () => {
               {/* Image with overlay */}
               <div className="relative aspect-video overflow-hidden">
                 <img
-                  src={post.image}
+                  src={getImagePath(index)}
                   alt={post.title}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  onError={(e) => {
+                    e.currentTarget.src = '/images/blog/placeholder.jpg'; // Fallback image
+                  }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
                 <div className="absolute bottom-0 left-0 p-4">

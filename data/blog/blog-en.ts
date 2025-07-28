@@ -35,6 +35,7 @@ export const blogEn: Blog = {
         date: "July 18, 2025",
         readTime: "10 min read",
         category: "Spirituality",
+        image:"/blog/1.jpg",
         author: "Pandit Manish Sharma",
         content: [
           {

@@ -50,7 +50,7 @@ const AboutServices: React.FC = () => {
     : 'पंडित मनीष शर्मा के साथ माँ बगलामुखी पूजा से दिव्य आशीर्वाद प्राप्त करें';
   const description = language === 'en'
     ? 'Join Pandit Manish Sharma, the revered Maa Baglamukhi Pandit, at the sacred Sarva Siddha Peeth Maa Baglamukhi Mandir, Nalkheda, for authentic Vedic Havan and Tantra-Mantra Puja. With over 25 years of experience and unwavering devotion to Mata Rani, he performs transformative rituals to fulfill your wishes, bringing peace, prosperity, and protection. As the saying goes, "Whoever comes to Bagla Dwara, no one goes empty-handed." Book your divine consultation today!'
-    : 'नालखेड़ा के पवित्र सरवा सिद्ध पीठ माँ बगलामुखी मंदिर में श्रद्धेय माँ बगलामुखी पंडित, पंडित मनीष शर्मा के साथ प्रामाणिक वैदिक हवन और तंत्र-मंत्र पूजा में शामिल हों। 25+ वर्षों के अनुभव और माता रानी के प्रति अटूट भक्ति के साथ, वे आपकी मनोकामनाओं को पूरा करने के लिए परिवर्तनकारी अनुष्ठान करते हैं, जो शांति, समृद्धि और सुरक्षा लाते हैं। जैसा कि प्रसिद्ध कहावत है, "जो भी बगला द्वार आता है, कोई खाली हाथ नहीं जाता।" आज ही अपनी दिव्य परामर्श बुक करें!';
+    : 'नालखेड़ा के पवित्र सरवा सिद्ध पीठ माँ बगलामुखी मंदिर में श्रद्धेय माँ बगलामुखी पंडित, पंडित मनीष शर्मा के साथ प्रामाणिक वैदिक हवन और तंत्र-मंत्र पूजा में शामिल हों। 10+ वर्षों के अनुभव और माता रानी के प्रति अटूट भक्ति के साथ, वे आपकी मनोकामनाओं को पूरा करने के लिए परिवर्तनकारी अनुष्ठान करते हैं, जो शांति, समृद्धि और सुरक्षा लाते हैं। जैसा कि प्रसिद्ध कहावत है, "जो भी बगला द्वार आता है, कोई खाली हाथ नहीं जाता।" आज ही अपनी दिव्य परामर्श बुक करें!';
   const buttonText = language === 'en' ? 'Schedule Your Puja Today' : 'आज ही अपनी पूजा बुक करें';
 
   // Structured Data for SEO

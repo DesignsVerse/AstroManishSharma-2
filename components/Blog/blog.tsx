@@ -170,7 +170,7 @@ const BlogPage: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-[#f0e6e0]">
+    <div className="min-h-screen bg-[#F9F5F5]">
       <Head>
         <script
           type="application/ld+json"
@@ -179,15 +179,15 @@ const BlogPage: React.FC = () => {
       </Head>
       <main>
         {/* Hero Section */}
-        <section className="relative py-24 md:py-32 bg-[#790000] text-white overflow-hidden">
+        <section className="relative py-10 sm:py-16 md:py-24 lg:py-32 bg-[#790000] text-white overflow-hidden">
           <div className="absolute inset-0 opacity-20">
             <div className="absolute top-0 left-0 w-full h-full bg-[url('/assets/patterns/mandala-light.svg')] bg-cover bg-center"></div>
           </div>
           <div className="container mx-auto px-4 max-w-7xl relative z-10">
-            <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div className="grid md:grid-cols-2 gap-4 sm:gap-8 md:gap-12 items-center">
               {/* Left Content */}
               <motion.div
-                className="space-y-8"
+                className="space-y-4 sm:space-y-6 md:space-y-8"
                 initial={{ opacity: 0, x: -50 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8 }}
@@ -198,12 +198,12 @@ const BlogPage: React.FC = () => {
                     {language === "en" ? "Divine Wisdom" : "दिव्य ज्ञान"}
                   </span>
                 </div>
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
+                <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold leading-tight">
                   {language === "en"
                     ? "Discover Maa Baglamukhi’s Blessings"
-                    : "माँ बगलामुखी के आशीर्वाद की खोज करें"}
+                    : "ज्योतिष अंतर्दृष्टि"}
                 </h1>
-                <p className="text-xl text-orange-100">
+                <p className="text-base sm:text-lg md:text-xl text-orange-100">
                   {language === "en"
                     ? "Explore spiritual insights on Maa Baglamukhi Puja and Pujan by Pandit Manish Sharma to transform your life."
                     : "पंडित मनीष शर्मा द्वारा माँ बगलामुखी पूजा और पूजन पर आध्यात्मिक अंतर्दृष्टि की खोज करें और अपने जीवन को बदलें।"}
@@ -235,7 +235,7 @@ const BlogPage: React.FC = () => {
               </motion.div>
               {/* Right Image */}
               <motion.div
-                className="relative h-[28rem] md:h-[28rem]"
+                className="relative h-48 sm:h-64 md:h-[28rem] hidden sm:block"
                 initial={{ opacity: 0, x: 50 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8 }}
@@ -345,7 +345,7 @@ const BlogPage: React.FC = () => {
                 <h2 className="text-3xl font-bold text-gray-900 mb-8">
                   {language === "en" ? "Recent Articles" : "हाल के लेख"}
                 </h2>
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div className="grid grid-cols-2 gap-8">
                   {filteredPosts.map((post, index: number) => (
                     <motion.div
                       key={index}

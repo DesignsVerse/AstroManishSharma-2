@@ -1,8 +1,8 @@
 'use client';
 
 import { useLanguage } from '@/contexts/LanguageContext';
-import { blogDataEn } from '@/data/blog/blog-en';
-import { blogDataHi } from '@/data/blog/blog-hi';
+import { blogEn } from '@/data/blog/blog-en';
+import { blogHi } from '@/data/blog/blog-hi';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -50,7 +50,7 @@ function BlogPostContent() {
     return () => clearTimeout(timer);
   }, [slug]);
 
-  const blogData = language === 'en' ? blogDataEn : blogDataHi;
+  const blogData = language === 'en' ? blogEn : blogHi;
   const posts = blogData.posts as BlogPost[];
   const post = posts.find((p: BlogPost) => p.slug === slug);
   const relatedPosts = posts.filter((p: BlogPost) => p.slug !== slug).slice(0, 3);

@@ -13,6 +13,11 @@ import Head from 'next/head';
 interface Content {
   hero: {
     title: string;
+    subtitle: string;
+    description: string;
+    cta: string;
+    secondary: string;
+    features: string[];
   };
 }
 
@@ -108,11 +113,6 @@ const Hero: React.FC = () => {
                 className="w-full h-auto object-cover"
                 priority
               />
-              {/* <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-6">
-                <div className="text-white">
-                  <h3 className="text-xl font-bold mt-1">Maa Baglamukhi</h3>
-                </div>
-              </div> */}
             </div>
           </motion.div>
 
@@ -122,41 +122,55 @@ const Hero: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7 }}
           >
-            
-
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
-              <span className="text-amber-200">Maa Baglamukhi</span> Puja by Pandit Manish Sharma
+              {t.hero.title}
             </h1>
 
             <p className="text-lg md:text-xl text-orange-100 leading-relaxed max-w-2xl mx-auto lg:mx-0">
-              {language === 'en'
-                ? 'Experience the divine blessings of Maa Baglamukhi Puja with Pandit Manish Sharma, the best Maa Baglamukhi Pandit, at Maa Baglamukhi Mandir.'
-                : 'माँ बगलामुखी मंदिर में सर्वश्रेष्ठ माँ बगलामुखी पंडित, पंडित मनीष शर्मा के साथ माँ बगलामुखी पूजा के दिव्य आशीर्वाद का अनुभव करें।'}
+              {t.hero.subtitle}
             </p>
 
+            <p className="text-base md:text-lg text-orange-50 leading-relaxed max-w-2xl mx-auto lg:mx-0">
+              {t.hero.description}
+            </p>
+
+            {/* Features List */}
+            {/* <div className="space-y-3">
+              {t.hero.features.map((feature, index) => (
+                <motion.div
+                  key={index}
+                  className="flex items-start space-x-3"
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.2 + index * 0.1, duration: 0.5 }}
+                >
+                  <CheckCircle className="h-5 w-5 text-amber-300 mt-0.5 flex-shrink-0" />
+                  <span className="text-amber-100 text-sm md:text-base">{feature}</span>
+                </motion.div>
+              ))}
+            </div> */}
+
             <div className="flex flex-col lg:flex-row gap-4 justify-center lg:justify-start items-center lg:items-start w-full">
-              {/* Call Now Button */}
-              <a href="tel:+911234567890" target="_blank" rel="noopener noreferrer" className="w-full lg:w-auto">
+              {/* Primary CTA Button */}
+              <Link href="/contact" className="w-full lg:w-auto">
                 <Button
                   size="lg"
                   className="w-full lg:w-auto bg-gradient-to-r from-amber-400 to-amber-600 hover:from-amber-500 hover:to-yellow-500 text-white rounded-full flex items-center gap-2 shadow-lg transition-all duration-300"
                 >
-                  <PhoneCall className="h-5 w-5 text-white" />
-                  {language === 'en' ? 'Call Now' : 'अभी कॉल करें'}
+                  <CalendarDays className="h-5 w-5 text-white" />
+                  {t.hero.cta}
                 </Button>
-              </a>
+              </Link>
 
-              {/* WhatsApp Button */}
-              <a href="https://wa.me/911234567890" target="_blank" rel="noopener noreferrer" className="w-full lg:w-auto">
+              {/* Secondary CTA Button */}
+              <a href={`tel:${content[language].footer.contact.phone}`} className="w-full lg:w-auto">
                 <Button
                   size="lg"
-                  className="w-full lg:w-auto bg-[#25D366] hover:bg-[#1ebe5d] text-white rounded-full flex items-center gap-2 shadow-lg transition-all duration-300"
+                  variant="outline"
+                  className="w-full lg:w-auto border-amber-300 text-amber-300 hover:bg-amber-300 hover:text-[#800000] rounded-full flex items-center gap-2 shadow-lg transition-all duration-300"
                 >
-                  {/* WhatsApp SVG icon */}
-                  <svg className="h-5 w-5 text-white" viewBox="0 0 32 32" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M16 3C9.373 3 4 8.373 4 15c0 2.637.86 5.08 2.36 7.13L4 29l7.13-2.36A11.93 11.93 0 0 0 16 27c6.627 0 12-5.373 12-12S22.627 3 16 3zm0 22c-1.98 0-3.89-.58-5.51-1.67l-.39-.25-4.23 1.4 1.4-4.23-.25-.39A9.94 9.94 0 0 1 6 15c0-5.514 4.486-10 10-10s10 4.486 10 10-4.486 10-10 10zm5.13-7.47c-.28-.14-1.65-.81-1.9-.9-.25-.09-.43-.14-.61.14-.18.28-.7.9-.86 1.08-.16.18-.32.2-.6.07-.28-.14-1.18-.44-2.25-1.4-.83-.74-1.39-1.65-1.55-1.93-.16-.28-.02-.43.12-.57.13-.13.28-.32.42-.48.14-.16.18-.28.28-.46.09-.18.05-.34-.02-.48-.07-.14-.61-1.47-.84-2.01-.22-.53-.45-.46-.61-.47-.16-.01-.34-.01-.52-.01-.18 0-.48.07-.73.34-.25.27-.96.94-.96 2.3s.98 2.67 1.12 2.85c.14.18 1.93 2.95 4.68 4.02.66.28 1.18.45 1.58.58.66.21 1.26.18 1.73.11.53-.08 1.65-.67 1.88-1.32.23-.65.23-1.2.16-1.32-.07-.12-.25-.18-.53-.32z" />
-                  </svg>
-                  WhatsApp
+                  <PhoneCall className="h-5 w-5" />
+                  {t.hero.secondary}
                 </Button>
               </a>
             </div>
@@ -197,6 +211,21 @@ const Hero: React.FC = () => {
     </section>
   );
 };
+
+const CheckCircle: React.FC<{ className?: string }> = ({ className }) => (
+  <svg
+    className={className}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+    <polyline points="22 4 12 14.01 9 11.01" />
+  </svg>
+);
 
 const Star: React.FC<StarProps> = ({ className }) => (
   <svg

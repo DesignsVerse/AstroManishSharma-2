@@ -112,7 +112,7 @@ const ServicesPage: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-orange-50">
+    <div className="min-h-screen bg-[#F9F5F5]">
       <Head>
         <script
           type="application/ld+json"
@@ -197,7 +197,7 @@ const ServicesPage: React.FC = () => {
       </section>
 
       {/* Search Card Section */}
-      <section className="relative z-10 -mt-12 md:-mt-16">
+      <section className="relative bg-[#F9F5F5] z-10 -mt-12 md:-mt-16">
         <div className="container mx-auto px-4">
           <Card className="bg-white shadow-xl rounded-2xl overflow-hidden border-0">
             <div className="p-1 bg-gradient-to-r from-amber-500 to-[#800000]">
@@ -255,7 +255,7 @@ const ServicesPage: React.FC = () => {
       </section>
 
       {/* Services Grid Section */}
-      <section className="py-16 md:py-24 bg-white">
+      <section className="py-16 md:py-24 bg-[#F9F5F5]">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <div className="inline-flex items-center justify-center mb-4">
@@ -267,12 +267,14 @@ const ServicesPage: React.FC = () => {
               <div className="w-12 h-1 bg-[#800000] rounded-full ml-2"></div>
               <div className="w-3 h-3 bg-[#800000] rounded-full ml-2"></div>
             </div>
-            <h2 className="text-2xl md:text-4xl font-bold text-gray-900 mb-4">
-              {servicesData.title}
-            </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              {servicesData.subtitle}
-            </p>
+            <div className="px-2 sm:px-0">
+              <h2 className="text-2xl md:text-4xl font-bold text-gray-900 mb-4">
+                {servicesData.title}
+              </h2>
+              <p className="text-lg text-gray-600 max-w-xs sm:max-w-2xl mx-auto">
+                {servicesData.subtitle}
+              </p>
+            </div>
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-2 sm:gap-3 md:gap-4">
             {filteredServices.map((service: Service, index: number) => (
@@ -303,7 +305,7 @@ const ServicesPage: React.FC = () => {
                       {service.title}
                     </CardTitle>
                   </CardHeader>
-                  <CardContent className="pt-0 pb-3 text-center flex-1 flex flex-col">
+                  <CardContent className="p-3 sm:p-6 pt-0 pb-2 sm:pb-3 text-center flex-1 flex flex-col">
                     <div className="mb-2 sm:mb-3 px-1 sm:px-2">
                       <p className="text-gray-700 min-h-[40px] text-xs sm:text-sm md:text-base">
                         {service.description.length > 100

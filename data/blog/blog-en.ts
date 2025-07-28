@@ -28,6 +28,7 @@ export const blogEn: Blog = {
     posts: [
       {
         id: "maa-baglamukhi-divine-power",
+        slug: "maa-baglamukhi-divine-power",
         title: "The Divine Power of Maa Baglamukhi: Unlocking Spiritual Victory with Pandit Manish Sharma",
         excerpt:
           "Embark on a spiritual journey to uncover the divine powers of Maa Baglamukhi Mandir and learn how Pandit Manish Sharma, the Best Maa Baglamukhi Pandit, guides devotees through Maa Baglamukhi Puja for protection, success, and spiritual clarity.",
@@ -80,6 +81,7 @@ export const blogEn: Blog = {
       },
       {
         id: "maa-baglamukhi-nalkheda-transforms",
+        slug: "maa-baglamukhi-nalkheda-transforms",
         title: "How Maa Baglamukhi Puja at Nalkheda Transforms Lives",
         excerpt:
           "Discover how Maa Baglamukhi Puja at the sacred Maa Baglamukhi Mandir in Nalkheda, guided by Pandit Manish Sharma, the Best Maa Baglamukhi Pandit, transforms lives by granting spiritual victory, protection, and clarity.",
@@ -132,6 +134,7 @@ export const blogEn: Blog = {
       },
       {
         id: "baglamukhi-sadhna-nalkheda",
+        slug: "baglamukhi-sadhna-nalkheda",
         title: "Baglamukhi Sadhna: Unlocking Shakti at Nalkheda Temple",
         excerpt:
           "Explore the transformative power of Baglamukhi Sadhna at the sacred Maa Baglamukhi Mandir in Nalkheda, guided by Pandit Manish Sharma, the Best Maa Baglamukhi Pandit, to unlock divine Shakti for spiritual and material success.",
@@ -184,6 +187,7 @@ export const blogEn: Blog = {
       },
       {
         id: "maa-baglamukhi-miracles",
+        slug: "maa-baglamukhi-miracles",
         title: "Miracles of Maa Baglamukhi Mandir: Devotees’ Real Stories",
         excerpt:
           "Discover the miraculous transformations experienced by devotees at the Maa Baglamukhi Mandir in Nalkheda through Maa Baglamukhi Puja, guided by Pandit Manish Sharma, the Best Maa Baglamukhi Pandit, in stories of divine intervention and spiritual victory.",
@@ -231,6 +235,7 @@ export const blogEn: Blog = {
       },
       {
         id: "maa-baglamukhi-history",
+        slug: "maa-baglamukhi-history",
         title: "History & Origin Story of Maa Baglamukhi Temple",
         excerpt:
           "Uncover the rich history and divine origin story of the Maa Baglamukhi Mandir in Nalkheda, guided by Pandit Manish Sharma, the Best Maa Baglamukhi Pandit, and explore its significance in Maa Baglamukhi Puja for spiritual transformation.",
@@ -288,6 +293,7 @@ export const blogEn: Blog = {
       },
       {
         id: "lakshmi-prapti-puja",
+        slug: "lakshmi-prapti-puja",
         title: "Lakshmi Prapti Puja: The Divine Path to Pleasing Maa Lakshmi",
         excerpt:
           "Discover the transformative power of Lakshmi Prapti Puja at the Maa Baglamukhi Mandir in Nalkheda, guided by Pandit Manish Sharma, the Best Maa Baglamukhi Pandit, to attract wealth, prosperity, and Maa Lakshmi’s divine blessings.",
@@ -340,6 +346,7 @@ export const blogEn: Blog = {
       },
       {
         id: "lakshmi-prapti-puja-method",
+        slug: "lakshmi-prapti-puja-method",
         title: "Perform Lakshmi Prapti Puja for Wealth and Prosperity: Complete Method and Benefits",
         excerpt:
           "Learn the complete method and transformative benefits of Lakshmi Prapti Puja at the Maa Baglamukhi Mandir in Nalkheda, guided by Pandit Manish Sharma, the Best Maa Baglamukhi Pandit, to attract wealth, prosperity, and Maa Lakshmi’s divine blessings.",

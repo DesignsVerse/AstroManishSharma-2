@@ -157,7 +157,7 @@ const GalleryPage: React.FC = () => {
   };
 
   return (
-    <main className="py-20 bg-gradient-to-b from-gray-50 to-[#f0e6e0]">
+    <main className="py-20 bg-[#F9F5F5]">
       <Head>
         <script
           type="application/ld+json"

@@ -87,14 +87,14 @@ const AboutPage: React.FC = () => {
   };
 
   const stats: Stat[] = [
-    { icon: Calendar, value: '25+', label: language === 'en' ? 'Years of Devotion' : 'भक्ति के वर्ष' },
+    { icon: Calendar, value: '10+', label: language === 'en' ? 'Years of Devotion' : 'भक्ति के वर्ष' },
     { icon: Users, value: '5000+', label: language === 'en' ? 'Blessed Devotees' : 'आशीर्वाद प्राप्त भक्त' },
     { icon: Star, value: '4.9', label: language === 'en' ? 'Devotee Rating' : 'भक्त रेटिंग' },
     { icon: Award, value: '15+', label: language === 'en' ? 'Spiritual Awards' : 'आध्यात्मिक पुरस्कार' },
   ];
 
   return (
-    <main className="py-20 bg-gradient-to-b from-gray-50 to-[#f0e6e0]">
+    <main className="py-20 bg-[#F9F5F5]">
       <Head>
         <script
           type="application/ld+json"

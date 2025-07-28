@@ -12,10 +12,14 @@ import Head from 'next/head';
 // Define TypeScript interfaces
 interface Content {
   about: {
-    subtitle: string;
     title: string;
+    subtitle: string;
     description: string;
-    points: string[];
+    stats: Array<{
+      number: string;
+      label: string;
+    }>;
+    story: string;
   };
 }
 
@@ -31,10 +35,11 @@ interface Stat {
 
 // Metadata for SEO
 export const metadata = {
-  title: 'About Pandit Manish Sharma | Best Maa Baglamukhi Pandit at Maa Baglamukhi Mandir',
-  description: 'Discover Pandit Manish Sharma, the best Maa Baglamukhi Pandit, offering authentic Maa Baglamukhi Puja and Pujan at Maa Baglamukhi Mandir. Book your divine experience today.',
+  title: 'About Maa Baglamukhi Temple | Pandit Manish Sharma at Maa Baglamukhi Mandir',
+  description: 'Discover the sacred Maa Baglamukhi Temple in Nalkheda, guided by Pandit Manish Sharma, the best Maa Baglamukhi Pandit. Learn about this ancient Siddhapeeth and its divine significance.',
   keywords: [
     'Maa Baglamukhi Mandir',
+    'Maa Baglamukhi Temple Nalkheda',
     'Maa Baglamukhi Puja',
     'Maa Baglamukhi Pandit',
     'Maa Baglamukhi Pujan',
@@ -43,18 +48,19 @@ export const metadata = {
     'Pandit Manish Sharma',
     'Baglamukhi Pandit Manish Sharma',
     'Maa Baglamukhi Pandit Manish Sharma',
+    'Baglamukhi Siddhapeeth',
   ],
   openGraph: {
-    title: 'About Pandit Manish Sharma | Maa Baglamukhi Mandir',
-    description: 'Learn about Pandit Manish Sharma, the renowned Maa Baglamukhi Pandit, offering divine Maa Baglamukhi Puja at Maa Baglamukhi Mandir.',
+    title: 'About Maa Baglamukhi Temple | Maa Baglamukhi Mandir',
+    description: 'Learn about the sacred Maa Baglamukhi Temple in Nalkheda, one of only three Baglamukhi Siddhapeeths in the world, guided by Pandit Manish Sharma.',
     url: 'http://bestmaabaglamukhipandit.com/about',
     type: 'website',
     images: [
       {
-        url: 'http://bestmaabaglamukhipandit.com/images/pandit-manish-sharma.jpg',
+        url: 'http://bestmaabaglamukhipandit.com/images/maa-baglamukhi-temple.jpg',
         width: 1200,
         height: 630,
-        alt: 'Pandit Manish Sharma at Maa Baglamukhi Mandir',
+        alt: 'Maa Baglamukhi Temple in Nalkheda',
       },
     ],
   },
@@ -67,23 +73,22 @@ const About: React.FC = () => {
   // Structured Data for SEO
   const structuredData = {
     '@context': 'https://schema.org',
-    '@type': 'Person',
-    name: 'Pandit Manish Sharma',
-    jobTitle: 'Maa Baglamukhi Pandit',
-    description: 'Pandit Manish Sharma, the best Maa Baglamukhi Pandit, specializes in authentic Maa Baglamukhi Puja and Pujan at Maa Baglamukhi Mandir.',
+    '@type': 'PlaceOfWorship',
+    name: 'Maa Baglamukhi Temple',
+    description: 'Sacred Baglamukhi Temple in Nalkheda, one of only three Baglamukhi Siddhapeeths in the world',
     url: 'http://bestmaabaglamukhipandit.com/about',
-    image: 'http://bestmaabaglamukhipandit.com/images/pandit-manish-sharma.jpg',
-    worksFor: {
-      '@type': 'Organization',
-      name: 'Maa Baglamukhi Mandir',
-      address: {
-        '@type': 'PostalAddress',
-        streetAddress: 'Your Temple Address',
-        addressLocality: 'City',
-        addressRegion: 'State',
-        postalCode: 'ZIP',
-        addressCountry: 'IN',
-      },
+    image: 'http://bestmaabaglamukhipandit.com/images/maa-baglamukhi-temple.jpg',
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: 'Maa Baglamukhi Temple, Nalkheda',
+      addressLocality: 'Nalkheda',
+      addressRegion: 'Madhya Pradesh',
+      addressCountry: 'IN',
+    },
+    geo: {
+      '@type': 'GeoCoordinates',
+      latitude: '23.5937',
+      longitude: '76.9629',
     },
   };
 
@@ -99,129 +104,171 @@ const About: React.FC = () => {
 
   const itemVariants = {
     hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+    visible: { opacity: 1, y: 0 },
   };
 
   return (
-    <section className="py-16 bg-[#faf5f0] relative overflow-hidden">
-      {/* Background decorative elements */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute top-10 -left-24 w-80 h-80 bg-[#800000] rounded-full mix-blend-multiply filter blur-3xl"></div>
-        <div className="absolute bottom-20 -right-24 w-64 h-64 bg-amber-500 rounded-full mix-blend-multiply filter blur-3xl"></div>
-      </div>
-
+    <section id="about" className="py-16 bg-gradient-to-br from-amber-50 to-orange-50">
       <Head>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
         />
       </Head>
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
-          className="grid lg:grid-cols-2 gap-8 items-center"
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+        >
+          <h2 className="text-4xl md:text-5xl font-bold text-[#800000] mb-4">
+            {t.about.title}
+          </h2>
+          <p className="text-xl text-amber-600 font-semibold mb-6">
+            {t.about.subtitle}
+          </p>
+          <p className="text-lg text-gray-700 max-w-4xl mx-auto leading-relaxed">
+            {t.about.description}
+          </p>
+        </motion.div>
+
+        {/* Stats Section */}
+        <motion.div
+          className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-16"
           variants={containerVariants}
           initial="hidden"
-          animate="visible"
+          whileInView="visible"
+          viewport={{ once: true }}
         >
-          {/* Image Section */}
-          <motion.div variants={itemVariants} className="relative group">
-            <div className="absolute -inset-1 bg-gradient-to-r from-[#800000]/20 to-amber-500/20 rounded-2xl blur-lg opacity-75 group-hover:opacity-100 transition-opacity"></div>
-            <div className="relative rounded-2xl overflow-hidden shadow-lg border-2 border-white transform group-hover:scale-105 transition-transform duration-500">
-              <Image
-                src="/panditji.jpg"
-                alt="Pandit Manish Sharma, Best Maa Baglamukhi Pandit"
-                width={800}
-                height={480}
-                className="w-full h-[480px] object-cover"
-              />
-              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4 transform translate-y-1 group-hover:translate-y-0 transition-transform">
-                <div className="text-white">
-                  <p className="text-xs font-semibold tracking-wide">{language === 'en' ? '25+ Years Experience' : '25+ वर्षों का अनुभव'}</p>
-                  <h3 className="text-xl font-extrabold mt-1">Pandit Manish Sharma</h3>
-                  <p className="text-amber-200 text-xs mt-1 font-medium">{language === 'en' ? 'Best Maa Baglamukhi Pandit' : 'सर्वश्रेष्ठ माँ बगलामुखी पंडित'}</p>
+          {t.about.stats.map((stat, index) => (
+            <motion.div
+              key={index}
+              className="text-center"
+              variants={itemVariants}
+            >
+              <div className="bg-white rounded-xl p-6 shadow-lg border border-amber-100 hover:shadow-xl transition-all duration-300">
+                <div className="text-3xl md:text-4xl font-bold text-[#800000] mb-2">
+                  {stat.number}
                 </div>
+                <div className="text-sm md:text-base text-gray-600 font-medium">
+                  {stat.label}
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
+
+        {/* Content Grid */}
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          {/* Image Section */}
+          <motion.div
+            className="relative"
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+              <Image
+                src="/temple.jpg"
+                alt="Maa Baglamukhi Temple, Nalkheda"
+                width={600}
+                height={400}
+                className="w-full h-auto object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+              <div className="absolute bottom-6 left-6 right-6">
+                <h3 className="text-2xl font-bold text-white mb-2">
+                  {language === 'en' ? 'Sacred Temple' : 'पवित्र मंदिर'}
+                </h3>
+                <p className="text-amber-200">
+                  {language === 'en' ? 'Ancient Siddhapeeth' : 'प्राचीन सिद्धपीठ'}
+                </p>
+              </div>
+            </div>
+            
+            {/* Floating Elements */}
+            <div className="absolute -top-4 -right-4 w-20 h-20 bg-amber-200 rounded-full opacity-20 animate-pulse"></div>
+            <div className="absolute -bottom-4 -left-4 w-16 h-16 bg-[#800000] rounded-full opacity-20 animate-pulse delay-1000"></div>
+          </motion.div>
+
+          {/* Text Content */}
+          <motion.div
+            className="space-y-6"
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <div className="prose prose-lg max-w-none">
+              <div className="whitespace-pre-line text-gray-700 leading-relaxed">
+                {t.about.story}
               </div>
             </div>
 
-            {/* Stats */}
-            <div className="grid grid-cols-3 gap-3 mt-6">
-              {[
-                { icon: Star, value: '5000+', label: language === 'en' ? 'Clients' : 'ग्राहक' },
-                { icon: BookOpen, value: '25+', label: language === 'en' ? 'Years' : 'वर्ष' },
-                { icon: Award, value: '100%', label: language === 'en' ? 'Satisfaction' : 'संतुष्टि' },
-              ].map((stat, index) => (
-                <motion.div
-                  key={index}
-                  variants={itemVariants}
-                  className="bg-white p-3 rounded-lg shadow text-center border border-gray-100 transform hover:scale-105 transition-transform"
-                >
-                  <div className="w-10 h-10 bg-[#800000]/10 rounded-full flex items-center justify-center mx-auto mb-2">
-                    <stat.icon className="h-5 w-5 text-[#800000]" />
-                  </div>
-                  <h4 className="text-lg font-extrabold text-[#800000]">{stat.value}</h4>
-                  <p className="text-xs text-gray-600 font-medium">{stat.label}</p>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-
-          {/* Content Section */}
-          <motion.div variants={itemVariants} className="space-y-6">
-            <div className="space-y-3">
-              <motion.div
-                variants={itemVariants}
-                className="inline-flex items-center px-4 py-1.5 bg-[#800000]/10 rounded-full border border-[#800000]/30"
-              >
-                <Star className="h-4 w-4 text-[#800000]" />
-                <span className="ml-2 text-xs font-semibold uppercase tracking-widest text-[#800000]">
-                  {language === 'en' ? 'Best Maa Baglamukhi Puja' : 'सर्वश्रेष्ठ माँ बगलामुखी पूजा'}
+            {/* Key Features */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8">
+              <div className="flex items-center space-x-3 p-4 bg-white rounded-lg shadow-md border border-amber-100">
+                <CheckCircle className="h-6 w-6 text-amber-600 flex-shrink-0" />
+                <span className="text-gray-700 font-medium">
+                  {language === 'en' ? 'Ancient Heritage' : 'प्राचीन विरासत'}
                 </span>
-              </motion.div>
-
-              <h2 className="text-3xl lg:text-4xl font-extrabold text-gray-900 leading-tight">
-                <span className="text-[#800000]">Pandit Manish Sharma</span> - Best Maa Baglamukhi Pandit
-              </h2>
-
-              <p className="text-base text-gray-700 leading-relaxed max-w-2xl">
-                {language === 'en'
-                  ? 'I am Pandit Manish Sharma, trained in Vedic Havan and Tantra-Mantra Puja at Sarva Siddha Peeth Maa Baglamukhi Mandir, Nalkheda, since childhood. Raised in the sacred courtyard of Mata Rani, I have deeply studied these practices with unwavering faith in her divine grace. Born into a Brahmin family, I inherited this sacred work and perform Maa Baglamukhi Puja and Havan rituals to fulfill the wishes of devotees, blessed by Mata Rani.'
-                  : 'मैं पंडित मनीष शर्मा हूँ, जिन्होंने बचपन से सरवा सिद्ध पीठ माँ बगलामुखी मंदिर, नालखेड़ा में वैदिक हवन और तंत्र-मंत्र पूजा का अध्ययन किया है। माता रानी के पवित्र आंगन में पले-बढ़े, मैंने इन प्रथाओं का गहन अध्ययन किया और माता रानी में अटूट विश्वास रखा। ब्राह्मण कुल में जन्मे होने के नाते, मुझे यह पवित्र कार्य विरासत में मिला है और मैं माता रानी के आशीर्वाद से भक्तों की मनोकामनाएँ पूरी करने के लिए माँ बगलामुखी पूजा और हवन अनुष्ठान करता हूँ।'}
-              </p>
+              </div>
+              <div className="flex items-center space-x-3 p-4 bg-white rounded-lg shadow-md border border-amber-100">
+                <Star className="h-6 w-6 text-amber-600 flex-shrink-0" />
+                <span className="text-gray-700 font-medium">
+                  {language === 'en' ? 'Divine Energy' : 'दिव्य ऊर्जा'}
+                </span>
+              </div>
+              <div className="flex items-center space-x-3 p-4 bg-white rounded-lg shadow-md border border-amber-100">
+                <BookOpen className="h-6 w-6 text-amber-600 flex-shrink-0" />
+                <span className="text-gray-700 font-medium">
+                  {language === 'en' ? 'Sacred Texts' : 'पवित्र ग्रंथ'}
+                </span>
+              </div>
+              <div className="flex items-center space-x-3 p-4 bg-white rounded-lg shadow-md border border-amber-100">
+                <Award className="h-6 w-6 text-amber-600 flex-shrink-0" />
+                <span className="text-gray-700 font-medium">
+                  {language === 'en' ? 'Siddhapeeth Status' : 'सिद्धपीठ स्थिति'}
+                </span>
+              </div>
             </div>
 
-            <div className="space-y-3">
-              {[
-                language === 'en' ? 'Trained in Vedic Havan and Tantra-Mantra Puja at Sarva Siddha Peeth' : 'सरवा सिद्ध पीठ में वैदिक हवन और तंत्र-मंत्र पूजा में प्रशिक्षित',
-                language === 'en' ? 'Raised with unwavering faith in Mata Rani' : 'माता रानी में अटूट विश्वास के साथ पले-बढ़े',
-                language === 'en' ? 'Performing rituals at Maa Baglamukhi Mandir with Mata Rani’s blessings' : 'माता रानी के आशीर्वाद से माँ बगलामुखी मंदिर में अनुष्ठान करना',
-                language === 'en' ? 'Fulfilling devotees’ wishes with divine grace' : 'दिव्य कृपा से भक्तों की मनोकामनाएँ पूरी करना',
-              ].map((point, index) => (
-                <motion.div
-                  key={index}
-                  variants={itemVariants}
-                  className="flex items-start space-x-3 group"
-                >
-                  <CheckCircle className="h-5 w-5 text-[#800000] mt-1 flex-shrink-0 group-hover:scale-110 transition-transform" />
-                  <span className="text-gray-800 font-medium text-base group-hover:text-[#800000] transition-colors">
-                    {point}
+            {/* CTA Button */}
+            <div className="pt-6">
+              <Link href="/contact">
+                <Button className="bg-[#800000] hover:bg-[#6a0000] text-white px-8 py-3 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 flex items-center space-x-2">
+                  <CalendarDays className="h-5 w-5" />
+                  <span>
+                    {language === 'en' ? 'Book Your Visit' : 'अपनी यात्रा बुक करें'}
                   </span>
-                </motion.div>
-              ))}
-            </div>
-
-            <motion.div variants={itemVariants} className="pt-4">
-              <Link href="/about">
-                <Button className="bg-[#800000] hover:bg-[#6a0000] text-white px-8 py-5 text-base font-semibold rounded-full shadow-lg hover:shadow-2xl transition-all transform hover:scale-105">
-                  {language === 'en' ? 'Learn More About Us' : 'हमारे बारे में अधिक जानें'}
                 </Button>
               </Link>
-            </motion.div>
+            </div>
           </motion.div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
 };
+
+const CalendarDays: React.FC<{ className?: string }> = ({ className }) => (
+  <svg
+    className={className}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+    <line x1="16" y1="2" x2="16" y2="6" />
+    <line x1="8" y1="2" x2="8" y2="6" />
+    <line x1="3" y1="10" x2="21" y2="10" />
+  </svg>
+);
 
 export default About;

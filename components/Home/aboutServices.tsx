@@ -80,7 +80,7 @@ const AboutServices: React.FC = () => {
   };
 
   return (
-    <div className="max-w-6xl mx-auto my-12 p-4">
+    <div className="max-w-6xl mx-auto my-12 p-4 bg-[#F9F5F5]">
       <Head>
         <script
           type="application/ld+json"

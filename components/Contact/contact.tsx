@@ -19,13 +19,65 @@ interface LanguageContext {
 }
 
 interface Content {
-  header: {
-    contact: string;
+  contact: {
+    title: string;
+    subtitle: string;
+    description: string;
+    formTitle: string;
+    infoTitle: string;
+    hoursTitle: string;
+    phoneLabel: string;
+    emailLabel: string;
+    addressLabel: string;
+    closed: string;
+    submitButton: string;
+    successMessage: string;
+    formLabels: {
+      name: string;
+      email: string;
+      phone: string;
+      service: string;
+      message: string;
+      birthDate: string;
+      birthTime: string;
+      birthPlace: string;
+    };
+    formPlaceholders: {
+      name: string;
+      email: string;
+      phone: string;
+      service: string;
+      message: string;
+      birthDate: string;
+      birthTime: string;
+      birthPlace: string;
+    };
+    formErrors: {
+      name: string;
+      email: string;
+      phone: string;
+      service: string;
+      message: string;
+    };
+    info: {
+      title: string;
+      phone: string;
+      email: string;
+      address: string;
+      hours: string;
+      hoursValue: string;
+      callNow: string;
+      location: string;
+    };
   };
-  footer: {
-    email: string;
-    phone: string;
-    address: string;
+  days: {
+    monday: string;
+    tuesday: string;
+    wednesday: string;
+    thursday: string;
+    friday: string;
+    saturday: string;
+    sunday: string;
   };
 }
 
@@ -93,72 +145,81 @@ const ContactPage: React.FC = () => {
     contactPoint: [
       {
         '@type': 'ContactPoint',
-        telephone: t.footer.phone,
+        telephone: t.contact.info.phone,
         contactType: 'Customer Service',
-        email: t.footer.email,
+        email: t.contact.info.email,
         areaServed: 'IN',
         availableLanguage: ['English', 'Hindi'],
       },
     ],
-    address: {
-      '@type': 'PostalAddress',
-      streetAddress: 'Your Temple Address',
-      addressLocality: 'City',
-      addressRegion: 'State',
-      postalCode: 'ZIP',
-      addressCountry: 'IN',
+    worksFor: {
+      '@type': 'Organization',
+      name: 'Maa Baglamukhi Mandir',
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: t.contact.info.address,
+        addressLocality: 'Nalkheda',
+        addressRegion: 'Madhya Pradesh',
+        addressCountry: 'IN',
+      },
     },
   };
 
   const contactInfo: ContactInfo[] = [
     {
-      icon: Mail,
-      title: language === 'en' ? 'Email' : 'ईमेल',
-      value: t.footer.email,
+      icon: Phone,
+      title: t.contact.phoneLabel,
+      value: t.contact.info.phone,
     },
     {
-      icon: Phone,
-      title: language === 'en' ? 'Phone' : 'फोन',
-      value: t.footer.phone,
+      icon: Mail,
+      title: t.contact.emailLabel,
+      value: t.contact.info.email,
     },
     {
       icon: MapPin,
-      title: language === 'en' ? 'Address' : 'पता',
-      value: t.footer.address,
+      title: t.contact.addressLabel,
+      value: t.contact.info.address,
     },
-    {
-      icon: Clock,
-      title: language === 'en' ? 'Working Hours' : 'कार्य समय',
-      value: language === 'en' ? '9 AM - 6 PM, Mon-Sat' : 'सुबह 9 - शाम 6, सोम-शनि',
-    },
+  ];
+
+  const workingHours = [
+    { day: t.days.monday, hours: t.contact.info.hoursValue },
+    { day: t.days.tuesday, hours: t.contact.info.hoursValue },
+    { day: t.days.wednesday, hours: t.contact.info.hoursValue },
+    { day: t.days.thursday, hours: t.contact.info.hoursValue },
+    { day: t.days.friday, hours: t.contact.info.hoursValue },
+    { day: t.days.saturday, hours: t.contact.info.hoursValue },
+    { day: t.days.sunday, hours: t.contact.closed },
+  ];
+
+  const services: Service[] = [
+    { value: 'maa-baglamukhi-puja', label: 'Maa Baglamukhi Puja' },
+    { value: 'birth-chart-analysis', label: 'Birth Chart Analysis' },
+    { value: 'marriage-compatibility', label: 'Marriage Compatibility' },
+    { value: 'career-guidance', label: 'Career Guidance' },
+    { value: 'gemstone-consultation', label: 'Gemstone Consultation' },
+    { value: 'vastu-shastra', label: 'Vastu Shastra' },
+    { value: 'spiritual-healing', label: 'Spiritual Healing' },
   ];
 
   const faqs: FAQ[] = [
     {
-      question: language === 'en' ? 'How long does a Maa Baglamukhi Puja take?' : 'माँ बगलामुखी पूजा में कितना समय लगता है?',
-      answer: language === 'en'
-        ? 'Most Maa Baglamukhi Puja sessions last 60-90 minutes, depending on the specific rituals selected.'
-        : 'अधिकांश माँ बगलामुखी पूजा सत्र 60-90 मिनट तक चलते हैं, जो चुने गए विशिष्ट अनुष्ठानों पर निर्भर करता है।',
+      question: language === 'en' ? 'How can I book a puja with Pandit Manish Sharma?' : 'मैं पंडित मनीष शर्मा के साथ पूजा कैसे बुक कर सकता हूं?',
+      answer: language === 'en' ? 'You can book a puja by calling us directly or filling out the contact form on this page. We will get back to you within 24 hours.' : 'आप हमें सीधे कॉल करके या इस पेज पर संपर्क फॉर्म भरकर पूजा बुक कर सकते हैं। हम 24 घंटों के भीतर आपसे संपर्क करेंगे।',
     },
     {
-      question: language === 'en' ? 'Can I book Maa Baglamukhi Puja online?' : 'क्या मैं माँ बगलामुखी पूजा ऑनलाइन बुक कर सकता हूँ?',
-      answer: language === 'en'
-        ? 'Yes, we offer both in-person and online Maa Baglamukhi Puja services via secure video calls.'
-        : 'हां, हम व्यक्तिगत और सुरक्षित वीडियो कॉल के माध्यम से ऑनलाइन माँ बगलामुखी पूजा सेवाएँ प्रदान करते हैं।',
+      question: language === 'en' ? 'What services does Pandit Manish Sharma offer?' : 'पंडित मनीष शर्मा कौन सी सेवाएं प्रदान करते हैं?',
+      answer: language === 'en' ? 'Pandit Manish Sharma offers Maa Baglamukhi Puja, birth chart analysis, marriage compatibility, career guidance, gemstone consultation, Vastu Shastra, and spiritual healing services.' : 'पंडित मनीष शर्मा माँ बगलामुखी पूजा, जन्म कुंडली विश्लेषण, विवाह अनुकूलता, करियर मार्गदर्शन, रत्न परामर्श, वास्तु शास्त्र और आध्यात्मिक चिकित्सा सेवाएं प्रदान करते हैं।',
     },
     {
-      question: language === 'en' ? 'What details are required for booking a puja?' : 'पूजा बुक करने के लिए कौन से विवरण आवश्यक हैं?',
-      answer: language === 'en'
-        ? 'You need to provide your name, preferred date, and specific requirements for the Maa Baglamukhi Puja.'
-        : 'आपको अपना नाम, पसंदीदा तारीख, और माँ बगलामुखी पूजा के लिए विशिष्ट आवश्यकताएँ प्रदान करनी होंगी।',
+      question: language === 'en' ? 'How long does a consultation take?' : 'एक परामर्श में कितना समय लगता है?',
+      answer: language === 'en' ? 'A typical consultation takes 30-60 minutes depending on the service required. Detailed birth chart analysis may take longer.' : 'एक सामान्य परामर्श में आवश्यक सेवा के आधार पर 30-60 मिनट लगते हैं। विस्तृत जन्म कुंडली विश्लेषण में अधिक समय लग सकता है।',
     },
-  ];
-
-  const services: Service[] = [
-    { value: 'maa-baglamukhi-puja', label: language === 'en' ? 'Maa Baglamukhi Puja' : 'माँ बगलामुखी पूजा' },
-    { value: 'maa-baglamukhi-pujan', label: language === 'en' ? 'Maa Baglamukhi Pujan' : 'माँ बगलामुखी पूजन' },
-    { value: 'spiritual-consultation', label: language === 'en' ? 'Spiritual Consultation' : 'आध्यात्मिक परामर्श' },
-    { value: 'custom-rituals', label: language === 'en' ? 'Custom Rituals' : 'कस्टम अनुष्ठान' },
+    {
+      question: language === 'en' ? 'Can I get consultation online?' : 'क्या मैं ऑनलाइन परामर्श प्राप्त कर सकता हूं?',
+      answer: language === 'en' ? 'Yes, we offer online consultations via video call. You can book an online session through our contact form or by calling us.' : 'हाँ, हम वीडियो कॉल के माध्यम से ऑनलाइन परामर्श प्रदान करते हैं। आप हमारे संपर्क फॉर्म के माध्यम से या हमें कॉल करके ऑनलाइन सत्र बुक कर सकते हैं।',
+    },
   ];
 
   const toggleFAQ = (index: number) => {
@@ -166,7 +227,7 @@ const ContactPage: React.FC = () => {
   };
 
   return (
-    <main className="py-20 bg-gradient-to-b from-gray-50 to-[#f0e6e0]">
+    <div className="min-h-screen bg-[#F9F5F5]">
       <Head>
         <script
           type="application/ld+json"
@@ -174,195 +235,222 @@ const ContactPage: React.FC = () => {
         />
       </Head>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Hero Section */}
-        <section className="relative text-center space-y-6 mb-20">
-          <div className="inline-flex items-center justify-center mb-4">
-            <div className="w-3 h-3 bg-[#800000] rounded-full mr-2"></div>
-            <div className="w-12 h-1 bg-[#800000] rounded-full mr-2"></div>
-            <span className="text-sm font-medium text-[#800000] uppercase tracking-wider">
-              {language === 'en' ? 'Contact Pandit Manish Sharma' : 'पंडित मनीष शर्मा से संपर्क करें'}
-            </span>
-            <div className="w-12 h-1 bg-[#800000] rounded-full ml-2"></div>
-            <div className="w-3 h-3 bg-[#800000] rounded-full ml-2"></div>
-          </div>
-          <motion.h1
-            className="text-4xl lg:text-5xl font-bold text-gray-900"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-          >
-            {t.header.contact}
-          </motion.h1>
-          <motion.p
-            className="text-xl text-[#800000] font-medium max-w-3xl mx-auto"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-          >
-            {language === 'en'
-              ? 'Connect with Pandit Manish Sharma for divine Maa Baglamukhi Puja and spiritual guidance'
-              : 'पंडित मनीष शर्मा से माँ बगलामुखी पूजा और आध्यात्मिक मार्गदर्शन के लिए संपर्क करें'}
-          </motion.p>
-        </section>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        {/* Header Section */}
+        <motion.div
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+        >
+          <h1 className="text-4xl md:text-5xl font-bold text-[#800000] mb-4">
+            {t.contact.title}
+          </h1>
+          <p className="text-xl text-amber-600 font-semibold mb-6">
+            {t.contact.subtitle}
+          </p>
+          <p className="text-lg text-gray-700 max-w-3xl mx-auto leading-relaxed">
+            {t.contact.description}
+          </p>
+        </motion.div>
 
-        {/* Contact Section */}
-        <section className="grid lg:grid-cols-3 gap-12 mb-20">
-          {/* Sidebar for Contact Info */}
-          <div className="lg:col-span-1">
-            <Card className="sticky top-24 border-[#800000]/10 shadow-lg bg-white rounded-xl">
-              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#800000] to-amber-600" />
-              <CardContent className="p-6 space-y-6">
-                <h2 className="text-xl font-bold text-gray-900">
-                  {language === 'en' ? 'Get in Touch' : 'संपर्क करें'}
-                </h2>
-                {contactInfo.map((item, index) => {
-                  const Icon = item.icon;
-                  return (
-                    <motion.div
-                      key={index}
-                      className="flex items-start space-x-4"
-                      initial={{ opacity: 0, x: -20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ duration: 0.3, delay: index * 0.1 }}
-                    >
-                      <div className="w-12 h-12 bg-gradient-to-r from-[#800000] to-[#a00000] rounded-full flex items-center justify-center flex-shrink-0">
-                        <Icon className="h-6 w-6 text-white" />
-                      </div>
-                      <div>
-                        <h3 className="text-lg font-semibold text-gray-900">{item.title}</h3>
-                        <p className="text-gray-600">{item.value}</p>
-                      </div>
-                    </motion.div>
-                  );
-                })}
-              </CardContent>
-            </Card>
-          </div>
-
+        <div className="grid lg:grid-cols-2 gap-12">
           {/* Contact Form */}
-          <div className="lg:col-span-2">
-            <Card className="shadow-lg bg-white rounded-xl border-[#800000]/10">
-              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#800000] to-amber-600" />
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <Card className="bg-white shadow-xl border-0">
               <CardHeader>
-                <CardTitle className="text-2xl font-bold text-gray-900">
-                  {language === 'en' ? 'Send Us a Message' : 'हमें संदेश भेजें'}
+                <CardTitle className="text-2xl font-bold text-[#800000]">
+                  {t.contact.formTitle}
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
-                      {language === 'en' ? 'First Name' : 'पहला नाम'}
+                      {t.contact.formLabels.name}
                     </label>
-                    <Input placeholder={language === 'en' ? 'John' : 'राम'} className="border-[#800000]/20 focus:ring-[#800000]" />
+                    <Input
+                      placeholder={t.contact.formPlaceholders.name}
+                      className="border-gray-300 focus:border-[#800000] focus:ring-[#800000]"
+                    />
                   </div>
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
-                      {language === 'en' ? 'Last Name' : 'अंतिम नाम'}
+                      {t.contact.formLabels.email}
                     </label>
-                    <Input placeholder={language === 'en' ? 'Doe' : 'शर्मा'} className="border-[#800000]/20 focus:ring-[#800000]" />
+                    <Input
+                      type="email"
+                      placeholder={t.contact.formPlaceholders.email}
+                      className="border-gray-300 focus:border-[#800000] focus:ring-[#800000]"
+                    />
                   </div>
                 </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    {language === 'en' ? 'Email' : 'ईमेल'}
-                  </label>
-                  <Input type="email" placeholder="john@example.com" className="border-[#800000]/20 focus:ring-[#800000]" />
+
+                <div className="grid md:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      {t.contact.formLabels.phone}
+                    </label>
+                    <Input
+                      placeholder={t.contact.formPlaceholders.phone}
+                      className="border-gray-300 focus:border-[#800000] focus:ring-[#800000]"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      {t.contact.formLabels.service}
+                    </label>
+                    <Select>
+                      <SelectTrigger className="border-gray-300 focus:border-[#800000] focus:ring-[#800000]">
+                        <SelectValue placeholder={t.contact.formPlaceholders.service} />
+                      </SelectTrigger>
+                      <SelectContent>
+                        {services.map((service) => (
+                          <SelectItem key={service.value} value={service.value}>
+                            {service.label}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                  </div>
                 </div>
+
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
-                    {language === 'en' ? 'Phone' : 'फोन'}
-                  </label>
-                  <Input type="tel" placeholder={t.footer.phone} className="border-[#800000]/20 focus:ring-[#800000]" />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    {language === 'en' ? 'Service' : 'सेवा'}
-                  </label>
-                  <Select>
-                    <SelectTrigger className="border-[#800000]/20 focus:ring-[#800000]">
-                      <SelectValue placeholder={language === 'en' ? 'Select a service' : 'एक सेवा चुनें'} />
-                    </SelectTrigger>
-                    <SelectContent>
-                      {services.map((service) => (
-                        <SelectItem key={service.value} value={service.value}>
-                          {service.label}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    {language === 'en' ? 'Message' : 'संदेश'}
+                    {t.contact.formLabels.message}
                   </label>
                   <Textarea
-                    rows={5}
-                    placeholder={language === 'en'
-                      ? 'Tell us about your puja requirements...'
-                      : 'हमें अपनी पूजा आवश्यकताओं के बारे में बताएं...'}
-                    className="border-[#800000]/20 focus:ring-[#800000]"
+                    placeholder={t.contact.formPlaceholders.message}
+                    rows={4}
+                    className="border-gray-300 focus:border-[#800000] focus:ring-[#800000]"
                   />
                 </div>
-                <Link href="/submit-message">
-                  <Button className="w-full bg-gradient-to-r from-[#800000] to-[#a00000] hover:from-[#700000] hover:to-[#900000] text-white h-12 text-lg shadow-md hover:shadow-lg transition-all">
-                    {language === 'en' ? 'Send Message' : 'संदेश भेजें'}
-                  </Button>
-                </Link>
+
+                <Button className="w-full bg-[#800000] hover:bg-[#6a0000] text-white py-3 text-lg font-semibold">
+                  {t.contact.submitButton}
+                </Button>
               </CardContent>
             </Card>
-          </div>
-        </section>
+          </motion.div>
+
+          {/* Contact Information */}
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            className="space-y-8"
+          >
+            {/* Contact Info Card */}
+            <Card className="bg-white shadow-xl border-0">
+              <CardHeader>
+                <CardTitle className="text-2xl font-bold text-[#800000]">
+                  {t.contact.infoTitle}
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-6">
+                {contactInfo.map((info, index) => (
+                  <div key={index} className="flex items-start space-x-4">
+                    <div className="w-10 h-10 bg-[#800000]/10 rounded-full flex items-center justify-center flex-shrink-0">
+                      <info.icon className="h-5 w-5 text-[#800000]" />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-gray-900 mb-1">{info.title}</h3>
+                      <p className="text-gray-600">{info.value}</p>
+                    </div>
+                  </div>
+                ))}
+              </CardContent>
+            </Card>
+
+            {/* Working Hours Card */}
+            <Card className="bg-white shadow-xl border-0">
+              <CardHeader>
+                <CardTitle className="text-2xl font-bold text-[#800000]">
+                  {t.contact.hoursTitle}
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-3">
+                  {workingHours.map((schedule, index) => (
+                    <div key={index} className="flex justify-between items-center py-2 border-b border-gray-100 last:border-b-0">
+                      <span className="font-medium text-gray-900">{schedule.day}</span>
+                      <span className={`font-medium ${schedule.hours === t.contact.closed ? 'text-red-500' : 'text-green-600'}`}>
+                        {schedule.hours}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Call Now Card */}
+            <Card className="bg-gradient-to-r from-[#800000] to-amber-600 text-white shadow-xl border-0">
+              <CardContent className="p-6">
+                <div className="text-center">
+                  <h3 className="text-xl font-bold mb-2">{t.contact.info.callNow}</h3>
+                  <p className="text-amber-100 mb-4">
+                    {language === 'en' ? 'Get immediate assistance for your spiritual needs' : 'अपनी आध्यात्मिक जरूरतों के लिए तत्काल सहायता प्राप्त करें'}
+                  </p>
+                  <a
+                    href={`tel:${t.contact.info.phone}`}
+                    className="inline-flex items-center px-6 py-3 bg-white text-[#800000] font-semibold rounded-lg hover:bg-gray-100 transition-colors"
+                  >
+                    <Phone className="h-5 w-5 mr-2" />
+                    {language === 'en' ? 'Call Now' : 'अभी कॉल करें'}
+                  </a>
+                </div>
+              </CardContent>
+            </Card>
+          </motion.div>
+        </div>
 
         {/* FAQ Section */}
-        <section className="py-16">
+        <motion.div
+          className="mt-20"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+        >
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-[#800000] mb-4">
               {language === 'en' ? 'Frequently Asked Questions' : 'अक्सर पूछे जाने वाले प्रश्न'}
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              {language === 'en'
-                ? 'Find answers to common questions about Maa Baglamukhi Puja services'
-                : 'माँ बगलामुखी पूजा सेवाओं के बारे में सामान्य प्रश्नों के उत्तर पाएं'}
+              {language === 'en' ? 'Find answers to common questions about our services and consultation process.' : 'हमारी सेवाओं और परामर्श प्रक्रिया के बारे में सामान्य प्रश्नों के उत्तर खोजें।'}
             </p>
           </div>
-          <div className="space-y-4 max-w-4xl mx-auto">
+
+          <div className="max-w-4xl mx-auto space-y-4">
             {faqs.map((faq, index) => (
-              <motion.div
-                key={index}
-                className="border-[#800000]/10 bg-white rounded-xl shadow-sm hover:shadow-md transition-all"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3, delay: index * 0.1 }}
-              >
-                <div
-                  className="flex justify-between items-center p-4 cursor-pointer"
-                  onClick={() => toggleFAQ(index)}
-                >
-                  <h3 className="text-lg font-semibold text-gray-900">{faq.question}</h3>
-                  {expandedFAQ === index ? (
-                    <ChevronUp className="h-5 w-5 text-[#800000]" />
-                  ) : (
-                    <ChevronDown className="h-5 w-5 text-[#800000]" />
-                  )}
-                </div>
-                {expandedFAQ === index && (
-                  <motion.div
-                    className="p-4 bg-[#800000]/5"
-                    initial={{ opacity: 0, height: 0 }}
-                    animate={{ opacity: 1, height: 'auto' }}
-                    transition={{ duration: 0.3 }}
+              <Card key={index} className="bg-white shadow-lg border-0">
+                <CardContent className="p-0">
+                  <button
+                    onClick={() => toggleFAQ(index)}
+                    className="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors"
                   >
-                    <p className="text-gray-600">{faq.answer}</p>
-                  </motion.div>
-                )}
-              </motion.div>
+                    <span className="font-semibold text-gray-900">{faq.question}</span>
+                    {expandedFAQ === index ? (
+                      <ChevronUp className="h-5 w-5 text-[#800000]" />
+                    ) : (
+                      <ChevronDown className="h-5 w-5 text-[#800000]" />
+                    )}
+                  </button>
+                  {expandedFAQ === index && (
+                    <div className="px-6 pb-4">
+                      <p className="text-gray-600 leading-relaxed">{faq.answer}</p>
+                    </div>
+                  )}
+                </CardContent>
+              </Card>
             ))}
           </div>
-        </section>
+        </motion.div>
       </div>
-    </main>
+    </div>
   );
 };
 

@@ -23,12 +23,13 @@ export const Header = () => {
   }, []);
 
   const navItems = [
-    { href: '/', label: t.header.home },
-    { href: '/services', label: t.header.services },
-    { href: '/gallery', label: language === 'en' ? 'Gallery' : 'गैलरी' },
-    { href: '/blog', label: t.header.blog },
-    { href: '/about', label: t.header.about },
-    { href: '/contact', label: t.header.contact },
+    { href: '/', label: t.header.nav.home },
+    { href: '/products', label: t.header.nav.products },
+    { href: '/services', label: t.header.nav.services },
+    { href: '/blog', label: t.header.nav.blog },
+    { href: '/about', label: t.header.nav.about },
+    { href: '/contact', label: t.header.nav.contact },
+    { href: '/gallery', label: t.header.nav.gallery },
   ];
 
   return (
@@ -45,7 +46,7 @@ export const Header = () => {
             </div>
             <div className="flex flex-col">
               <span className="text-xl font-bold text-[#800000]">
-                AstroGuide
+                {t.header.logo}
               </span>
               <span className="text-xs text-gray-600 -mt-1">
                 {language === 'en' ? 'Vedic Astrology' : 'ज्योतिष विद्या'}
@@ -69,21 +70,17 @@ export const Header = () => {
 
           {/* Right Side Actions */}
           <div className="flex items-center space-x-4">
-            {/* Phone Number - Desktop */}
-            <div className="hidden md:flex items-center space-x-2 text-sm bg-amber-50 px-3 py-2 rounded-lg border border-amber-100">
-              <Phone className="h-4 w-4 text-[#800000]" />
-              <span className="text-gray-800">+91 98765 43210</span>
-            </div>
+            
             
             <LanguageSwitcher />
             
             {/* CTA Button - Desktop */}
-            {/* <div className="hidden md:block">
+            <div className="hidden md:block">
               <Button className="bg-[#800000] hover:bg-[#6a0000] text-white px-5 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 flex items-center space-x-2">
                 <Calendar className="h-4 w-4" />
-                <span>{language === 'en' ? 'Consult Now' : 'पूछताछ करें'}</span>
+                <span>{t.header.cta}</span>
               </Button>
-            </div> */}
+            </div>
 
             {/* Mobile Menu Button */}
             <button
@@ -114,13 +111,13 @@ export const Header = () => {
               <div className="pt-2 mt-2 border-t border-amber-100 space-y-3">
                 <div className="flex items-center space-x-2 text-sm px-4 py-2 rounded-lg bg-amber-50 border border-amber-100">
                   <Phone className="h-4 w-4 text-[#800000]" />
-                  <span className="text-gray-800">+91 98765 43210</span>
+                  <span className="text-gray-800">{t.footer.contact.phone}</span>
                 </div>
                 
-                {/* <Button className="w-full bg-[#800000] hover:bg-[#6a0000] text-white rounded-lg shadow-md flex items-center justify-center space-x-2">
+                <Button className="w-full bg-[#800000] hover:bg-[#6a0000] text-white rounded-lg shadow-md flex items-center justify-center space-x-2">
                   <Calendar className="h-4 w-4" />
-                  <span>{language === 'en' ? 'Consult Now' : 'पूछताछ करें'}</span>
-                </Button> */}
+                  <span>{t.header.cta}</span>
+                </Button>
               </div>
             </nav>
           </div>

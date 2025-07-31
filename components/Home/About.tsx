@@ -139,7 +139,7 @@ const About: React.FC = () => {
           >
             <div className="relative rounded-2xl overflow-hidden shadow-xl">
               <Image
-                src="/about/1.jpg"
+                src="/about.avif"
                 alt="Maa Baglamukhi Temple, Nalkheda"
                 width={600}
                 height={400}

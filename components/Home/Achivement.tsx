@@ -163,18 +163,18 @@ const StatisticsCard: React.FC = () => {
 
   // English and Hindi text for stats and headings
   const stats: Stat[] = language === 'en' ? [
-    { number: '200k+', description: 'Devotees\nBlessed' },
-    { number: '25+', description: 'Years of\nSpiritual Service' },
-    { number: '50k+', description: 'Havan\nRituals' },
-    { number: '100k+', description: 'Wishes\nFulfilled' },
-    { number: '10+', description: 'Tantra-Mantra\nExpertise' },
+    { number: '5000+', description: 'Devotees\nBlessed' },
+    { number: '10+', description: 'Years of\nSpiritual Service' },
+    { number: '2000+', description: 'Havan\nRituals' },
+    { number: '1800+', description: 'Wishes\nFulfilled' },
+    { number: '60+', description: 'Tantra-Mantra\nExpertise' },
     { number: '15+', description: 'Awards for\nDevotion' },
   ] : [
-    { number: '200k+', description: 'भक्तों को\nआशीर्वाद' },
-    { number: '25+', description: 'आध्यात्मिक सेवा\nके वर्ष' },
-    { number: '50k+', description: 'हवन\nअनुष्ठान' },
-    { number: '100k+', description: 'मनोकामनाएँ\nपूरी' },
-    { number: '10+', description: 'तंत्र-मंत्र\nविशेषज्ञता' },
+    { number: '5000+', description: 'भक्तों को\nप्रेम' },
+    { number: '10+', description: 'प्लस आध्यात्मिक सेवा\nके वर्ष' },
+    { number: '2000+', description: 'प्लस हवन\nअनुष्ठान' },
+    { number: '1800+', description: 'मनोकामना\nपूर्ण' },
+    { number: '60+', description: 'प्लस पूजा में\nविशेषज्ञता' },
     { number: '15+', description: 'भक्ति के लिए\nपुरस्कार' },
   ];
   const heading = language === 'en' ? 'Legacy of Pandit Manish Sharma' : 'पंडित मनीष शर्मा की विरासत';

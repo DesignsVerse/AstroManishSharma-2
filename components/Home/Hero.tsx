@@ -103,14 +103,14 @@ const Hero: React.FC = () => {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.7 }}
           >
-            <div className="absolute -right-10 -top-10 w-60 h-60 bg-amber-200/10 rounded-full filter blur-3xl"></div>
+            <div className="absolute -right-10 -top-10 w-60 h-50 bg-amber-200/10 rounded-full filter blur-3xl"></div>
             <div className="relative rounded-2xl overflow-hidden shadow-2xl border-8 border-amber-200/20">
               <Image
-                src="/hero.jpg"
+                src="/hero/hero.jpg"
                 alt="Pandit Manish Sharma, Best Maa Baglamukhi Pandit"
                 width={600}
                 height={400}
-                className="w-full h-auto object-cover"
+                className="w-[600px] md:h-[600px] h-[400] object-cover"
                 priority
               />
             </div>

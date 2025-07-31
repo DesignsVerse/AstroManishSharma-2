@@ -12,6 +12,47 @@ import Image from 'next/image';
 import { servicesEn } from '@/data/services/services-en';
 import { servicesHi } from '@/data/services/services-hi';
 
+// Inline CSS for the animation and tags
+const styles = `
+  @keyframes float {
+    0% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-8px);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+
+  .float-animation {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .float-animation:hover {
+    animation-play-state: paused;
+    transform: translateY(-12px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  }
+
+  .tag {
+    display: inline-block;
+    background-color: #800000;
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    margin-right: 0.5rem;
+    margin-top: 0.5rem;
+    transition: background-color 0.3s ease-in-out;
+  }
+
+  .tag:hover {
+    background-color: #600000;
+  }
+`;
+
 export default function ServiceDetailContent({ params }: { params: { slug: string } }) {
   const { language } = useLanguage();
   const services = language === 'en' ? servicesEn.items : servicesHi.items;
@@ -26,6 +67,9 @@ export default function ServiceDetailContent({ params }: { params: { slug: strin
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-orange-50">
+      {/* Inject CSS styles */}
+      <style>{styles}</style>
+
       {/* Main Content Section */}
       <section className="py-12 md:py-16 bg-white">
         <div className="container mx-auto px-4 max-w-6xl">
@@ -40,7 +84,7 @@ export default function ServiceDetailContent({ params }: { params: { slug: strin
             {/* Left Content */}
             <div className="lg:col-span-2 space-y-12">
               {/* Service Image */}
-              <div className="relative h-80    md:h-80 w-full rounded-lg overflow-hidden shadow-lg">
+              <div className="relative h-64 sm:h-72 md:h-80 w-full rounded-lg overflow-hidden shadow-lg">
                 <Image
                   src={service.image}
                   alt={service.title}
@@ -50,7 +94,7 @@ export default function ServiceDetailContent({ params }: { params: { slug: strin
                 />
               </div>
 
-              {/* Service Title and Duration */}
+              {/* Service Title and Description */}
               <div className="space-y-4">
                 <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
                   <h1 className="text-3xl md:text-4xl font-bold text-[#800000]">
@@ -62,46 +106,9 @@ export default function ServiceDetailContent({ params }: { params: { slug: strin
                   {service.description}
                 </p>
               </div>
-
-              {/* Overview Section */}
-              <div className="space-y-6">
-                <h2 className="text-2xl font-bold text-[#800000] border-b pb-2 border-[#800000]/20">
-                  {language === 'en' ? 'Service Details' : 'सेवा विवरण'}
-                </h2>
-                <div className="prose max-w-none text-gray-700">
-                  {service.overview}
-                </div>
-                
-                {/* Render content array below overview */}
-                {Array.isArray((service as any).content) && (service as any).content.length > 0 && (
-                  <div className="space-y-8 mt-8">
-                    {(service as any).content.map((item: any, idx: number) => (
-                      <div key={idx} className="space-y-2">
-                        <h3 className="text-xl font-semibold text-gray-900">{item.heading}</h3>
-                        <p className="text-gray-600">{item.description}</p>
-                      </div>
-                    ))}
-                  </div>
-                )}
-              </div>
-
-              {/* Benefits Section */}
-              <div className="space-y-6">
-                <h2 className="text-2xl font-bold text-[#800000] border-b pb-2 border-[#800000]/20">
-                  {language === 'en' ? 'What You Will Get' : 'आपको क्या मिलेगा'}
-                </h2>
-                <ul className="space-y-4">
-                  {service.benefits.map((benefit: string, index: number) => (
-                    <li key={index} className="flex items-start gap-3">
-                      <CheckCircle className="w-5 h-5 text-[#800000] mt-0.5 flex-shrink-0" />
-                      <span className="text-gray-700">{benefit}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
             </div>
 
-            {/* Right Sidebar - New CTA Design */}
+            {/* Right Sidebar - New CTA Design with Tags */}
             <div className="lg:col-span-1">
               <div className="sticky top-24 space-y-6">
                 <Card className="border border-[#800000]/20 shadow-md">
@@ -139,7 +146,7 @@ export default function ServiceDetailContent({ params }: { params: { slug: strin
                     <div className="space-y-4">
                       <Button 
                         asChild 
-                        className="w-full bg-gradient-to-r from-[#800000] to-[#a00000] hover:from-[#700000] hover:to-[#900000] text-white h-14 text-lg shadow-lg"
+                        className="w-full bg-gradient-to-r from-[#800000] to-[#a00000] hover:from-[#700000] hover:to-[#900000] text-white h-14 text-lg float-animation transition-all duration-300 ease-in-out"
                       >
                         <a href="tel:+917733994827">
                           {language === 'en' ? 'Call Now' : 'अभी कॉल करें'}
@@ -148,7 +155,7 @@ export default function ServiceDetailContent({ params }: { params: { slug: strin
                       <Button 
                         asChild 
                         variant="outline" 
-                        className="w-full border-[#800000] text-[#800000] hover:bg-[#800000]/10 h-14 text-lg"
+                        className="w-full border-[#800000] text-[#800000] hover:bg-[#800000]/10 h-14 text-lg float-animation transition-all duration-300 ease-in-out"
                       >
                         <a href="https://wa.me/+917733994827" target="_blank" rel="noopener noreferrer">
                           {language === 'en' ? 'WhatsApp Now' : 'व्हाट्सएप करें'}
@@ -161,6 +168,26 @@ export default function ServiceDetailContent({ params }: { params: { slug: strin
                         ? '100% satisfaction guarantee' 
                         : '100% संतुष्टि गारंटी'}
                     </div>
+
+                    {/* Tags Section */}
+                    {service.tags && service.tags.length > 0 && (
+                      <div className="mt-6">
+                        <div className="text-sm text-gray-600 mb-2">
+                          {language === 'en' ? 'Related Tags' : 'संबंधित टैग'}
+                        </div>
+                        <div className="flex flex-wrap">
+                          {service.tags.map((tag: string, index: number) => (
+                            <Link
+                              key={index}
+                              href={`/services?tag=${tag.replace('#', '')}`}
+                              className="tag"
+                            >
+                              {tag}
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
+                    )}
                   </CardContent>
                 </Card>
 
@@ -308,7 +335,7 @@ export default function ServiceDetailContent({ params }: { params: { slug: strin
               <Button 
                 asChild 
                 size="lg" 
-                className="bg-white text-[#800000] hover:bg-gray-100 px-6 py-4 font-bold"
+                className="bg-white text-[#800000] hover:bg-gray-100 hover:-translate-y-1 px-6 py-4 font-bold transition-transform duration-300 ease-in-out"
               >
                 <Link href="/contact">
                   {language === 'en' ? 'Get Started' : 'शुरू करें'}
@@ -318,7 +345,7 @@ export default function ServiceDetailContent({ params }: { params: { slug: strin
                 asChild 
                 variant="outline" 
                 size="lg"
-                className="text-white border-white hover:bg-white/10 px-6 py-4 font-bold"
+                className="text-white border-white hover:bg-white/10 hover:translate-y-1 px-6 py-4 font-bold transition-transform duration-300 ease-in-out"
               >
                 <Link href="/services">
                   {language === 'en' ? 'Browse Services' : 'सेवाएं देखें'}

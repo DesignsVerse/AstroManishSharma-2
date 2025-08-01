@@ -1,18 +1,15 @@
 "use client";
 
 import { useLanguage } from '@/contexts/LanguageContext';
-import { Header } from '@/components/Home/Header';
-import { Footer } from '@/components/Home/Footer';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { ArrowLeft, CheckCircle, Star, Clock, Shield, Users, Target } from 'lucide-react';
+import { ArrowLeft, Shield, Users, Star } from 'lucide-react';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import { servicesEn } from '@/data/services/services-en';
 import { servicesHi } from '@/data/services/services-hi';
 import { FaPhone, FaWhatsapp, FaCalendarAlt } from "react-icons/fa";
-
 
 // Inline CSS for the animation and tags
 const styles = `
@@ -67,6 +64,15 @@ export default function ServiceDetailContent({ params }: { params: { slug: strin
 
   const relatedServices = services.filter((s: any) => s.id !== params.slug).slice(0, 3);
 
+  // Dynamic WhatsApp messages
+  const whatsappInquiryMessage = language === 'en' 
+    ? `Namaste Pandit Manish Sharma Ji, I want to know about the ${service.title} Puja.`
+    : `नमस्ते पंडित मनीष शर्मा जी, मुझे ${service.title} पूजा के बारे में जानकारी चाहिए।`;
+
+  const whatsappBookingMessage = language === 'en'
+    ? `Pandit Manish Sharma Ji, I want to book the ${service.title} Puja.`
+    : `पंडित मनीष शर्मा जी, मुझे ${service.title} पूजा बुक करानी है।`;
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-orange-50">
       {/* Inject CSS styles */}
@@ -98,11 +104,9 @@ export default function ServiceDetailContent({ params }: { params: { slug: strin
 
               {/* Service Title and Description */}
               <div className="space-y-4">
-                <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-                  <h1 className="text-3xl md:text-4xl font-bold text-[#800000]">
-                    {service.title}
-                  </h1>
-                </div>
+                <h1 className="text-3xl md:text-4xl font-bold text-[#800000]">
+                  {service.title}
+                </h1>
                 
                 <p className="text-xl text-gray-700">
                   {service.description}
@@ -121,46 +125,47 @@ export default function ServiceDetailContent({ params }: { params: { slug: strin
                   </CardHeader>
                   <CardContent className="p-6 space-y-6">
                     
-
-<div className="space-y-4">
-  <Button 
-    asChild 
-    className="w-full bg-gradient-to-r from-[#800000] to-[#a00000] hover:from-[#700000] hover:to-[#900000] text-white h-14 text-lg float-animation transition-all duration-300 ease-in-out flex items-center justify-center gap-2"
-  >
-    <a href="tel:+917733994827">
-      <FaPhone className="w-5 h-5" />
-      {language === 'en' ? 'Call Now' : 'अभी कॉल करें'}
-    </a>
-  </Button>
-  <Button 
-    asChild 
-    variant="outline" 
-    className="w-full border-[#800000] text-[#800000] hover:bg-[#800000]/10 h-14 text-lg float-animation transition-all duration-300 ease-in-out flex items-center justify-center gap-2"
-  >
-    <a 
-      href={`https://wa.me/+917733994827?text=${encodeURIComponent(language === 'en' ? 'Namaste Pandit Manish Sharma Ji, I want to perform a Puja' : 'नमस्ते पंडित मनीष शर्मा जी, मुझे पूजा करानी है')}`} 
-      target="_blank" 
-      rel="noopener noreferrer"
-    >
-      <FaWhatsapp className="w-5 h-5" />
-      {language === 'en' ? 'WhatsApp Now' : 'अभी व्हाट्सएप करें'}
-    </a>
-  </Button>
-  <Button 
-    asChild 
-    variant="outline" 
-    className="w-full border-[#800000] text-[#800000] hover:bg-[#800000]/10 h-14 text-lg float-animation transition-all duration-300 ease-in-out flex items-center justify-center gap-2"
-  >
-    <a 
-      href={`https://wa.me/+917733994827?text=${encodeURIComponent(language === 'en' ? 'Pandit Manish Sharma Ji, I want to book a Puja' : 'पंडित मनीष शर्मा जी, मुझे पूजा बुक करानी है')}`} 
-      target="_blank" 
-      rel="noopener noreferrer"
-    >
-      <FaCalendarAlt className="w-5 h-5" />
-      {language === 'en' ? 'Book Now' : 'अपनी पूजा बुक करें'}
-    </a>
-  </Button>
-</div>
+                    <div className="space-y-4">
+                      <Button 
+                        asChild 
+                        className="w-full bg-gradient-to-r from-[#800000] to-[#a00000] hover:from-[#700000] hover:to-[#900000] text-white h-14 text-lg float-animation transition-all duration-300 ease-in-out flex items-center justify-center gap-2"
+                      >
+                        <a href="tel:+917733994827">
+                          <FaPhone className="w-5 h-5" />
+                          {language === 'en' ? 'Call Now' : 'अभी कॉल करें'}
+                        </a>
+                      </Button>
+                      
+                      <Button 
+                        asChild 
+                        variant="outline" 
+                        className="w-full border-[#800000] text-[#800000] hover:bg-[#800000]/10 h-14 text-lg float-animation transition-all duration-300 ease-in-out flex items-center justify-center gap-2"
+                      >
+                        <a 
+                          href={`https://wa.me/+917733994827?text=${encodeURIComponent(whatsappInquiryMessage)}`}
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                        >
+                          <FaWhatsapp className="w-5 h-5" />
+                          {language === 'en' ? 'WhatsApp Now' : 'अभी व्हाट्सएप करें'}
+                        </a>
+                      </Button>
+                      
+                      <Button 
+                        asChild 
+                        variant="outline" 
+                        className="w-full border-[#800000] text-[#800000] hover:bg-[#800000]/10 h-14 text-lg float-animation transition-all duration-300 ease-in-out flex items-center justify-center gap-2"
+                      >
+                        <a 
+                          href={`https://wa.me/+917733994827?text=${encodeURIComponent(whatsappBookingMessage)}`}
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                        >
+                          <FaCalendarAlt className="w-5 h-5" />
+                          {language === 'en' ? 'Book Now' : 'अपनी पूजा बुक करें'}
+                        </a>
+                      </Button>
+                    </div>
 
                     <div className="text-center text-sm text-gray-500 mt-4">
                       {language === 'en' 
@@ -225,9 +230,7 @@ export default function ServiceDetailContent({ params }: { params: { slug: strin
         </div>
       </section>
 
-      
-
-      {/* Related Services - Compact Design */}
+      {/* Related Services */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4 max-w-6xl">
           <div className="text-center mb-12">
@@ -273,7 +276,7 @@ export default function ServiceDetailContent({ params }: { params: { slug: strin
         </div>
       </section>
 
-      {/* Final CTA - Simplified */}
+      {/* Final CTA */}
       <section className="py-16 bg-[#800000]">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
@@ -313,7 +316,6 @@ export default function ServiceDetailContent({ params }: { params: { slug: strin
           </div>
         </div>
       </section>
-
     </div>
   );
 }

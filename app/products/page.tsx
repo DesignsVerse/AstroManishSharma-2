@@ -221,7 +221,7 @@ export default function ProductsPage() {
                       callNumber="+917733994827"
                       whatsappText={currentContent.whatsapp}
                       callText={currentContent.callNow}
-                      message={`I'm interested in ${product.name}`}
+                      message={`नमस्ते पंडित मनीष शर्मा जी, मुझे ${product.name} की जानकारी चाहिए है`}
                     />
                   </div>
                 </div>

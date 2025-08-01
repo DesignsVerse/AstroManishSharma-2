@@ -395,6 +395,7 @@ const ContactPage: React.FC = () => {
                   <p className="text-amber-100 mb-4">
                     {language === 'en' ? 'Get immediate assistance for your spiritual needs' : 'अपनी आध्यात्मिक जरूरतों के लिए तत्काल सहायता प्राप्त करें'}
                   </p>
+                  <div className='flex gap-4 justify-center items-center'>
                   <a
                     href={`tel:${t.contact.info.phone}`}
                     className="inline-flex items-center px-6 py-3 bg-white text-[#800000] font-semibold rounded-lg hover:bg-gray-100 transition-colors"
@@ -402,6 +403,16 @@ const ContactPage: React.FC = () => {
                     <Phone className="h-5 w-5 mr-2" />
                     {language === 'en' ? 'Call Now' : 'अभी कॉल करें'}
                   </a>
+                  <a
+  href={`https://wa.me/+917733994827?text=${encodeURIComponent(language === 'en' ? 'Namaste Pandit Manish Sharma Ji, I need information about Maa Baglamukhi Puja' : 'नमस्ते पंडित मनीष शर्मा जी, मुझे माँ बगलामुखी पूजा की जानकारी चाहिए है')}`}
+  className="inline-flex items-center px-6 py-3 bg-[#800000] text-white font-semibold rounded-lg hover:bg-[#6a0000] transition-colors"
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  <Phone className="h-5 w-5 mr-2" />
+  {language === 'en' ? 'WhatsApp Now' : 'अभी व्हाट्सएप करें'}
+</a>
+                  </div>
                 </div>
               </CardContent>
             </Card>

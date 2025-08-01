@@ -12,7 +12,7 @@ import { Input } from "@/components/ui/input";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import Head from "next/head";
-
+import { FaWhatsapp } from "react-icons/fa";
 // Define TypeScript interfaces
 interface Service {
   id: string;
@@ -120,81 +120,81 @@ const ServicesPage: React.FC = () => {
         />
       </Head>
       {/* Hero Section */}
-      <section className="relative pt-8 pb-12 md:pt-16 md:pb-20 bg-gradient-to-b from-[#800000] to-[#600000]">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-0 left-0 w-full h-full bg-[url('/assets/patterns/mandala-light.svg')] bg-cover bg-center"></div>
+<section className="relative pt-8 pb-12 md:pt-16 md:pb-20 bg-gradient-to-b from-[#800000] to-[#600000]">
+  <div className="absolute inset-0 opacity-10">
+    <div className="absolute top-0 left-0 w-full h-full bg-[url('/assets/patterns/mandala-light.svg')] bg-cover bg-center"></div>
+  </div>
+  <div className="container mx-auto px-4">
+    <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12">
+      {/* Left Content */}
+      <motion.div
+        className="w-full md:w-1/2 space-y-6 text-center md:text-left"
+        initial={{ opacity: 0, x: -50 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.8 }}
+      >
+        <div className="inline-flex items-center bg-white/10 text-white px-3 py-1.5 rounded-full backdrop-blur-sm border border-white/20 mb-3">
+          <Sparkles className="w-3 h-3 mr-1.5 md:w-4 md:h-4" />
+          <span className="text-xs md:text-sm font-medium">
+            {language === "en" ? "Maa Baglamukhi Puja" : "माँ बगलामुखी पूजा"}
+          </span>
         </div>
-        <div className="container mx-auto px-4">
-          <div className="flex flex-col items-center gap-8 md:gap-12">
-            {/* Left Content */}
-            <motion.div
-              className="w-full space-y-6 text-center md:text-left"
-              initial={{ opacity: 0, x: -50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-            >
-              <div className="inline-flex items-center bg-white/10 text-white px-3 py-1.5 rounded-full backdrop-blur-sm border border-white/20 mb-3">
-                <Sparkles className="w-3 h-3 mr-1.5 md:w-4 md:h-4" />
-                <span className="text-xs md:text-sm font-medium">
-                  {language === "en" ? "Maa Baglamukhi Puja" : "माँ बगलामुखी पूजा"}
-                </span>
+        <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight">
+          {language === "en"
+            ? "Divine Blessings with Maa Baglamukhi"
+            : "माँ बगलामुखी के साथ दिव्य आशीर्वाद"}
+        </h1>
+        <p className="text-base md:text-lg text-orange-100">
+          {language === "en"
+            ? "Experience authentic Maa Baglamukhi Puja and Pujan by Pandit Manish Sharma at Maa Baglamukhi Mandir"
+            : "माँ बगलामुखी मंदिर में पंडित मनीष शर्मा द्वारा प्रामाणिक माँ बगलामुखी पूजा और पूजन का अनुभव करें"}
+        </p>
+        {/* Key Points */}
+        <div className="space-y-3">
+          {[
+            language === "en"
+              ? "Divine protection through Maa Baglamukhi Puja"
+              : "माँ बगलामुखी पूजा के माध्यम से दिव्य संरक्षण",
+            language === "en"
+              ? "Personalized spiritual guidance by Pandit Manish Sharma"
+              : "पंडित मनीष शर्मा द्वारा व्यक्तिगत आध्यात्मिक मार्गदर्शन",
+            language === "en"
+              ? "Custom rituals at Maa Baglamukhi Mandir"
+              : "माँ बगलामुखी मंदिर में अनुकूलित अनुष्ठान",
+          ].map((item, i) => (
+            <div key={i} className="flex items-center gap-2 justify-center md:justify-start">
+              <div className="w-5 h-5 bg-orange-500 rounded-full flex items-center justify-center flex-shrink-0">
+                <CheckCircle className="w-3 h-3 text-white" />
               </div>
-              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight">
-                {language === "en"
-                  ? "Divine Blessings with Maa Baglamukhi"
-                  : "माँ बगलामुखी के साथ दिव्य आशीर्वाद"}
-              </h1>
-              <p className="text-base md:text-lg text-orange-100">
-                {language === "en"
-                  ? "Experience authentic Maa Baglamukhi Puja and Pujan by Pandit Manish Sharma at Maa Baglamukhi Mandir"
-                  : "माँ बगलामुखी मंदिर में पंडित मनीष शर्मा द्वारा प्रामाणिक माँ बगलामुखी पूजा और पूजन का अनुभव करें"}
-              </p>
-              {/* Key Points */}
-              <div className="space-y-3">
-                {[
-                  language === "en"
-                    ? "Divine protection through Maa Baglamukhi Puja"
-                    : "माँ बगलामुखी पूजा के माध्यम से दिव्य संरक्षण",
-                  language === "en"
-                    ? "Personalized spiritual guidance by Pandit Manish Sharma"
-                    : "पंडित मनीष शर्मा द्वारा व्यक्तिगत आध्यात्मिक मार्गदर्शन",
-                  language === "en"
-                    ? "Custom rituals at Maa Baglamukhi Mandir"
-                    : "माँ बगलामुखी मंदिर में अनुकूलित अनुष्ठान",
-                ].map((item, i) => (
-                  <div key={i} className="flex items-center gap-2">
-                    <div className="w-5 h-5 bg-orange-500 rounded-full flex items-center justify-center flex-shrink-0">
-                      <CheckCircle className="w-3 h-3 text-white" />
-                    </div>
-                    <span className="text-white text-sm md:text-base">{item}</span>
-                  </div>
-                ))}
-              </div>
-            </motion.div>
-            {/* Right Image */}
-            <motion.div
-              className="w-full max-w-xs md:max-w-md"
-              initial={{ opacity: 0, x: 50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-            >
-              <div className="relative aspect-square w-full">
-                <Image
-                  src="/maa-baglamukhi-services.avif"
-                  alt={
-                    language === "en"
-                      ? "Maa Baglamukhi Puja Services"
-                      : "माँ बगलामुखी पूजा सेवाएँ"
-                  }
-                  fill
-                  className="object-contain"
-                  priority
-                />
-              </div>
-            </motion.div>
-          </div>
+              <span className="text-white text-sm md:text-base">{item}</span>
+            </div>
+          ))}
         </div>
-      </section>
+      </motion.div>
+      {/* Right Image */}
+      <motion.div
+        className="w-full md:w-1/2 max-w-xs md:max-w-md"
+        initial={{ opacity: 0, x: 50 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.8 }}
+      >
+        <div className="relative aspect-square w-full">
+          <Image
+            src="/maa-baglamukhi-services.avif"
+            alt={
+              language === "en"
+                ? "Maa Baglamukhi Puja Services"
+                : "माँ बगलामुखी पूजा सेवाएँ"
+            }
+            fill
+            className="object-contain"
+            priority
+          />
+        </div>
+      </motion.div>
+    </div>
+  </div>
+</section>
 
       {/* Search Card Section */}
       <section className="relative bg-[#F9F5F5] z-10 -mt-8 md:-mt-12">
@@ -314,43 +314,45 @@ const ServicesPage: React.FC = () => {
                       </p>
                     </div>
                     <div className="mt-auto space-y-2 flex flex-col">
-                      <Button
-                        asChild
-                        variant="outline"
-                        className="w-full border-[#800000] text-[#800000] hover:bg-[#800000]/10 hover:border-[#800000]/80 transition-colors h-9 text-xs md:text-sm"
-                      >
-                        <Link href={`/services/${service.id}`}>
-                          {language === "en" ? "View Details" : "विवरण देखें"}
-                        </Link>
-                      </Button>
-                      <div className="flex flex-col sm:flex-row gap-2 justify-center">
-                        <Button
-                          asChild
-                          size="sm"
-                          className="bg-white text-[#800000] hover:bg-gray-100 px-4 py-3 text-xs md:text-sm font-bold shadow-lg hover:shadow-xl transition-all"
-                        >
-                          <a
-                            href={`https://wa.me/917733994827?text=Namaste%2C%20mujhe%20${encodeURIComponent(
-                              service.title
-                            )}%20puja%20booking%20karni%20hai.`}
-                            target="_blank"
-                          >
-                            {language === "en" ? "WhatsApp" : "व्हाट्सएप"}
-                          </a>
-                        </Button>
-                        <Button
-                          asChild
-                          size="sm"
-                          variant="outline"
-                          className="bg-white text-black border-[#800000] border-2 px-4 py-3 text-xs md:text-sm font-bold shadow-lg hover:shadow-xl transition-all"
-                        >
-                          <a href="tel:+917733994827" className="flex items-center gap-1.5">
-                            <Phone className="w-4 h-4" />
-                            {language === "en" ? "Call Now" : "अभी कॉल करें"}
-                          </a>
-                        </Button>
-                      </div>
-                    </div>
+  <Button
+    asChild
+    variant="outline"
+    className="w-full border-[#800000] text-[#800000] hover:bg-[#800000]/10 hover:border-[#800000]/80 transition-colors h-9 text-xs md:text-sm"
+  >
+    <Link href={`/services/${service.id}`}>
+      {language === "en" ? "View Details" : "विवरण देखें"}
+    </Link>
+  </Button>
+  <div className="flex flex-col sm:flex-row gap-2 justify-center">
+    <Button
+      asChild
+      size="sm"
+      className="bg-white text-[#800000] hover:bg-gray-100 px-4 py-3 text-xs md:text-sm font-bold shadow-lg hover:shadow-xl transition-all"
+    >
+      <a
+        href={`https://wa.me/917733994827?text=नमस्ते%2C%20पंडित%20जी,%20मुझे%20${encodeURIComponent(
+          service.title
+        )}%20पूजा%20बुकिंग%20करानी%20है.`}
+        target="_blank"
+        className="flex items-center gap-1.5"
+      >
+        <FaWhatsapp className="w-4 h-4" />
+        {language === "en" ? "WhatsApp" : "व्हाट्सएप"}
+      </a>
+    </Button>
+    <Button
+      asChild
+      size="sm"
+      variant="outline"
+      className="bg-white text-black border-[#800000] border-2 px-4 py-3 text-xs md:text-sm font-bold shadow-lg hover:shadow-xl transition-all"
+    >
+      <a href="tel:+917733994827" className="flex items-center gap-1.5">
+        <Phone className="w-4 h-4" />
+        {language === "en" ? "Call Now" : "अभी कॉल करें"}
+      </a>
+    </Button>
+  </div>
+</div>
                   </CardContent>
                 </Card>
               </motion.div>

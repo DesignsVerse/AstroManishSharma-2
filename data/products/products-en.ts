@@ -27,29 +27,6 @@ export const productsEn = [
       details: "Size: 4x4 inches. Comes with wooden frame."
     },
     {
-      id: 2,
-      slug: "rudraksh-mala",
-      name: "Maa Baglamukhi Rudraksha Mala",
-      price: 1100,
-      originalPrice: 1500,
-      image: `/products/2.avif`,
-      badge: null,
-      rating: 4.5,
-      reviews: 36,
-      description: "Rudraksha beads for spiritual protection and mental balance.",
-      longDescription: "Rudraksha, symbolizing the power of nature, provides complete spiritual protection. This Rudraksha mala helps balance the mind, liberates from negativity, and provides complete assistance in reducing the effects of ghosts, evil spirits, and demons. With this mala, you'll experience divinity and achieve complete balance of mind, body, and soul.",
-      benefits: [
-        "Balances the mind",
-        "Releases negativity",
-        "Reduces effects of evil spirits",
-        "Brings harmony to mind, body and soul"
-      ],
-      materials: "Natural Rudraksha beads",
-      ritual: "Consecrated with Baglamukhi mantras",
-      deliveryInfo: "Dispatched in 24 hours. Free shipping across India.",
-      details: "108 beads mala"
-    },
-    {
       id: 3,
       slug: "siddh-ring",
       name: "Maa Baglamukhi Siddh Ring",

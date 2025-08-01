@@ -11,6 +11,8 @@ import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import { servicesEn } from '@/data/services/services-en';
 import { servicesHi } from '@/data/services/services-hi';
+import { FaPhone, FaWhatsapp, FaCalendarAlt } from "react-icons/fa";
+
 
 // Inline CSS for the animation and tags
 const styles = `
@@ -118,50 +120,47 @@ export default function ServiceDetailContent({ params }: { params: { slug: strin
                     </CardTitle>
                   </CardHeader>
                   <CardContent className="p-6 space-y-6">
-                    <div className="text-center">
-                      <div className="text-gray-600 mb-6">
-                        {language === 'en' ? 'Personalized Consultation' : 'व्यक्तिगत परामर्श'}
-                      </div>
-                      
-                      <div className="bg-[#800000]/5 p-4 rounded-lg mb-6">
-                        <div className="text-sm text-gray-600 mb-2">
-                          {language === 'en' ? 'Includes' : 'शामिल हैं'}
-                        </div>
-                        <ul className="space-y-2 text-left">
-                          {[
-                            language === 'en' ? 'Detailed analysis' : 'विस्तृत विश्लेषण',
-                            language === 'en' ? 'Personalized remedies' : 'व्यक्तिगत उपाय',
-                            language === 'en' ? 'Follow-up support' : 'अनुवर्ती सहायता',
-                            language === 'en' ? 'Confidential service' : 'गोपनीय सेवा'
-                          ].map((item, index) => (
-                            <li key={index} className="flex items-center gap-2">
-                              <CheckCircle className="w-4 h-4 text-[#800000]" />
-                              <span className="text-sm">{item}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    </div>
+                    
 
-                    <div className="space-y-4">
-                      <Button 
-                        asChild 
-                        className="w-full bg-gradient-to-r from-[#800000] to-[#a00000] hover:from-[#700000] hover:to-[#900000] text-white h-14 text-lg float-animation transition-all duration-300 ease-in-out"
-                      >
-                        <a href="tel:+917733994827">
-                          {language === 'en' ? 'Call Now' : 'अभी कॉल करें'}
-                        </a>
-                      </Button>
-                      <Button 
-                        asChild 
-                        variant="outline" 
-                        className="w-full border-[#800000] text-[#800000] hover:bg-[#800000]/10 h-14 text-lg float-animation transition-all duration-300 ease-in-out"
-                      >
-                        <a href="https://wa.me/+917733994827" target="_blank" rel="noopener noreferrer">
-                          {language === 'en' ? 'WhatsApp Now' : 'व्हाट्सएप करें'}
-                        </a>
-                      </Button>
-                    </div>
+<div className="space-y-4">
+  <Button 
+    asChild 
+    className="w-full bg-gradient-to-r from-[#800000] to-[#a00000] hover:from-[#700000] hover:to-[#900000] text-white h-14 text-lg float-animation transition-all duration-300 ease-in-out flex items-center justify-center gap-2"
+  >
+    <a href="tel:+917733994827">
+      <FaPhone className="w-5 h-5" />
+      {language === 'en' ? 'Call Now' : 'अभी कॉल करें'}
+    </a>
+  </Button>
+  <Button 
+    asChild 
+    variant="outline" 
+    className="w-full border-[#800000] text-[#800000] hover:bg-[#800000]/10 h-14 text-lg float-animation transition-all duration-300 ease-in-out flex items-center justify-center gap-2"
+  >
+    <a 
+      href={`https://wa.me/+917733994827?text=${encodeURIComponent(language === 'en' ? 'Namaste Pandit Manish Sharma Ji, I want to perform a Puja' : 'नमस्ते पंडित मनीष शर्मा जी, मुझे पूजा करानी है')}`} 
+      target="_blank" 
+      rel="noopener noreferrer"
+    >
+      <FaWhatsapp className="w-5 h-5" />
+      {language === 'en' ? 'WhatsApp Now' : 'अभी व्हाट्सएप करें'}
+    </a>
+  </Button>
+  <Button 
+    asChild 
+    variant="outline" 
+    className="w-full border-[#800000] text-[#800000] hover:bg-[#800000]/10 h-14 text-lg float-animation transition-all duration-300 ease-in-out flex items-center justify-center gap-2"
+  >
+    <a 
+      href={`https://wa.me/+917733994827?text=${encodeURIComponent(language === 'en' ? 'Pandit Manish Sharma Ji, I want to book a Puja' : 'पंडित मनीष शर्मा जी, मुझे पूजा बुक करानी है')}`} 
+      target="_blank" 
+      rel="noopener noreferrer"
+    >
+      <FaCalendarAlt className="w-5 h-5" />
+      {language === 'en' ? 'Book Now' : 'अपनी पूजा बुक करें'}
+    </a>
+  </Button>
+</div>
 
                     <div className="text-center text-sm text-gray-500 mt-4">
                       {language === 'en' 
@@ -226,48 +225,7 @@ export default function ServiceDetailContent({ params }: { params: { slug: strin
         </div>
       </section>
 
-      {/* Why Choose Us Section - Simplified */}
-      <section className="py-16 bg-[#f8f4f0]">
-        <div className="container mx-auto px-4 max-w-6xl">
-          <div className="text-center mb-12">
-            <h2 className="text-2xl md:text-3xl font-bold text-[#800000] mb-4">
-              {language === 'en' ? 'Why Our Clients Trust Us' : 'हमारे ग्राहक हम पर भरोसा क्यों करते हैं'}
-            </h2>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-6">
-            {[
-              {
-                title: language === 'en' ? "Authentic Guidance" : "प्रामाणिक मार्गदर्शन",
-                desc: language === 'en'
-                  ? "Rooted in ancient Vedic wisdom with modern interpretation"
-                  : "आधुनिक व्याख्या के साथ प्राचीन वैदिक ज्ञान में निहित"
-              },
-              {
-                title: language === 'en' ? "Proven Results" : "सिद्ध परिणाम",
-                desc: language === 'en'
-                  ? "Thousands of positive transformations documented"
-                  : "हजारों सकारात्मक परिवर्तन दर्ज किए गए"
-              },
-              {
-                title: language === 'en' ? "Ethical Practice" : "नैतिक अभ्यास",
-                desc: language === 'en'
-                  ? "No fear-mongering, only practical solutions"
-                  : "कोई डर पैदा करने वाली बातें नहीं, केवल व्यावहारिक समाधान"
-              }
-            ].map((item, index) => (
-              <div key={index} className="bg-white p-6 rounded-lg shadow-sm border border-[#800000]/10">
-                <h3 className="text-lg font-semibold text-[#800000] mb-3">
-                  {item.title}
-                </h3>
-                <p className="text-gray-600">
-                  {item.desc}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      
 
       {/* Related Services - Compact Design */}
       <section className="py-16 bg-white">
@@ -356,7 +314,6 @@ export default function ServiceDetailContent({ params }: { params: { slug: strin
         </div>
       </section>
 
-      <Footer />
     </div>
   );
 }

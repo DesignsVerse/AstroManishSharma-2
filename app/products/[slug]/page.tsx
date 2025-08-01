@@ -276,7 +276,8 @@ function ProductPage({ params }: { params: { slug: string } }) {
                 callNumber="+917733994827"
                 whatsappText={t.whatsappInquiry}
                 callText={t.callForGuidance}
-                message={`I'm interested in ${product.name} (${typeof window !== 'undefined' ? window.location.href : ''})`}
+                message={`नमस्ते पंडित मनीष शर्मा जी, मुझे ${product.name} की जानकारी चाहिए है`}
+
               />
             </div>
             

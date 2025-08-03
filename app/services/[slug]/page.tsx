@@ -115,11 +115,11 @@ export default function ServiceDetailContent({ params }: { params: { slug: strin
             </div>
 
             {/* Right Sidebar - New CTA Design with Tags */}
-            <div className="lg:col-span-1">
+            <div className="lg:col-span-1 mt-[350px] md:mt-[0] ">
               <div className="sticky top-24 space-y-6">
                 <Card className="border border-[#800000]/20 shadow-md">
 
-                  <CardContent className="p-6 space-y-6">
+                  <CardContent className=" p-6 space-y-6">
 
                     <div className="space-y-4">
                       <Button
@@ -228,7 +228,7 @@ export default function ServiceDetailContent({ params }: { params: { slug: strin
       </section>
 
       {/* Related Services */}
-      <section className="py-16 bg-white">
+      <section className="md:py-[200px] pb-10 bg-white">
         <div className="container mx-auto px-4 max-w-6xl">
           <div className="text-center mb-12">
             <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">
@@ -248,7 +248,7 @@ export default function ServiceDetailContent({ params }: { params: { slug: strin
                 href={`/services/${relatedService.id}`}
                 className="group block hover:shadow-md transition-all rounded-lg overflow-hidden border border-gray-200"
               >
-                <div className="relative h-40 ">
+                <div className="relative h-60 ">
                   <Image
                     src={relatedService.image}
                     alt={relatedService.title}

@@ -5,10 +5,12 @@ import { servicesEn } from '@/data/services/services-en';
 import { servicesHi } from '@/data/services/services-hi';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Star, Heart, Briefcase, Gem, Home, Sun, ArrowRight, Clock, IndianRupee } from 'lucide-react';
+import { Star, Heart, Briefcase, Gem, Home,Phone, Sun, ArrowRight, Clock, IndianRupee } from 'lucide-react';
 import Link from 'next/link';
 import { useBreakpoint } from '@/hooks/useBreakpoint';
 import { useState } from 'react';
+import { FaWhatsapp } from "react-icons/fa";
+
 
 const iconMap = {
   star: Star,
@@ -119,34 +121,55 @@ export const Services = () => {
                       {service.title}
                     </CardTitle>
                   </CardHeader>
-                  <CardContent className="pt-0 pb-6 text-center">
-                    <div className="mb-6 px-4">
-                      <p className="text-gray-700 min-h-[60px] text-sm md:text-base">
-                        {service.description.length > 120
-                          ? service.description.substring(0, 120) + '...'
+                  <CardContent className="p-4 pt-0 pb-3 text-center flex-1 flex flex-col">
+                    <div className="mb-3">
+                      <p className="text-gray-700 text-xs md:text-sm">
+                        {service.description.length > 80
+                          ? service.description.substring(0, 80) + "..."
                           : service.description}
                       </p>
                     </div>
-                    
-                   
-                    <div className="space-y-3 px-4">
-                      <Button 
-                        asChild 
+                    <div className="mt-auto space-y-2 flex flex-col">
+                      <Button
+                        asChild
                         variant="outline"
-                        className="w-full border-[#800000] text-[#800000] hover:bg-[#800000]/10 hover:border-[#800000]/80 transition-colors h-11 text-sm md:text-base"
+                        className="w-full border-[#800000] text-[#800000] hover:bg-[#800000]/10 hover:border-[#800000]/80 transition-colors h-9 text-xs md:text-sm"
                       >
-                        <Link href={`/services/${slug}`}>
-                          {language === 'en' ? 'View Details' : 'विवरण देखें'}
+                        <Link href={`/services/${service.id}`}>
+                          {language === "en" ? "View Details" : "विवरण देखें"}
                         </Link>
                       </Button>
-                      <Button 
-                        asChild 
-                        className="w-full bg-gradient-to-r from-[#800000] to-[#a00000] hover:from-[#700000] hover:to-[#900000] text-white h-11 text-sm md:text-base shadow-md hover:shadow-lg transition-all"
-                      >
-                        <Link href="/contact">
-                          {language === 'en' ? 'Book Consultation' : 'परामर्श बुक करें'}
-                        </Link>
-                      </Button>
+                      <div className="flex flex-col sm:flex-row gap-2 justify-center">
+                        <Button
+                          asChild
+                          size="sm"
+                          className="bg-[#25D366] text-white hover:bg-[#1EBE5D] px-4 py-3 text-xs md:text-sm font-bold shadow-lg hover:shadow-xl transition-all"
+                        >
+                          <a
+                            href={`https://wa.me/917733994827?text=नमस्ते%2C%20पंडित%20जी,%20मुझे%20${encodeURIComponent(
+                              service.title
+                            )}%20पूजा%20बुकिंग%20करानी%20है.`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center gap-1.5"
+                          >
+                            <FaWhatsapp className="w-4 h-4 text-white" />
+                            {language === "en" ? "WhatsApp" : "व्हाट्सएप"}
+                          </a>
+                        </Button>
+
+                        <Button
+                          asChild
+                          size="sm"
+                          variant="outline"
+                          className="bg-[#800000] text-white border-[#800000] border-2 px-4 py-3 text-xs md:text-sm font-bold shadow-lg hover:shadow-xl transition-all"
+                        >
+                          <a href="tel:+917733994827" className="flex items-center gap-1.5">
+                            <Phone className="w-4 h-4" />
+                            {language === "en" ? "Call Now" : "अभी कॉल करें"}
+                          </a>
+                        </Button>
+                      </div>
                     </div>
                   </CardContent>
                 </Card>

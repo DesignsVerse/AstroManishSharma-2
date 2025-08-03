@@ -110,7 +110,7 @@ const AboutServices: React.FC = () => {
         {/* Right Side - Image */}
         <div className="md:w-1/2 relative min-h-[400px]">
           <Image
-            src="/book.png"
+            src="/cta/p.jpg"
             alt="Maa Baglamukhi Puja by Pandit Manish Sharma"
             fill
             className="object-cover"

@@ -10,6 +10,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Mail, Phone, MapPin, Clock, ChevronDown, ChevronUp } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
+import { FaWhatsapp } from 'react-icons/fa'; 
 import Head from 'next/head';
 import Link from 'next/link';
 
@@ -404,14 +405,19 @@ const ContactPage: React.FC = () => {
                     {language === 'en' ? 'Call Now' : 'अभी कॉल करें'}
                   </a>
                   <a
-  href={`https://wa.me/+917733994827?text=${encodeURIComponent(language === 'en' ? 'Namaste Pandit Manish Sharma Ji, I need information about Maa Baglamukhi Puja' : 'नमस्ते पंडित मनीष शर्मा जी, मुझे माँ बगलामुखी पूजा की जानकारी चाहिए है')}`}
-  className="inline-flex items-center px-6 py-3 bg-[#800000] text-white font-semibold rounded-lg hover:bg-[#6a0000] transition-colors"
+  href={`https://wa.me/917733994827?text=${encodeURIComponent(
+    language === 'en'
+      ? 'Namaste Pandit Manish Sharma Ji, I need information about Maa Baglamukhi Puja'
+      : 'नमस्ते पंडित मनीष शर्मा जी, मुझे माँ बगलामुखी पूजा की जानकारी चाहिए है'
+  )}`}
+  className="inline-flex items-center px-6 py-3 bg-[#25D366] hover:bg-[#1EBE5D] text-white font-semibold rounded-lg transition-colors"
   target="_blank"
   rel="noopener noreferrer"
 >
-  <Phone className="h-5 w-5 mr-2" />
+  <FaWhatsapp className="h-5 w-5 mr-2" /> {/* WhatsApp icon */}
   {language === 'en' ? 'WhatsApp Now' : 'अभी व्हाट्सएप करें'}
 </a>
+
                   </div>
                 </div>
               </CardContent>

@@ -65,7 +65,7 @@ export default function ServiceDetailContent({ params }: { params: { slug: strin
   const relatedServices = services.filter((s: any) => s.id !== params.slug).slice(0, 3);
 
   // Dynamic WhatsApp messages
-  const whatsappInquiryMessage = language === 'en' 
+  const whatsappInquiryMessage = language === 'en'
     ? `Namaste Pandit Manish Sharma Ji, I want to know about the ${service.title} Puja.`
     : `नमस्ते पंडित मनीष शर्मा जी, मुझे ${service.title} पूजा के बारे में जानकारी चाहिए।`;
 
@@ -92,7 +92,7 @@ export default function ServiceDetailContent({ params }: { params: { slug: strin
             {/* Left Content */}
             <div className="lg:col-span-2 space-y-12">
               {/* Service Image */}
-              <div className="relative h-64 sm:h-72 md:h-80 w-full rounded-lg overflow-hidden shadow-lg">
+              <div className="relative  h-[85%] sm:h-100 md:h-100 w-[98%] rounded-lg overflow-hidden shadow-lg">
                 <Image
                   src={service.image}
                   alt={service.title}
@@ -107,7 +107,7 @@ export default function ServiceDetailContent({ params }: { params: { slug: strin
                 <h1 className="text-3xl md:text-4xl font-bold text-[#800000]">
                   {service.title}
                 </h1>
-                
+
                 <p className="text-xl text-gray-700">
                   {service.description}
                 </p>
@@ -118,16 +118,12 @@ export default function ServiceDetailContent({ params }: { params: { slug: strin
             <div className="lg:col-span-1">
               <div className="sticky top-24 space-y-6">
                 <Card className="border border-[#800000]/20 shadow-md">
-                  <CardHeader className="bg-[#800000] p-6">
-                    <CardTitle className="text-xl font-bold text-white text-center">
-                      {language === 'en' ? 'Book Your Puja Now' : 'अपनी पूजा अभी बुक करें'}
-                    </CardTitle>
-                  </CardHeader>
+
                   <CardContent className="p-6 space-y-6">
-                    
+
                     <div className="space-y-4">
-                      <Button 
-                        asChild 
+                      <Button
+                        asChild
                         className="w-full bg-gradient-to-r from-[#800000] to-[#a00000] hover:from-[#700000] hover:to-[#900000] text-white h-14 text-lg float-animation transition-all duration-300 ease-in-out flex items-center justify-center gap-2"
                       >
                         <a href="tel:+917733994827">
@@ -135,30 +131,31 @@ export default function ServiceDetailContent({ params }: { params: { slug: strin
                           {language === 'en' ? 'Call Now' : 'अभी कॉल करें'}
                         </a>
                       </Button>
-                      
-                      <Button 
-                        asChild 
-                        variant="outline" 
-                        className="w-full border-[#800000] text-[#800000] hover:bg-[#800000]/10 h-14 text-lg float-animation transition-all duration-300 ease-in-out flex items-center justify-center gap-2"
+
+                      <Button
+                        asChild
+                        variant="outline"
+                        className="w-full bg-[#25D366] text-white hover:bg-[#1EBE5D] h-14 text-lg float-animation transition-all duration-300 ease-in-out flex items-center justify-center gap-2"
                       >
-                        <a 
+                        <a
                           href={`https://wa.me/+917733994827?text=${encodeURIComponent(whatsappInquiryMessage)}`}
-                          target="_blank" 
+                          target="_blank"
                           rel="noopener noreferrer"
                         >
-                          <FaWhatsapp className="w-5 h-5" />
+                          <FaWhatsapp className="w-5 h-5 text-white" />
                           {language === 'en' ? 'WhatsApp Now' : 'अभी व्हाट्सएप करें'}
                         </a>
                       </Button>
-                      
-                      <Button 
-                        asChild 
-                        variant="outline" 
+
+
+                      <Button
+                        asChild
+                        variant="outline"
                         className="w-full border-[#800000] text-[#800000] hover:bg-[#800000]/10 h-14 text-lg float-animation transition-all duration-300 ease-in-out flex items-center justify-center gap-2"
                       >
-                        <a 
+                        <a
                           href={`https://wa.me/+917733994827?text=${encodeURIComponent(whatsappBookingMessage)}`}
-                          target="_blank" 
+                          target="_blank"
                           rel="noopener noreferrer"
                         >
                           <FaCalendarAlt className="w-5 h-5" />
@@ -168,8 +165,8 @@ export default function ServiceDetailContent({ params }: { params: { slug: strin
                     </div>
 
                     <div className="text-center text-sm text-gray-500 mt-4">
-                      {language === 'en' 
-                        ? '100% satisfaction guarantee' 
+                      {language === 'en'
+                        ? '100% satisfaction guarantee'
                         : '100% संतुष्टि गारंटी'}
                     </div>
 
@@ -201,24 +198,24 @@ export default function ServiceDetailContent({ params }: { params: { slug: strin
                     <div className="flex items-center gap-3">
                       <Shield className="w-6 h-6 text-[#800000]" />
                       <span className="text-sm text-gray-700">
-                        {language === 'en' 
-                          ? 'Secure & Confidential' 
+                        {language === 'en'
+                          ? 'Secure & Confidential'
                           : 'सुरक्षित और गोपनीय'}
                       </span>
                     </div>
                     <div className="flex items-center gap-3">
                       <Users className="w-6 h-6 text-[#800000]" />
                       <span className="text-sm text-gray-700">
-                        {language === 'en' 
-                          ? '5000+ Satisfied Clients' 
+                        {language === 'en'
+                          ? '5000+ Satisfied Clients'
                           : '5000+ संतुष्ट ग्राहक'}
                       </span>
                     </div>
                     <div className="flex items-center gap-3">
                       <Star className="w-6 h-6 text-[#800000] fill-[#800000]" />
                       <span className="text-sm text-gray-700">
-                        {language === 'en' 
-                          ? '4.9/5 Client Rating' 
+                        {language === 'en'
+                          ? '4.9/5 Client Rating'
                           : '4.9/5 ग्राहक रेटिंग'}
                       </span>
                     </div>
@@ -246,12 +243,12 @@ export default function ServiceDetailContent({ params }: { params: { slug: strin
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {relatedServices.map((relatedService: any) => (
-              <Link 
-                key={relatedService.id} 
+              <Link
+                key={relatedService.id}
                 href={`/services/${relatedService.id}`}
                 className="group block hover:shadow-md transition-all rounded-lg overflow-hidden border border-gray-200"
               >
-                <div className="relative h-40">
+                <div className="relative h-40 ">
                   <Image
                     src={relatedService.image}
                     alt={relatedService.title}
@@ -281,30 +278,30 @@ export default function ServiceDetailContent({ params }: { params: { slug: strin
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
             <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
-              {language === 'en' 
-                ? 'Need Personalized Guidance?' 
+              {language === 'en'
+                ? 'Need Personalized Guidance?'
                 : 'व्यक्तिगत मार्गदर्शन चाहिए?'}
             </h2>
-            
+
             <p className="text-orange-100 mb-6">
               {language === 'en'
                 ? "Contact us today for a consultation tailored to your needs"
                 : "अपनी आवश्यकताओं के अनुरूप परामर्श के लिए आज ही हमसे संपर्क करें"}
             </p>
-            
+
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button 
-                asChild 
-                size="lg" 
+              <Button
+                asChild
+                size="lg"
                 className="bg-white text-[#800000] hover:bg-gray-100 hover:-translate-y-1 px-6 py-4 font-bold transition-transform duration-300 ease-in-out"
               >
                 <Link href="/contact">
                   {language === 'en' ? 'Get Started' : 'शुरू करें'}
                 </Link>
               </Button>
-              <Button 
-                asChild 
-                variant="outline" 
+              <Button
+                asChild
+                variant="outline"
                 size="lg"
                 className="text-white border-white hover:bg-white/10 hover:translate-y-1 px-6 py-4 font-bold transition-transform duration-300 ease-in-out"
               >

@@ -86,10 +86,17 @@ const Hero: React.FC = () => {
       },
     },
   };
+  <head>
+  <meta name="google" content="notranslate" />
+  <meta charSet="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
 
   return (
-    <section className="relative overflow-hidden bg-[#800000] py-4 md:py-8">
+    <section className=" notranslate relative overflow-hidden bg-[#800000] py-4 md:py-8"
+      translate="no">
       <Head>
+        
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
@@ -122,9 +129,13 @@ const Hero: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7 }}
           >
-            <h1 className="text-2xl md:text-2xl lg:text-5xl font-bold text-white leading-tight">
-              {t.hero.title}
-            </h1>
+            <h1
+            className="notranslate text-2xl md:text-2xl lg:text-5xl font-bold text-white leading-tight"
+            translate="no"
+          >
+            {t.hero.title}
+          </h1>
+
 
             <p className="text-lg md:text-xl text-orange-100 leading-relaxed max-w-2xl mx-auto lg:mx-0">
               {t.hero.subtitle}
